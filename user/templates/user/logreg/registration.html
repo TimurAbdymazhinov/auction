@@ -1,0 +1,98 @@
+{% extends 'user/logreg/base_auth.html' %}
+{% load static %}
+
+{% block form %}
+    <div class="card-heading">
+        <h2 class="title">Регистрация</h2>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            <div class="form-row m-b-55">
+                <div class="name">ФИО</div>
+                <div class="value">
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group-desc">
+                                <input class="input--style-5" type="text" name="first_name">
+                                <label class="label--desc">Имя</label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group-desc">
+                                <input class="input--style-5" type="text" name="last_name">
+                                <label class="label--desc">Фамилия</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="name">Email</div>
+                <div class="value">
+                    <div class="input-group">
+                        <input class="input--style-5" type="email" name="email">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row m-b-55">
+                <div class="name">Телефон</div>
+                <div class="value">
+                    <div class="row row-refine">
+
+                        <div class="col-9">
+                            <div class="input-group-desc">
+                                <input class="input--style-5" type="text" name="phone">
+                                <label class="label--desc">Phone Number</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row m-b-55">
+                <div class="name">Пароль:</div>
+                <div class="value">
+                    <div class="row row-refine">
+
+                        <div class="col-9">
+                            <div class="input-group-desc">
+                                <input class="input--style-5" type="password" name="password">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row m-b-55">
+                <div class="name">Повторите пароль:</div>
+                <div class="value">
+                    <div class="row row-refine">
+
+                        <div class="col-9">
+                            <div class="input-group-desc">
+                                <input class="input--style-5" type="password" name="repassword">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <center>
+                    <button class="btn btn--radius-2 btn--red" type="submit">Войти</button>
+
+
+                    <a href="{% url 'registration' %}" class="btn btn--radius-2 btn--green m-r-10">Регистрация</a>
+                    <a href="{% url 'index' %}" class="btn btn--radius-2 btn--blue m-r-10">Главная</a>
+
+                </center>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
