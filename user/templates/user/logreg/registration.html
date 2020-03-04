@@ -6,7 +6,7 @@
         <h2 class="title">Регистрация</h2>
     </div>
     <div class="card-body">
-        <form method="POST">
+        <form action="{% url 'registration' %}" method="POST" >
             <div class="form-row m-b-55">
                 <div class="name">ФИО</div>
                 <div class="value">
@@ -57,7 +57,7 @@
 
                         <div class="col-9">
                             <div class="input-group-desc">
-                                <input class="input--style-5" type="password" name="password">
+                                <input class="input--style-5" id="password" type="password" name="password">
 
                             </div>
                         </div>
@@ -72,7 +72,7 @@
 
                         <div class="col-9">
                             <div class="input-group-desc">
-                                <input class="input--style-5" type="password" name="repassword">
+                                <input class="input--style-5"id="confirm_password" type="password" name="confirm_password">
 
 
                             </div>
@@ -84,11 +84,11 @@
 
             <div>
                 <center>
-                    <button class="btn btn--radius-2 btn--red" type="submit">Войти</button>
+                    <button class="btn btn--radius-2 btn--red" type="submit">Регистрация</button>
 
 
-                    <a href="{% url 'registration' %}" class="btn btn--radius-2 btn--green m-r-10">Регистрация</a>
                     <a href="{% url 'index' %}" class="btn btn--radius-2 btn--blue m-r-10">Главная</a>
+                    <a href="{% url 'login' %}" class="btn btn--radius-2 btn--green m-r-10">Войти</a>
 
                 </center>
             </div>
