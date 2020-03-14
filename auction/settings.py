@@ -35,8 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # my apps
+    # my own apps
+    'auctioncore',
+    'category',
+    'image',
     'main',
+    'product',
     'user',
 
 ]
