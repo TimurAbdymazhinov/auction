@@ -72,6 +72,8 @@
                 <div class="pull-right">
                     <ul class="header-btns">
                         <!-- Account -->
+
+
                         <li class="header-account dropdown default-dropdown">
                             <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
                                 <div class="header-btns-icon">
@@ -79,16 +81,27 @@
                                 </div>
                                 <strong class="text-uppercase">Кабинет <i class="fa fa-caret-down"></i></strong>
                             </div>
-                            <a href="{% url 'login' %}" class="text-uppercase">Войти</a>
+                            <a class="text-uppercase">{{ user.username }}</a>
+
+
                             <ul class="custom-menu">
-                                <li><a href="#"><i class="fa fa-user-o"></i> Мой кабинет </a></li>
-                                <li><a href="#"><i class="fa fa-heart-o"></i> Избранные </a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i> Активные </a></li>
-                                {#                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>#}
-                                <li><a href="#"><i class="fa fa-unlock-alt"></i> Выйти</a></li>
-                                {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
+                                {% if user.is_authenticated %}
+                                    <li><a href="#"><i class="fa fa-user-o"></i> Мой кабинет </a></li>
+                                    <li><a href="#"><i class="fa fa-heart-o"></i> Избранные </a></li>
+                                    <li><a href="#"><i class="fa fa-exchange"></i> Активные </a></li>
+                                    {#                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>#}
+                                    <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i> Выйти</a></li>
+                                    {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
+                                {% else %}
+
+                                    <li><a href="{% url 'login' %}"><i class="fa fa-user"></i>Войти</a></li>
+                                    <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Регистрация</a></li>
+
+                                {% endif %}
                             </ul>
                         </li>
+
+
                         <!-- /Account -->
 
                         <!-- Cart -->
@@ -163,7 +176,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Women’s Clothing <i
                                     class="fa fa-angle-right"></i></a>
 
-                               <div class="custom-menu">
+                            <div class="custom-menu">
                                 <div class="row">
 
                                     <ul class="list-links">
@@ -220,7 +233,7 @@
                                                               aria-expanded="true">Jewelry & Watches <i
                                 class="fa fa-angle-right"></i></a>
 
-                               <div class="custom-menu">
+                            <div class="custom-menu">
                                 <div class="row">
 
                                     <ul class="list-links">
@@ -476,7 +489,7 @@
 
             <!-- row -->
             <div class="row">
-                               <!-- Product Single -->
+                <!-- Product Single -->
                 <div class="col-md-3 col-sm-6 col-xs-6">
                     <div class="product product-single">
                         <div class="product-thumb">
