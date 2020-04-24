@@ -7,7 +7,7 @@ class Category(models.Model):
     is_active = models.BooleanField(default=True)
     is_accepted = models.BooleanField(default=True)
 
-    owner = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='subcategories')
+    owner = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='subcategories', null=True, blank=True)
 
     def __str__(self):
         return self.title

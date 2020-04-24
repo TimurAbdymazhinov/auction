@@ -12,7 +12,7 @@
         <div id="top-header">
             <div class="container">
                 <div class="pull-left">
-                    <span>Welcome to E-shop!</span>
+                    <span>Добро пожаловать в e-auction!</span>
                 </div>
                 <div class="pull-right">
                     <ul class="header-top-links">
@@ -58,11 +58,13 @@
                     <!-- Search -->
                     <div class="header-search">
                         <form>
-                            <input class="input search-input" type="text" placeholder="Enter your keyword">
+                            <input class="input search-input" type="text" placeholder="Поиск">
                             <select class="input search-categories">
-                                <option value="0">All Categories</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
+                                <option value="0">Все категории</option>
+                                {% for c in category %}
+                                    <option value="{{ c.order }}">{{ c.title }} </option>
+                                {% endfor %}
+
                             </select>
                             <button class="search-btn"><i class="fa fa-search"></i></button>
                         </form>
@@ -95,7 +97,8 @@
                                 {% else %}
 
                                     <li><a href="{% url 'login' %}"><i class="fa fa-user"></i>Войти</a></li>
-                                    <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Регистрация</a></li>
+                                    <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Регистрация</a>
+                                    </li>
 
                                 {% endif %}
                             </ul>
@@ -170,93 +173,45 @@
             <div id="responsive-nav">
                 <!-- category nav -->
                 <div class="category-nav">
-                    <span class="category-header">Categories <i class="fa fa-list"></i></span>
+                    <span class="category-header"> Категории <i class="fa fa-list"></i></span>
                     <ul class="category-list">
-                        <li class="dropdown side-dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Women’s Clothing <i
-                                    class="fa fa-angle-right"></i></a>
+                        {% for c in category %}
+                            {% if c.subcategories.all|length > 0 %}
+                                <li class="dropdown side-dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{ c.title }}<i
+                                            class="fa fa-angle-right"></i></a>
 
-                            <div class="custom-menu">
-                                <div class="row">
+                                    <div class="custom-menu">
+                                        <div class="row">
 
-                                    <ul class="list-links">
+                                            <ul class="list-links">
+                                                {% for subcat in c.subcategories.all %}
+                                                    <li><a href="#">{{ subcat.title }}</a></li>
+                                                    {% if subcat == c.subcategories.last %}
+                                                    {% else %}
+                                                        <hr>
 
-                                        <li><a href="#">Women’s Clothing</a></li>
-                                        <hr>
-                                        <li><a href="#">Men’s Clothing</a></li>
-                                        <hr>
-                                        <li><a href="#">Phones & Accessories</a></li>
-                                        <hr>
-                                        <li><a href="#">Jewelry & Watches</a></li>
-                                        <hr>
-                                        <li><a href="#">Bags & Shoes</a></li>
-                                    </ul>
+                                                    {% endif %}
 
 
-                                    <hr class="hidden-md hidden-lg">
-                                </div>
-                            </div>
 
-                        </li>
-
-                        <li><a href="#">Men’s Clothing</a></li>
-
-                        <li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                              aria-expanded="true">Phones & Accessories <i
-                                class="fa fa-angle-right"></i></a>
-                            <div class="custom-menu">
-                                <div class="row">
-
-                                    <ul class="list-links">
-
-                                        <li><a href="#">Women’s Clothing</a></li>
-                                        <hr>
-                                        <li><a href="#">Men’s Clothing</a></li>
-                                        <hr>
-                                        <li><a href="#">Phones & Accessories</a></li>
-                                        <hr>
-                                        <li><a href="#">Jewelry & Watches</a></li>
-                                        <hr>
-                                        <li><a href="#">Bags & Shoes</a></li>
-                                    </ul>
+                                                {% endfor %}
+                                            </ul>
 
 
-                                    <hr class="hidden-md hidden-lg">
-                                </div>
-                            </div>
+                                            <hr class="hidden-md hidden-lg">
+                                        </div>
+                                    </div>
 
-                        </li>
-                        <li><a href="#">Computer & Office</a></li>
-                        <li><a href="#">Consumer Electronics</a></li>
+                                </li>
 
-                        <li class="dropdown side-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                              aria-expanded="true">Jewelry & Watches <i
-                                class="fa fa-angle-right"></i></a>
+                            {% else %}
+                                <li><a href="#">{{ c.title }}</a></li>
 
-                            <div class="custom-menu">
-                                <div class="row">
+                            {% endif %}
 
-                                    <ul class="list-links">
+                        {% endfor %}
 
-                                        <li><a href="#">Women’s Clothing</a></li>
-                                        <hr>
-                                        <li><a href="#">Men’s Clothing</a></li>
-                                        <hr>
-                                        <li><a href="#">Phones & Accessories</a></li>
-                                        <hr>
-                                        <li><a href="#">Jewelry & Watches</a></li>
-                                        <hr>
-                                        <li><a href="#">Bags & Shoes</a></li>
-                                    </ul>
-
-
-                                    <hr class="hidden-md hidden-lg">
-                                </div>
-                            </div>
-
-                        </li>
-                        <li><a href="#">Bags & Shoes</a></li>
-                        <li><a href="#">View All</a></li>
                     </ul>
                 </div>
                 <!-- /category nav -->
@@ -265,11 +220,11 @@
                 <div class="menu-nav">
                     <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                     <ul class="menu-list">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About auctions</a></li>
-                        <li><a href="#">Sales</a></li>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#">Об аукционах</a></li>
+                        <li><a href="#">Совершенные аукционы</a></li>
                         <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                                 aria-expanded="true">Pages <i
+                                                                 aria-expanded="true">Страницы<i
                                 class="fa fa-caret-down"></i></a>
                             <ul class="custom-menu">
                                 <li><a href="index.html">Home</a></li>
