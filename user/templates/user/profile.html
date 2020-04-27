@@ -5,7 +5,75 @@
 {% endblock %}
 
 {% block content %}
-    <h1>hello</h1>
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li class="active">Мой кабинет</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /BREADCRUMB -->
+
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Добро пожаловать {{ user.first_name }} {{ user.last_name }}</h2>
+                    </div>
+                </div>
+                <!-- section title -->
+
+
+            </div>
+
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h4 class="title">Мои аукционы</h4>
+                    </div>
+                </div>
+                <!-- section title -->
+
+
+            </div>
+
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h4 class="title">История</h4>
+                    </div>
+                </div>
+                <!-- section title -->
+
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <h1>hehhhhllo</h1>
+
+        </div>
+    </div>
+
 {% endblock %}
 {% block footer %}
     {% include 'footer.html' %}
