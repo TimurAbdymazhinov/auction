@@ -656,11 +656,11 @@ textarea.input {
   border-left: 2px solid #F8694A;
   left: 100%;
   top: 0;
+
   padding-left: 10%;
   -webkit-transform: translate(15px, 0px);
   -ms-transform: translate(15px, 0px);
   transform: translate(15px, 0px);
-
 }
 
 .dropdown.side-dropdown.open>.custom-menu {
