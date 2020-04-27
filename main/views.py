@@ -11,15 +11,21 @@ class MainView(TemplateView):
     def get(self, request, *args, **kwargs):
         # Category
         category = Category.objects.filter(owner=None)
-        for i in category:
-            print(i.title)
-            if i.subcategories:
-                print(i.subcategories.all())
-                for j in i.subcategories.all():
-                    print("*" + j.title)
 
         return render(request, self.template_name, context={
             "category": category,
+        })
+
+    def post(self, request, *args, **kwargs):
+        return render(request, self.template_name, context={
+        })
+
+class TempView(TemplateView):
+    template_name = 'main/products.html'
+
+    def get(self, request, *args, **kwargs):
+
+        return render(request, self.template_name, context={
         })
 
     def post(self, request, *args, **kwargs):

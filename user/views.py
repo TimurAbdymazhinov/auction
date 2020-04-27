@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 
+from category.models import Category
+
 
 class Login(TemplateView):
     template_name = 'user/logreg/login.html'
@@ -41,4 +43,19 @@ class RegistrationView(TemplateView):
             return redirect('index')
         return render(request, self.template_name, context={
             'form': form
+        })
+
+
+class ProfileView(TemplateView):
+    template_name = 'user/profile.html'
+
+    def get(self, request, *args, **kwargs):
+        category = Category.objects.filter(owner=None)
+
+        return render(request, self.template_name, context={
+            "category": category,
+        })
+
+    def post(self, request, *args, **kwargs):
+        return render(request, self.template_name, context={
         })
