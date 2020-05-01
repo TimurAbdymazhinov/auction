@@ -1,11 +1,15 @@
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 
 from category.models import Category
-
+from auctioncore.models import Auction
+from auction.settings import LOGIN_URL
+from user.models import Profile
 
 class Login(TemplateView):
     template_name = 'user/logreg/login.html'
@@ -39,6 +43,7 @@ class RegistrationView(TemplateView):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             if user:
+                Profile.objects.create(user=user)
                 login(request, user)
             return redirect('index')
         return render(request, self.template_name, context={
@@ -46,14 +51,20 @@ class RegistrationView(TemplateView):
         })
 
 
-class ProfileView(TemplateView):
+class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'user/profile.html'
 
+    login_url = LOGIN_URL
     def get(self, request, *args, **kwargs):
         category = Category.objects.filter(owner=None)
+        n = [i for i in range(10)]
 
+        auctions = Auction.objects.filter(owner=request.user)
         return render(request, self.template_name, context={
             "category": category,
+            "n": n,
+            "auctions": auctions
+
         })
 
     def post(self, request, *args, **kwargs):

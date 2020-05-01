@@ -24,7 +24,7 @@ Django
     python manage.py migrate
 
 Database
-    create database aution character set utf8 collate utf8_unicode_ci;
+    create database auction character set utf8 collate utf8_unicode_ci;
 
 Run the collectstatic management command:
 

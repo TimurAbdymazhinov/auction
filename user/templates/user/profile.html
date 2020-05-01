@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% load thumbnail %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -15,13 +16,11 @@
         </div>
     </div>
     <!-- /BREADCRUMB -->
-
-
     <!-- section -->
     <div class="section">
         <!-- container -->
         <div class="container">
-            <!-- row -->
+            <!-- personal card -->
             <div class="row">
                 <!-- section title -->
                 <div class="col-md-12">
@@ -31,8 +30,89 @@
                 </div>
                 <!-- section title -->
 
+                <div class="profiles">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+
+                        <div class="row center-block">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                 class="img-responsive"/>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <span class="col-sm-12"><h5>Контактные информации</h5></span>
+                            <div class="col-md-4 col-sm-6 col-xs-12 ">
+                                <ul>
+                                    <li><span><h6>Имя:</h6></span></li>
+                                    <li><span><h6>Фамилия:</h6></span></li>
+                                    <li><span><h6>Номер телефона:</h6></span></li>
+                                    <li><span><h6>Электронный адресс:</h6></span></li>
+
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+
+                                <ul>
+                                    <li><span>{{ user.first_name }}</span></li>
+                                    <li><span>{{ user.last_name }}</span></li>
+                                    <li><span>{{ user.email }}</span></li>
+                                    <li><span>{{ user.email }}</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+
+                                <ul>
+                                    <li><span>23</span></li>
+                                    <li><span>45</span></li>
+                                    <li><span>32/100</span></li>
+                                    <li><span>20.02.2020</span></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <span class="col-sm-12"><h5>Данные</h5></span>
+                            <div class="col-md-4 col-sm-6 col-xs-12 ">
+                                <ul>
+                                    <li><span><h6>Созданные аукционы:</h6></span></li>
+                                    <li><span><h6>Участие в аукционах:</h6></span></li>
+                                    <li><span><h6>Рейтинг:</h6></span></li>
+                                    <li><span><h6>Дата регистрации:</h6></span></li>
+
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+
+                                <ul>
+                                    <li><span>23</span></li>
+                                    <li><span>45</span></li>
+                                    <li><span>32/100</span></li>
+                                    <li><span>20.02.2020</span></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- personal card -->
+
 
             </div>
+
+
+        </div>
+    </div>
+    <!-- section -->
+
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+
 
             <div class="row">
                 <!-- section title -->
@@ -42,7 +122,83 @@
                     </div>
                 </div>
                 <!-- section title -->
+                {% for a in auctions %}
+                    <!-- Product Single -->
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    <span>Active</span>
+                                    <span class="sale">-20%</span>
+                                </div>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view
+                                </button>
+                                <img src="{{ a.lot.image|thumbnail_url:'medium' }}" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">{{ a.start_price }}
+                                    <del class="product-old-price">{{ a.start_price }}</del>
+                                </h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <h2 class="product-name"><a href="#">{{ a.title }}</a></h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                        Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product Single -->
 
+                {% endfor %}
+
+
+                {% for i in n %}
+                    <!-- Product Single -->
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    <span>New</span>
+                                    <span class="sale">-20%</span>
+                                </div>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view
+                                </button>
+                                <img src="{% static 'img/product03.jpg' %}" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">$32.50
+                                    <del class="product-old-price">$45.00</del>
+                                </h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                        Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product Single -->
+                {% endfor %}
 
             </div>
 
@@ -54,7 +210,43 @@
                     </div>
                 </div>
                 <!-- section title -->
-
+                {% for i in n %}
+                    <!-- Product Single -->
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    <span>New</span>
+                                    <span class="sale">-20%</span>
+                                </div>
+                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view
+                                </button>
+                                <img src="{% static 'img/product03.jpg' %}" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">$32.50
+                                    <del class="product-old-price">$45.00</del>
+                                </h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                                <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
+                                        Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product Single -->
+                {% endfor %}
 
             </div>
             <!-- /row -->
@@ -65,14 +257,6 @@
 
 
 
-    <!-- section -->
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <h1>hehhhhllo</h1>
-
-        </div>
-    </div>
 
 {% endblock %}
 {% block footer %}

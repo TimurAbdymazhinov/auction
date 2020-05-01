@@ -36,12 +36,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # my own apps
+
     'auctioncore',
     'category',
-    'image',
+
     'main',
     'product',
     'user',
+    # install
+    'easy_thumbnails'
 
 ]
 
@@ -134,4 +137,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/user/accounts/login'
 
+THUMBNAIL_ALIASES = {
+    '': {
+        'small': {
+            'size': (300, 300)
+        },
+        'medium': {
+            'size': (270, 360),
+            'crop': 'smart'
+        },
+        'big': {
+        'size': (1200, 1200)
+
+        }
+    }
+
+}
+
+# THUMBNAIL_MEDIA_URL = ''
+# THUMBNAIL_MEDIA_ROOT = ''
