@@ -59,7 +59,7 @@
     color: #555;
     padding: 5px;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .profile-head ul li:hover span {
@@ -80,7 +80,7 @@
     text-align: center;
     font-weight: 100;
     color: #555;
-    font-size: 15px;
+    font-size: 20px;
     text-transform: uppercase;
     margin-bottom: 0;
 }

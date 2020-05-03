@@ -6,9 +6,10 @@ from user.views import *
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/registration', RegistrationView.as_view(), name='register'),
+    path('accounts/registration/', RegistrationView.as_view(), name='register'),
 
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('profile/settings/', ProfileSettingsView.as_view(), name='profile_settings'),
 
     # path('', Login.as_view(), name='index'),
     # path('login/', Login.as_view(), name='login'),

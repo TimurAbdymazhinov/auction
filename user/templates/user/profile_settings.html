@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'index' %}">Главная</a></li>
+                <li><a href="{% url 'profile' %}">Мой кабинет</a></li>
+                <li class="active">Настройки</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /BREADCRUMB -->
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+
+
+
+
+                <form id="checkout-form" class="clearfix" action="{% url 'profile_settings' %}" method="POST"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                        <div class="billing-details">
+
+                            <div class="section-title">
+                                <h3 class="title">Настройка аккаунта</h3>
+                            </div>
+                            {% if userform.errors %}
+                                <p>{{ userform.errors }}</p>
+                            {% endif %}
+                            {% if profileform.errors %}
+                                <p>{{ profileform.errors }}</p>
+                            {% endif %}
+                            {% for u in userform %}
+
+                                <div class="form-group">
+
+                                    {{ u }}
+
+                                </div>
+                            {% endfor %}
+
+                            {% for p in profileform %}
+                                <div class="form-group">
+
+                                    {{ p }}
+                                </div>
+
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="pull-right">
+                        <button class="primary-btn" type="submit">Изменить</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+
+
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+
+

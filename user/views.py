@@ -9,7 +9,9 @@ from django.contrib.auth.forms import UserCreationForm
 from category.models import Category
 from auctioncore.models import Auction
 from auction.settings import LOGIN_URL
-from user.models import Profile
+from .models import Profile
+from .forms import UserForm, ProfileForm
+
 
 class Login(TemplateView):
     template_name = 'user/logreg/login.html'
@@ -55,6 +57,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'user/profile.html'
 
     login_url = LOGIN_URL
+
     def get(self, request, *args, **kwargs):
         category = Category.objects.filter(owner=None)
         n = [i for i in range(10)]
@@ -69,4 +72,41 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 
     def post(self, request, *args, **kwargs):
         return render(request, self.template_name, context={
+        })
+
+
+class ProfileSettingsView(LoginRequiredMixin, TemplateView):
+    template_name = 'user/profile_settings.html'
+
+    login_url = LOGIN_URL
+
+    def get(self, request, *args, **kwargs):
+        category = Category.objects.filter(owner=None)
+
+        u = UserForm(instance=request.user)
+        p = ProfileForm(instance=request.user.profile)
+
+        return render(request, self.template_name, context={
+            "category": category,
+            "userform": u,
+            "profileform": p,
+
+        })
+
+    def post(self, request, *args, **kwargs):
+        category = Category.objects.filter(owner=None)
+        u = UserForm(instance=request.user, data=request.POST)
+        p = ProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
+
+        if u.is_valid() and p.is_valid():
+            print(p)
+            u.save()
+            p.save()
+            return redirect('profile')
+
+        return render(request, self.template_name, context={
+            "category": category,
+            "userform": u,
+            "profileform": p,
+
         })

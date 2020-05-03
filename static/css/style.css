@@ -151,6 +151,7 @@ hr {
 .primary-btn {
     color: #FFF;
     background-color: #F8694A;
+    width: 215px;
 }
 
 .primary-btn:hover, .primary-btn:focus {

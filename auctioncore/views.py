@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
+from .models import Auction
 
-# Create your views here.
+
+class AuctionDeleteView(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        id = kwargs['id']
+        a = Auction.objects.get(pk=id).delete()
+
+        return redirect('profile')

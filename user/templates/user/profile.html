@@ -34,9 +34,17 @@
                     <div class="col-md-3 col-sm-3 col-xs-12">
 
                         <div class="row center-block">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                            <img src="{{ user.profile.image|thumbnail_url:'medium' }}"
                                  class="img-responsive"/>
+
                         </div>
+                        <br>
+
+                        <a href="{% url 'profile_settings' %}">
+                            <button class="primary-btn">Настрока аккаунта</button>
+                        </a>
+                        <button class="primary-btn">Создать акуцион</button>
+                        <button class="primary-btn">Мои аукционы</button>
                     </div>
                     <div class="col-md-9">
                         <div class="row">
@@ -61,12 +69,7 @@
                             </div>
                             <div class="col-md-4 col-sm-6 col-xs-12">
 
-                                <ul>
-                                    <li><span>23</span></li>
-                                    <li><span>45</span></li>
-                                    <li><span>32/100</span></li>
-                                    <li><span>20.02.2020</span></li>
-                                </ul>
+
                             </div>
 
                         </div>
@@ -113,142 +116,107 @@
         <div class="container">
             <!-- row -->
 
-
-            <div class="row">
-                <!-- section title -->
-                <div class="col-md-12">
+          <div class="col-md-12">
+                <div class="order-summary clearfix">
                     <div class="section-title">
-                        <h4 class="title">Мои аукционы</h4>
+                        <h3 class="title">Мои аукционы</h3>
                     </div>
+                    <table class="shopping-cart-table table">
+                        <thead>
+                        <tr>
+                            <th>Аукционы</th>
+                            <th></th>
+                            <th class="text-center">Цена</th>
+                            <th class="text-center">Статус</th>
+                            <th class="text-right">Редактировать</th>
+                            <th class="text-right">Удалить</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for a in auctions %}
+                            <tr>
+                                <td class="thumb"><img src="{{ a.lot.image|thumbnail_url:'small' }}" alt=""></td>
+
+                                <td class="details">
+                                    <a href="#">{{ a.title }}</a>
+                                    <ul>
+                                        <li><span>Дата создания: 02.02.2020</span></li>
+                                        <li><span>Дата окончания: 10.02.2020</span></li>
+                                    </ul>
+                                </td>
+                                <td class="price text-center">
+
+                                    <strong>{{ a.start_price }}</strong><br>
+                                    <del class="font-weak"><small>{{ a.start_price }}</small></del>
+                                </td>
+                                <td class="qty text-center">{{ a.is_active }}</td>
+                                <td class="total text-right">
+                                    <button class="main-btn icon-btn"><i class="fa fa-star"></i></button>
+                                </td>
+                                <td class="text-right">
+                                    <a href="{% url 'auction_delete'  a.id %}" class="main-btn icon-btn"><i
+                                            class="fa fa-close"></i></a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-                <!-- section title -->
-                {% for a in auctions %}
-                    <!-- Product Single -->
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="product product-single">
-                            <div class="product-thumb">
-                                <div class="product-label">
-                                    <span>Active</span>
-                                    <span class="sale">-20%</span>
-                                </div>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view
-                                </button>
-                                <img src="{{ a.lot.image|thumbnail_url:'medium' }}" alt="">
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-price">{{ a.start_price }}
-                                    <del class="product-old-price">{{ a.start_price }}</del>
-                                </h3>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <h2 class="product-name"><a href="#">{{ a.title }}</a></h2>
-                                <div class="product-btns">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                        Cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+
+            </div>
+ <div class="col-md-12">
+                <div class="order-summary clearfix">
+                    <div class="section-title">
+                        <h3 class="title">Мои ставки</h3>
                     </div>
-                    <!-- /Product Single -->
+                    <table class="shopping-cart-table table">
+                        <thead>
+                        <tr>
+                            <th>Аукционы</th>
+                            <th></th>
+                            <th class="text-center">Цена</th>
+                            <th class="text-center">Статус</th>
+                            <th class="text-right">Редактировать</th>
+                            <th class="text-right">Удалить</th>
 
-                {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for a in auctions %}
+                            <tr>
+                                <td class="thumb"><img src="{{ a.lot.image|thumbnail_url:'small' }}" alt=""></td>
 
+                                <td class="details">
+                                    <a href="#">{{ a.title }}</a>
+                                    <ul>
+                                        <li><span>Дата создания: 02.02.2020</span></li>
+                                        <li><span>Дата окончания: 10.02.2020</span></li>
+                                    </ul>
+                                </td>
+                                <td class="price text-center">
 
-                {% for i in n %}
-                    <!-- Product Single -->
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="product product-single">
-                            <div class="product-thumb">
-                                <div class="product-label">
-                                    <span>New</span>
-                                    <span class="sale">-20%</span>
-                                </div>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view
-                                </button>
-                                <img src="{% static 'img/product03.jpg' %}" alt="">
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-price">$32.50
-                                    <del class="product-old-price">$45.00</del>
-                                </h3>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                                <div class="product-btns">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                        Cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Product Single -->
-                {% endfor %}
+                                    <strong>{{ a.start_price }}</strong><br>
+                                    <del class="font-weak"><small>{{ a.start_price }}</small></del>
+                                </td>
+                                <td class="qty text-center">{{ a.is_active }}</td>
+                                <td class="total text-right">
+                                    <button class="main-btn icon-btn"><i class="fa fa-star"></i></button>
+                                </td>
+                                <td class="text-right">
+                                    <a href="{% url 'auction_delete'  a.id %}" class="main-btn icon-btn"><i
+                                            class="fa fa-close"></i></a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
 
-            <div class="row">
-                <!-- section title -->
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h4 class="title">История</h4>
-                    </div>
-                </div>
-                <!-- section title -->
-                {% for i in n %}
-                    <!-- Product Single -->
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="product product-single">
-                            <div class="product-thumb">
-                                <div class="product-label">
-                                    <span>New</span>
-                                    <span class="sale">-20%</span>
-                                </div>
-                                <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view
-                                </button>
-                                <img src="{% static 'img/product03.jpg' %}" alt="">
-                            </div>
-                            <div class="product-body">
-                                <h3 class="product-price">$32.50
-                                    <del class="product-old-price">$45.00</del>
-                                </h3>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                                <div class="product-btns">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to
-                                        Cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Product Single -->
-                {% endfor %}
-
-            </div>
             <!-- /row -->
         </div>
         <!-- /container -->
