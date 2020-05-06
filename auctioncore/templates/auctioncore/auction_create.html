@@ -13,7 +13,7 @@
             <ul class="breadcrumb">
                 <li><a href="{% url 'index' %}">Главная</a></li>
                 <li><a href="{% url 'profile' %}">Мой кабинет</a></li>
-                <li class="active">Настройки</li>
+                <li class="active">Настройка аукциона</li>
             </ul>
         </div>
     </div>
@@ -27,46 +27,50 @@
             <div class="row">
 
 
-                <form id="checkout-form" class="clearfix" action="{% url 'profile_settings' %}" method="POST"
+                <form id="checkout-form" class="clearfix" action="{% url 'auction_create' %}" method="POST"
                       enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="col-md-6">
                         <div class="billing-details">
 
                             <div class="section-title">
-                                <h3 class="title">Настройка аккаунта</h3>
+                                <h3 class="title">Создание аукциона</h3>
                             </div>
-                            {% if userform.errors %}
-                                <p>{{ userform.errors }}</p>
+
+                            {% if auctionform.errors %}
+                                <p>{{ auctionform.errors }}</p>
                             {% endif %}
-                            {% if profileform.errors %}
-                                <p>{{ profileform.errors }}</p>
+                            {% if productform.errors %}
+                                <p>{{ productform.errors }}</p>
                             {% endif %}
-                            {% for u in userform %}
+                            {% for a in auctionform %}
 
                                 <div class="form-group">
-                                    <p>{{ u.label }}:</p>
-                                    {{ u }}
+                                    <p>{{ a.label }}:</p>
+                                    {{ a }}
 
                                 </div>
                             {% endfor %}
+                            <br>
+                            <div class="section-title">
+                                <h4 class="title">Создание лота аукциона</h4>
+                            </div>
 
-                            {% for p in profileform %}
+                            {% for p in productform %}
                                 <div class="form-group">
-                                    <p class="title">{{ p.label }}:</p>
+                                    <p>{{ p.label }}:</p>
                                     {{ p }}
                                 </div>
 
                             {% endfor %}
 
-
+                            <div class="pull-right" style="margin-top: 10px">
+                                <button class="primary-btn" type="submit">Создать</button>
+                            </div>
                         </div>
                     </div>
 
 
-                    <div class="pull-right">
-                        <button class="primary-btn" type="submit">Сохранить</button>
-                    </div>
                 </form>
             </div>
             <!-- /row -->

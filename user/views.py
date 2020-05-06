@@ -1,6 +1,4 @@
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
@@ -99,7 +97,6 @@ class ProfileSettingsView(LoginRequiredMixin, TemplateView):
         p = ProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
 
         if u.is_valid() and p.is_valid():
-            print(p)
             u.save()
             p.save()
             return redirect('profile')

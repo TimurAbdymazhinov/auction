@@ -82,9 +82,9 @@
                         <ul class="custom-menu">
                             {% if user.is_authenticated %}
                                 <li><a href="{% url 'profile' %}"><i class="fa fa-user-o"></i> Мой кабинет </a></li>
+                                <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus"></i> Cоздать Аукцион </a></li>
                                 <li><a href="#"><i class="fa fa-heart-o"></i> Избранные </a></li>
                                 <li><a href="#"><i class="fa fa-exchange"></i> Активные </a></li>
-                                {#                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>#}
                                 <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i> Выйти</a></li>
                                 {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
                             {% else %}

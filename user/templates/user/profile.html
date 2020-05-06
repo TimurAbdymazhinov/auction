@@ -43,8 +43,13 @@
                         <a href="{% url 'profile_settings' %}">
                             <button class="primary-btn">Настрока аккаунта</button>
                         </a>
-                        <button class="primary-btn">Создать акуцион</button>
-                        <button class="primary-btn">Мои аукционы</button>
+                        <a href="{% url 'auction_create' %}">
+                            <button class="primary-btn">Создать акуцион</button>
+                        </a>
+                        <a href="{% url 'profile_settings' %}">
+                            <button class="primary-btn">Мои аукционы</button>
+                        </a>
+
                     </div>
                     <div class="col-md-9">
                         <div class="row">
@@ -116,7 +121,7 @@
         <div class="container">
             <!-- row -->
 
-          <div class="col-md-12">
+            <div class="col-md-12">
                 <div class="order-summary clearfix">
                     <div class="section-title">
                         <h3 class="title">Мои аукционы</h3>
@@ -152,7 +157,8 @@
                                 </td>
                                 <td class="qty text-center">{{ a.is_active }}</td>
                                 <td class="total text-right">
-                                    <button class="main-btn icon-btn"><i class="fa fa-star"></i></button>
+                                            <a href="{% url 'auction_edit'  a.id %}" class="main-btn icon-btn"><i
+                                            class="fa fa-bars"></i></a>
                                 </td>
                                 <td class="text-right">
                                     <a href="{% url 'auction_delete'  a.id %}" class="main-btn icon-btn"><i
@@ -166,7 +172,7 @@
                 </div>
 
             </div>
- <div class="col-md-12">
+            <div class="col-md-12">
                 <div class="order-summary clearfix">
                     <div class="section-title">
                         <h3 class="title">Мои ставки</h3>
@@ -202,7 +208,8 @@
                                 </td>
                                 <td class="qty text-center">{{ a.is_active }}</td>
                                 <td class="total text-right">
-                                    <button class="main-btn icon-btn"><i class="fa fa-star"></i></button>
+                                    <a href="{% url 'auction_edit'  a.id %}" class="main-btn icon-btn"><i
+                                            class="fa fa-bars"></i></a>
                                 </td>
                                 <td class="text-right">
                                     <a href="{% url 'auction_delete'  a.id %}" class="main-btn icon-btn"><i
