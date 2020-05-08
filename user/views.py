@@ -16,6 +16,7 @@ class Login(TemplateView):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, context={
+
         })
 
     def post(self, request, *args, **kwargs):
@@ -43,8 +44,8 @@ class RegistrationView(TemplateView):
             password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             if user:
-                Profile.objects.create(user=user)
                 login(request, user)
+
             return redirect('index')
         return render(request, self.template_name, context={
             'form': form

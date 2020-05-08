@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from .models import Auction
+from .models import Auction, Participants, Acomments
 from django.contrib.auth.mixins import LoginRequiredMixin
 from category.models import Category
 from auction.settings import LOGIN_URL
@@ -96,3 +96,39 @@ class AuctionCreateView(LoginRequiredMixin, TemplateView):
             "productform": p,
 
         })
+
+
+class AuctionDetailView(TemplateView):
+    template_name = 'auctioncore/auction_detail.html'
+
+    def get(self, request, *args, **kwargs):
+        id = kwargs['id']
+        category = Category.objects.filter(owner=None)
+        auction = Auction.objects.get(pk=id)
+
+        return render(request, self.template_name, context={
+            "category": category,
+            "auction": auction,
+
+        })
+
+    def post(self, request, *args, **kwargs):
+        category = Category.objects.filter(owner=None)
+
+        return render(request, self.template_name, context={
+            "category": category,
+
+        })
+
+
+class AuctionMakeBetView(LoginRequiredMixin, TemplateView):
+    def post(self, request, *args, **kwargs):
+        id = kwargs['id']
+        d = dict(request.POST)
+        print(d)
+        print(d['bet'][0])
+        auction = Auction.objects.get(id=id)
+        bet = float(d['bet'][0].replace(',', '.'))
+        Participants.objects.create(user=request.user, auction=auction, bet=bet)
+
+        return redirect('auction_detail', id=id)
