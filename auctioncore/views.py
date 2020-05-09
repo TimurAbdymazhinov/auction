@@ -125,10 +125,29 @@ class AuctionMakeBetView(LoginRequiredMixin, TemplateView):
     def post(self, request, *args, **kwargs):
         id = kwargs['id']
         d = dict(request.POST)
-        print(d)
-        print(d['bet'][0])
         auction = Auction.objects.get(id=id)
         bet = float(d['bet'][0].replace(',', '.'))
         Participants.objects.create(user=request.user, auction=auction, bet=bet)
 
+        return redirect('auction_detail', id=id)
+
+
+class AuctionCommentView(LoginRequiredMixin, TemplateView):
+    def post(self, request, *args, **kwargs):
+        id = kwargs['id']
+        auction = Auction.objects.get(id=id)
+        d = dict(request.POST)
+        comment = d['comment'][0]
+        try:
+            star = int(d['rating'][0])
+        except:
+            star = 0
+        Acomments.objects.create(comment=comment, star=star, user=request.user, auction=auction)
+        s = 0
+
+        for c in auction.comments.all():
+            s += c.star
+        s = round(s / auction.comments.all().count())
+        auction.star = s
+        auction.save()
         return redirect('auction_detail', id=id)

@@ -75,14 +75,63 @@
                                 <del class="product-old-price">{{ auction.start_price }}</del>
                             </h3>
                             <div>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
-                                <a href="#">3 Review(s) / Add Review</a>
+
+                                {% if auction.star == 0 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                {% elif auction.star == 1 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 2 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 3 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 4 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 5 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+
+                                {% endif %}
+
+                                <a href="#">{{ auction.comments.all.count }} отзыв </a>
                             </div>
                             <p><strong>Владелец:</strong> {{ auction.owner.first_name }} {{ auction.owner.last_name }}
                             </p>
@@ -100,11 +149,12 @@
                                     {% csrf_token %}
                                     <div class="qty-input">
                                         <span class="text-uppercase">Ставка: </span>
-                                        <input type="text" class="input" name="bet" value="{{ auction.last_bet }}" >
+                                        <input type="text" class="input" name="bet" value="{{ auction.last_bet }}">
 
                                     </div>
 
-                                    <button type="submit" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Сделать
+                                    <button type="submit" class="primary-btn add-to-cart"><i
+                                            class="fa fa-shopping-cart"></i> Сделать
                                         ставку
                                     </button>
                                 </form>
@@ -120,7 +170,8 @@
                             <ul class="tab-nav">
                                 <li class="active"><a data-toggle="tab" href="#tab1">Ставки</a></li>
                                 <li><a data-toggle="tab" href="#tab2">Информация</a></li>
-                                <li><a data-toggle="tab" href="#tab3">Комментарий (3)</a></li>
+                                <li><a data-toggle="tab" href="#tab3">Комментарий ({{ auction.comments.all.count }})</a>
+                                </li>
                             </ul>
                             <div class="tab-content">
                                 <div id="tab1" class="tab-pane fade in active">
@@ -140,24 +191,25 @@
                                             </thead>
                                             <tbody>
                                             {% for p in auction.participants.all %}
-                                            <tr>
-                                                <td class="thumb"><img src="{{ p.user.profile.image|thumbnail_url:'medium' }}"
-                                                                       alt=""></td>
+                                                <tr>
+                                                    <td class="thumb"><img
+                                                            src="{{ p.user.profile.image|thumbnail_url:'medium' }}"
+                                                            alt=""></td>
 
-                                                <td class="details">
-                                                    <a href="#">{{ p.user.first_name }} {{ p.user.last_name }}</a>
-                                                    <ul>
-                                                        <li><span>Rating </span></li>
-                                                        <li><span>Stars</span></li>
-                                                    </ul>
-                                                </td>
-                                                <td class="price text-center">
+                                                    <td class="details">
+                                                        <a href="#">{{ p.user.first_name }} {{ p.user.last_name }}</a>
+                                                        <ul>
+                                                            <li><span>Rating </span></li>
+                                                            <li><span>Stars</span></li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="price text-center">
 
-                                                    <strong>{{ p.bet }}</strong><br>
-                                                </td>
-                                                <td class="qty text-center">{{ p.bed_date }}</td>
+                                                        <strong>{{ p.bet }}</strong><br>
+                                                    </td>
+                                                    <td class="qty text-center">{{ p.bed_date }}</td>
 
-                                            </tr>
+                                                </tr>
                                             {% endfor %}
 
                                             </tbody>
@@ -168,7 +220,13 @@
                                 </div>
 
                                 <div id="tab2" class="tab-pane fade in ">
-                                    <p>22222222222</p>
+                                    <p><strong>Дата начала аукциона:</strong> {{ auction.created_date }}</p>
+                                    <p><strong>Дата завершения аукциона:</strong> {{ auction.end_date }}</p>
+                                    <p><strong>Начальная цена:</strong> {{ auction.start_price }}</p>
+                                    <p><strong>Шаг аукциона:</strong> {{ auction.increment }}</p>
+                                    <p><strong>Город:</strong> {{ auction.city }}</p>
+                                    <p><strong>Страна:</strong> {{ auction.country }}</p>
+                                    <p><strong>Описание:</strong> {{ auction.description }}</p>
                                 </div>
 
                                 <div id="tab3" class="tab-pane fade in">
@@ -176,118 +234,124 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="product-reviews">
-                                                <div class="single-review">
-                                                    <div class="review-heading">
-                                                        <div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-                                                        <div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0
-                                                            PM</a></div>
-                                                        <div class="review-rating pull-right">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o empty"></i>
+                                                {% for com in auction.comments.all %}
+                                                    <div class="single-review">
+                                                        <div class="review-heading">
+                                                            <div><a href="#"><i
+                                                                    class="fa fa-user-o"></i> {{ com.user.first_name }} {{ com.user.last_name }}
+                                                            </a></div>
+                                                            <div><a href="#"><i
+                                                                    class="fa fa-clock-o"></i> {{ com.created_date }}
+                                                            </a>
+                                                            </div>
+                                                            {% if com.star == 0 %}
+                                                                <div class="review-rating pull-right">
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                </div>
+                                                            {% elif com.star == 1 %}
+                                                                <div class="review-rating pull-right">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                </div>
+
+                                                            {% elif com.star == 2 %}
+                                                                <div class="review-rating pull-right">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                </div>
+
+                                                            {% elif com.star == 3 %}
+                                                                <div class="review-rating pull-right">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                </div>
+
+                                                            {% elif com.star == 4 %}
+                                                                <div class="review-rating pull-right">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star-o empty"></i>
+                                                                </div>
+
+                                                            {% elif com.star == 5 %}
+                                                                <div class="review-rating pull-right">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+
+                                                            {% endif %}
+
+
+                                                        </div>
+                                                        <div class="review-body">
+                                                            <p>{{ com.comment }}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="review-body">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                            do eiusmod tempor incididunt ut labore et dolore magna
-                                                            aliqua.Ut enim ad minim veniam, quis nostrud exercitation
-                                                            ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis
-                                                            aute
-                                                            irure dolor in reprehenderit in voluptate velit esse cillum
-                                                            dolore eu fugiat nulla pariatur.</p>
-                                                    </div>
-                                                </div>
 
-                                                <div class="single-review">
-                                                    <div class="review-heading">
-                                                        <div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-                                                        <div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0
-                                                            PM</a></div>
-                                                        <div class="review-rating pull-right">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o empty"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="review-body">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                            do eiusmod tempor incididunt ut labore et dolore magna
-                                                            aliqua.Ut enim ad minim veniam, quis nostrud exercitation
-                                                            ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis
-                                                            aute
-                                                            irure dolor in reprehenderit in voluptate velit esse cillum
-                                                            dolore eu fugiat nulla pariatur.</p>
-                                                    </div>
-                                                </div>
+                                                {% endfor %}
 
-                                                <div class="single-review">
-                                                    <div class="review-heading">
-                                                        <div><a href="#"><i class="fa fa-user-o"></i> John</a></div>
-                                                        <div><a href="#"><i class="fa fa-clock-o"></i> 27 DEC 2017 / 8:0
-                                                            PM</a></div>
-                                                        <div class="review-rating pull-right">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o empty"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="review-body">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                                            do eiusmod tempor incididunt ut labore et dolore magna
-                                                            aliqua.Ut enim ad minim veniam, quis nostrud exercitation
-                                                            ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis
-                                                            aute
-                                                            irure dolor in reprehenderit in voluptate velit esse cillum
-                                                            dolore eu fugiat nulla pariatur.</p>
-                                                    </div>
-                                                </div>
-
-                                                <ul class="reviews-pages">
-                                                    <li class="active">1</li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                                                </ul>
+                                                {#                                                <ul class="reviews-pages">#}
+                                                {#                                                    <li class="active">1</li>#}
+                                                {#                                                    <li><a href="#">2</a></li>#}
+                                                {#                                                    <li><a href="#">3</a></li>#}
+                                                {#                                                    <li><a href="#"><i class="fa fa-caret-right"></i></a></li>#}
+                                                {#                                                </ul>#}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4 class="text-uppercase">Write Your Review</h4>
-                                            <p>Your email address will not be published.</p>
-                                            <form class="review-form">
-                                                <div class="form-group">
-                                                    <input class="input" type="text" placeholder="Your Name"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input class="input" type="email" placeholder="Email Address"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea class="input" placeholder="Your review"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="input-rating">
-                                                        <strong class="text-uppercase">Your Rating: </strong>
-                                                        <div class="stars">
-                                                            <input type="radio" id="star5" name="rating"
-                                                                   value="5"/><label for="star5"></label>
-                                                            <input type="radio" id="star4" name="rating"
-                                                                   value="4"/><label for="star4"></label>
-                                                            <input type="radio" id="star3" name="rating"
-                                                                   value="3"/><label for="star3"></label>
-                                                            <input type="radio" id="star2" name="rating"
-                                                                   value="2"/><label for="star2"></label>
-                                                            <input type="radio" id="star1" name="rating"
-                                                                   value="1"/><label for="star1"></label>
+                                            <h4 class="text-uppercase">Оставить отзыв</h4>
+                                            {% if user.is_authenticated %}
+
+                                                <form class="review-form" method="post"
+                                                      action="{% url 'comment' auction.id %}">
+                                                    {% csrf_token %}
+                                                    <div class="form-group">
+                                                        <textarea class="input" name="comment"
+                                                                  placeholder="Ваш комментарий"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="input-rating">
+                                                            <strong class="text-uppercase">Ваша оценка: </strong>
+                                                            <div class="stars">
+                                                                <input type="radio" id="star5" name="rating"
+                                                                       value="5"/><label for="star5"></label>
+                                                                <input type="radio" id="star4" name="rating"
+                                                                       value="4"/><label for="star4"></label>
+                                                                <input type="radio" id="star3" name="rating"
+                                                                       value="3"/><label for="star3"></label>
+                                                                <input type="radio" id="star2" name="rating"
+                                                                       value="2"/><label for="star2"></label>
+                                                                <input type="radio" id="star1" name="rating"
+                                                                       value="1"/><label for="star1"></label>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <button class="primary-btn">Submit</button>
-                                            </form>
+                                                    <button class="primary-btn">Submit</button>
+                                                </form>
+
+                                            {% else %}
+                                                <p>Войдите для того, чтобы оставить комментарий</p>
+                                                <a href="{% url 'login' %}" class="primary-btn">Войти</a>
+                                            {% endif %}
+
                                         </div>
                                     </div>
 
