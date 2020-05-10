@@ -6,6 +6,7 @@ from category.models import Category
 from auction.settings import LOGIN_URL
 from .forms import AuctionForm
 from product.forms import ProductForm
+from product.models import ImageModel
 
 
 class AuctionDeleteView(LoginRequiredMixin, TemplateView):
@@ -80,6 +81,8 @@ class AuctionCreateView(LoginRequiredMixin, TemplateView):
         a = AuctionForm(data=request.POST)
         p = ProductForm(data=request.POST, files=request.FILES)
 
+        images = dict(request.FILES)
+
         if a.is_valid() and p.is_valid():
             auction = a.save(commit=False)
             product = p.save(commit=False)
@@ -87,6 +90,9 @@ class AuctionCreateView(LoginRequiredMixin, TemplateView):
             auction.save()
             product.auction = auction
             product.save()
+
+            for i in images:
+                ImageModel.objects.create(image=images[i][0], product=product)
 
             return redirect('profile')
 
