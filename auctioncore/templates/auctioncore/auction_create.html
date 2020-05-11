@@ -28,7 +28,7 @@
 
 
                 <form id="checkout-form" class="clearfix" action="{% url 'auction_create' %}" method="POST"
-                      enctype="multipart/form-data">
+                      enctype="multipart/form-data" data-subcategories-url="{% url 'ajax_load_subcategories' %}">
                     {% csrf_token %}
                     <div class="col-md-6">
                         <div class="billing-details">

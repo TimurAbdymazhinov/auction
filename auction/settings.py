@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'product',
     'user',
     # install
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'django_cleanup',
+
 
 ]
 
@@ -142,19 +144,28 @@ LOGIN_URL = '/user/accounts/login'
 THUMBNAIL_ALIASES = {
     '': {
         'small': {
-            'size': (300, 300)
+            'size': (300, 300),
+            'crop': 'smart'
         },
         'medium': {
             'size': (270, 360),
             'crop': 'smart'
         },
         'big': {
-        'size': (1200, 1200)
+            'size': (1200, 1200),
+            'crop': 'smart'
+
+        },
+        'm2': {
+            'size': (600, 400),
+            'crop': 'smart'
 
         }
+
     }
 
 }
 
+JQUERY_URL = True
 # THUMBNAIL_MEDIA_URL = ''
 # THUMBNAIL_MEDIA_ROOT = ''

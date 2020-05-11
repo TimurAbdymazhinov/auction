@@ -9,7 +9,7 @@ class MainView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         # Category
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
         a = Auction.objects.all()
         return render(request, self.template_name, context={
             "category": category,

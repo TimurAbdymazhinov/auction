@@ -2,12 +2,13 @@ import datetime
 
 from django.contrib.auth.models import User
 from django.db import models
-from category.models import Category
+from category.models import Category, SubCategory
 
 
 class Auction(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='auctions')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='auctions')
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='auctions')
 
     title = models.CharField(max_length=50)
     description = models.TextField(blank=True, null=True)

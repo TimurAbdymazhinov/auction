@@ -141,13 +141,13 @@
                         <tbody>
                         {% for a in auctions %}
                             <tr>
-                                <td class="thumb"><img src="{{ a.lot.image|thumbnail_url:'small' }}" alt=""></td>
+                                <td class="thumb"><img src="{{ a.lot.image.first.image|thumbnail_url:'m2' }}" alt=""></td>
 
                                 <td class="details">
-                                    <a href="#">{{ a.title }}</a>
+                                    <a href="{% url 'auction_detail' a.id %}">{{ a.title }}</a>
                                     <ul>
-                                        <li><span>Дата создания: 02.02.2020</span></li>
-                                        <li><span>Дата окончания: 10.02.2020</span></li>
+                                        <li><span>Дата создания: {{ a.created_date }}</span></li>
+                                        <li><span>Дата окончания: {{ a.end_date }}</span></li>
                                     </ul>
                                 </td>
                                 <td class="price text-center">
@@ -155,9 +155,19 @@
                                     <strong>{{ a.start_price }}</strong><br>
                                     <del class="font-weak"><small>{{ a.start_price }}</small></del>
                                 </td>
-                                <td class="qty text-center">{{ a.is_active }}</td>
+
+                                <td class="qty text-center">
+                                    {% if a.is_active %}
+                                        <button class="main-btn icon-btn"><i style="color: green"
+                                                                             class="fa fa-check"></i></button>
+                                    {% else %}
+                                        <button class="main-btn icon-btn"><i style="color: red"
+                                                                             class="fa fa-minus "></i></button>
+
+                                    {% endif %}
+                                </td>
                                 <td class="total text-right">
-                                            <a href="{% url 'auction_edit'  a.id %}" class="main-btn icon-btn"><i
+                                    <a href="{% url 'auction_edit'  a.id %}" class="main-btn icon-btn"><i
                                             class="fa fa-bars"></i></a>
                                 </td>
                                 <td class="text-right">
@@ -192,13 +202,13 @@
                         <tbody>
                         {% for a in auctions %}
                             <tr>
-                                <td class="thumb"><img src="{{ a.lot.image|thumbnail_url:'small' }}" alt=""></td>
+                                <td class="thumb"><img src="{{ a.lot.image.first.image|thumbnail_url:'m2' }}" alt=""></td>
 
                                 <td class="details">
-                                    <a href="#">{{ a.title }}</a>
+                                    <a href="{% url 'auction_detail' a.id %}">{{ a.title }}</a>
                                     <ul>
-                                        <li><span>Дата создания: 02.02.2020</span></li>
-                                        <li><span>Дата окончания: 10.02.2020</span></li>
+                                        <li><span>Дата создания: {{ a.created_date }}</span></li>
+                                        <li><span>Дата окончания: {{ a.end_date }}</span></li>
                                     </ul>
                                 </td>
                                 <td class="price text-center">
@@ -206,7 +216,16 @@
                                     <strong>{{ a.start_price }}</strong><br>
                                     <del class="font-weak"><small>{{ a.start_price }}</small></del>
                                 </td>
-                                <td class="qty text-center">{{ a.is_active }}</td>
+                                <td class="qty text-center">
+                                    {% if a.is_active %}
+                                        <button class="main-btn icon-btn"><i style="color: green"
+                                                                             class="fa fa-check"></i></button>
+                                    {% else %}
+                                        <button class="main-btn icon-btn"><i style="color: red"
+                                                                             class="fa fa-minus "></i></button>
+
+                                    {% endif %}
+                                </td>
                                 <td class="total text-right">
                                     <a href="{% url 'auction_edit'  a.id %}" class="main-btn icon-btn"><i
                                             class="fa fa-bars"></i></a>

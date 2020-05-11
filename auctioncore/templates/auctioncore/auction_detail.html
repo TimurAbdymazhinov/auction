@@ -29,39 +29,20 @@
                 <div class="product product-details clearfix">
                     <div class="col-md-6">
                         <div id="product-main-view">
+                            {% for image in auction.lot.image.all %}
                             <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'big' }}" alt="">
+                                <img src="{{ image.image|thumbnail_url:'big' }}" alt="">
                             </div>
-                            <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'big' }}" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'big' }}" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'big' }}" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'big' }}" alt="">
-                            </div>
+                            {% endfor %}
 
                         </div>
                         <div id="product-view">
+                            {% for image in auction.lot.image.all %}
+
                             <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'small' }}" alt="">
+                                <img src="{{ image.image|thumbnail_url:'small' }}" alt="">
                             </div>
-                            <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'small' }}" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'small' }}" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'small' }}" alt="">
-                            </div>
-                            <div class="product-view">
-                                <img src="{{ auction.lot.image|thumbnail_url:'small' }}" alt="">
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-md-6">

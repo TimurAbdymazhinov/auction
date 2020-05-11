@@ -121,9 +121,10 @@ hr {
     padding: 10px 15px;
     text-transform: uppercase;
     font-weight: 700;
-    border: none;
+
     -webkit-transition: 0.3s all;
     transition: 0.3s all;
+    border-color: white;
 }
 
 .icon-btn.main-btn, .icon-btn.primary-btn {
@@ -1584,7 +1585,7 @@ textarea.input {
 }
 
 .shopping-cart-table > tbody > tr > .thumb > img {
-    width: 60px;
+    width: 120px;
 }
 
 .shopping-cart-table > tbody > tr > .qty .input {

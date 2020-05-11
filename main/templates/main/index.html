@@ -77,17 +77,65 @@
                             <div class="product-thumb">
                                 <a href="{% url 'auction_detail' auction.id %}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Смотреть
                                 </a>
-                                <img src="{{ auction.lot.image|thumbnail_url:'medium' }}" alt="">
+                                <img src="{{ auction.lot.image.first.image|thumbnail_url:'medium' }}" alt="">
                             </div>
                             <div class="product-body">
                                 <h3 class="product-price">{{ auction.start_price }}</h3>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o empty"></i>
-                                </div>
+
+                                  {% if auction.star == None or auction.star == 0%}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                {% elif auction.star == 1 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 2 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 3 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 4 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 5 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+
+                                {% endif %}
                                 <h2 class="product-name"><a href="#">{{ auction.title}}</a></h2>
                                 <div class="product-btns">
                                     <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>

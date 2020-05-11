@@ -58,7 +58,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     login_url = LOGIN_URL
 
     def get(self, request, *args, **kwargs):
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
         n = [i for i in range(10)]
 
         auctions = Auction.objects.filter(owner=request.user)
@@ -80,7 +80,7 @@ class ProfileSettingsView(LoginRequiredMixin, TemplateView):
     login_url = LOGIN_URL
 
     def get(self, request, *args, **kwargs):
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
 
         u = UserForm(instance=request.user)
         p = ProfileForm(instance=request.user.profile)
@@ -93,7 +93,7 @@ class ProfileSettingsView(LoginRequiredMixin, TemplateView):
         })
 
     def post(self, request, *args, **kwargs):
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
         u = UserForm(instance=request.user, data=request.POST)
         p = ProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
 

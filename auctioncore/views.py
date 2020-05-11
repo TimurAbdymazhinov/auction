@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import Auction, Participants, Acomments
 from django.contrib.auth.mixins import LoginRequiredMixin
-from category.models import Category
+from category.models import Category, SubCategory
 from auction.settings import LOGIN_URL
 from .forms import AuctionForm
 from product.forms import ProductForm
@@ -25,7 +25,8 @@ class AuctionEditView(LoginRequiredMixin, TemplateView):
 
     def get(self, request, *args, **kwargs):
         id = kwargs['id']
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
+
         auction = Auction.objects.get(pk=id)
         a = AuctionForm(instance=auction)
         p = ProductForm(instance=auction.lot)
@@ -40,7 +41,8 @@ class AuctionEditView(LoginRequiredMixin, TemplateView):
 
     def post(self, request, *args, **kwargs):
         id = kwargs['id']
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
+
         auction = Auction.objects.get(pk=id)
         a = AuctionForm(instance=auction, data=request.POST)
         p = ProductForm(instance=auction.lot, data=request.POST, files=request.FILES)
@@ -64,7 +66,8 @@ class AuctionCreateView(LoginRequiredMixin, TemplateView):
     login_url = LOGIN_URL
 
     def get(self, request, *args, **kwargs):
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
+
         a = AuctionForm()
         p = ProductForm()
 
@@ -76,7 +79,7 @@ class AuctionCreateView(LoginRequiredMixin, TemplateView):
         })
 
     def post(self, request, *args, **kwargs):
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
 
         a = AuctionForm(data=request.POST)
         p = ProductForm(data=request.POST, files=request.FILES)
@@ -109,7 +112,8 @@ class AuctionDetailView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         id = kwargs['id']
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
+
         auction = Auction.objects.get(pk=id)
 
         return render(request, self.template_name, context={
@@ -119,7 +123,7 @@ class AuctionDetailView(TemplateView):
         })
 
     def post(self, request, *args, **kwargs):
-        category = Category.objects.filter(owner=None)
+        category = Category.objects.all().order_by('order')
 
         return render(request, self.template_name, context={
             "category": category,
@@ -157,3 +161,10 @@ class AuctionCommentView(LoginRequiredMixin, TemplateView):
         auction.star = s
         auction.save()
         return redirect('auction_detail', id=id)
+
+
+def loadSubCategories(request):
+    category_id = request.GET.get('category')
+    sc = SubCategory.objects.filter(owner_id=category_id).order_by('order')
+
+    return render(request, 'auctioncore/ajax_loadSubCat.html', {'sc': sc})
