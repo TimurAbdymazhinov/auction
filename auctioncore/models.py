@@ -8,7 +8,7 @@ from category.models import Category, SubCategory
 class Auction(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='auctions')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='auctions')
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='auctions')
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='auctions', null=True, blank=True)
 
     title = models.CharField(max_length=50)
     description = models.TextField(blank=True, null=True)

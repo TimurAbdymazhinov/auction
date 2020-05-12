@@ -7,6 +7,7 @@ from auction.settings import LOGIN_URL
 from .forms import AuctionForm
 from product.forms import ProductForm
 from product.models import ImageModel
+import operator
 
 
 class AuctionDeleteView(LoginRequiredMixin, TemplateView):
@@ -131,6 +132,44 @@ class AuctionDetailView(TemplateView):
         })
 
 
+class AuctionsView(TemplateView):
+    template_name = 'auctioncore/auctions.html'
+
+    def get(self, request, *args, **kwargs):
+        id = kwargs['id']
+        type = kwargs['type']
+
+        category = Category.objects.all().order_by('order')
+        a = []
+        if type == '1':
+            if id == 0:
+                a = Auction.objects.all()
+            else:
+                a = Auction.objects.filter(category_id=id)
+        elif type == '2':
+            sc = SubCategory.objects.get(pk=id)
+
+            a = Auction.objects.filter(subcategory=sc, category=sc.owner)
+        elif type == '3':
+            a = Auction.objects.filter(category_id=id)
+
+        return render(request, self.template_name, context={
+            "category": category,
+            "auctions": a,
+            "type": type,
+            "id": id,
+
+        })
+
+    def post(self, request, *args, **kwargs):
+        category = Category.objects.all().order_by('order')
+
+        return render(request, self.template_name, context={
+            "category": category,
+
+        })
+
+
 class AuctionMakeBetView(LoginRequiredMixin, TemplateView):
     def post(self, request, *args, **kwargs):
         id = kwargs['id']
@@ -168,3 +207,30 @@ def loadSubCategories(request):
     sc = SubCategory.objects.filter(owner_id=category_id).order_by('order')
 
     return render(request, 'auctioncore/ajax_loadSubCat.html', {'sc': sc})
+
+
+def loadAuctionsBy(request):
+    type = request.GET.get('type')
+
+    id = request.GET.get('id')
+    by = request.GET.get('by')
+    ss = request.GET.get('ss')
+
+    order = ['created_date', 'start_price', 'star', 'title'][int(by)]
+    if ss == '2':
+        order = '-' + order
+    print(order)
+    a = []
+    if type == '1':
+        if id == 0:
+            a = Auction.objects.all().order_by('star')
+        else:
+            a = Auction.objects.filter(category_id=id).order_by(order)
+    elif type == '2':
+        sc = SubCategory.objects.get(pk=id).order_by(order)
+
+        a = Auction.objects.filter(subcategory=sc, category=sc.owner).order_by(order)
+    elif type == '3':
+        a = Auction.objects.filter(category_id=id).order_by(order)
+
+    return render(request, 'auctioncore/ajax_loadAuctions.html', {'auctions': a})

@@ -39,13 +39,14 @@ INSTALLED_APPS = [
 
     'auctioncore',
     'category',
-
+    'banner'
     'main',
     'product',
     'user',
     # install
     'easy_thumbnails',
     'django_cleanup',
+
 
 
 ]
@@ -160,12 +161,16 @@ THUMBNAIL_ALIASES = {
             'size': (600, 400),
             'crop': 'smart'
 
+        },
+        'banner': {
+            'size': (1200, 675),
+            'crop': 'smart'
+
         }
 
     }
 
 }
 
-JQUERY_URL = True
 # THUMBNAIL_MEDIA_URL = ''
 # THUMBNAIL_MEDIA_ROOT = ''

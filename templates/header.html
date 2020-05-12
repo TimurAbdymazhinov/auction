@@ -179,16 +179,13 @@
 
                                         <ul class="list-links">
                                             {% for subcat in c.subcategories.all %}
-                                                <li><a href="#">{{ subcat.title }}</a></li>
-                                                {% if subcat == c.subcategories.last %}
-                                                {% else %}
-                                                    <hr>
-
-                                                {% endif %}
-
-
-
+                                                <li><a href="{% url 'auctions' 2 subcat.id %}">{{ subcat.title }}</a>
+                                                </li>
+                                                <hr>
                                             {% endfor %}
+                                            <li><a href="{% url 'auctions' 3 0 %}">Все</a>
+                                            </li>
+
                                         </ul>
 
 
@@ -199,11 +196,13 @@
                             </li>
 
                         {% else %}
-                            <li><a href="#">{{ c.title }}</a></li>
+                            <li><a href="{% url 'auctions' 1 c.id %}">{{ c.title }}</a></li>
 
                         {% endif %}
 
                     {% endfor %}
+                    <li><a href="{% url 'auctions' 1 0 %}">Все категории</a></li>
+
 
                 </ul>
             </div>

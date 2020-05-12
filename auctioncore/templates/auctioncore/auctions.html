@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block header %}
+    {% include 'header.html' %}
+{% endblock %}
+
+{% block content %}
+
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'index' %}"> Главная </a></li>
+                <li class="active"> Аукционы</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /BREADCRUMB -->
+
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+
+            <!-- row -->
+            <div class="row">
+
+
+                <!-- store top filter -->
+                <div class="store-filter clearfix">
+
+                        <div class="pull-left">
+                            <div class="row-filter">
+                                <a href="#"><i class="fa fa-th-large"></i></a>
+
+                            </div>
+
+                            <div class="sort-filter">
+                                <span class="text-uppercase">Сортировать по:</span>
+                                <select class="input" id="sort_select">
+                                    <option value="0">Дата</option>
+                                    <option value="1">Цены</option>
+                                    <option value="2">Рейтинг</option>
+                                    <option value="3">Название</option>
+
+                                </select>
+                                <input id="url_sort" value="{% url 'ajax_sort_auctions' %}" hidden>
+
+                                <button onclick="sortLot({{ type }}, {{ id }},1)" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></button>
+                                <button onclick="sortLot({{ type }}, {{ id }},2)" class="main-btn icon-btn"><i class="fa fa-arrow-up"></i></button>
+
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <div class="page-filter">
+                                <span class="text-uppercase">По:</span>
+                                <select class="input">
+                                    <option value="0">10</option>
+                                    <option value="1">20</option>
+                                    <option value="2">30</option>
+                                </select>
+                            </div>
+                            <ul class="store-pages">
+                                <li><span class="text-uppercase">Страница:</span></li>
+                                <li class="active">1</li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
+                            </ul>
+                        </div>
+                </div>
+
+                <!-- /store top filter -->
+
+                <!-- row -->
+                <div class="row" id="main_row">
+
+                    {% if not auctions %}
+                        <center>
+                            <br>
+                            <h3>Ничего не найдено...</h3>
+                            <br>
+                        </center>
+                    {% else %}
+                        {% for auction in auctions %}
+                            <!-- Product Single -->
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="product product-single">
+                                    <div class="product-thumb">
+                                        <a href="{% url 'auction_detail' auction.id %}" class="main-btn quick-view"><i
+                                                class="fa fa-search-plus"></i> Смотреть
+                                        </a>
+                                        {% if auction.lot.image.all %}
+                                            <img src="{{ auction.lot.image.first.image|thumbnail_url:'medium' }}"
+                                                 alt="">
+                                        {% else %}
+                                            <img src="{% static 'img/default_medium.jpg' %}" alt="">
+
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="product-body">
+                                        <h3 class="product-price">{{ auction.start_price }}</h3>
+                                        {% if auction.star == None or auction.star == 0 %}
+                                            <div class="product-rating">
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>
+                                        {% elif auction.star == 1 %}
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>
+
+                                        {% elif auction.star == 2 %}
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>
+
+                                        {% elif auction.star == 3 %}
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>
+
+                                        {% elif auction.star == 4 %}
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o empty"></i>
+                                            </div>
+
+                                        {% elif auction.star == 5 %}
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+
+                                        {% endif %}
+                                        <h2 class="product-name"><a href="#">{{ auction.title }}</a></h2>
+                                        <div class="product-btns">
+                                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                            <a href="{% url 'auction_detail' auction.id %}"
+                                               class="primary-btn add-to-cart"><i
+                                                    class="fa fa-shopping-cart"></i> Сделать ставку
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Product Single -->
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <!-- /row -->
+
+
+                <!-- store bottom filter -->
+                <div class="store-filter clearfix">
+                    <div class="pull-left">
+                        <div class="row-filter">
+                            <a href="#"><i class="fa fa-th-large"></i></a>
+
+                        </div>
+                        <div class="sort-filter">
+                            <span class="text-uppercase">Сортировать по:</span>
+                            <select class="input">
+                                <option value="0">Дата</option>
+                                <option value="0">Цены</option>
+                                <option value="0">Рейтинг</option>
+                            </select>
+                            <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="page-filter">
+                            <span class="text-uppercase">По:</span>
+                            <select class="input">
+                                <option value="0">10</option>
+                                <option value="1">20</option>
+                                <option value="2">30</option>
+                            </select>
+                        </div>
+                        <ul class="store-pages">
+                            <li><span class="text-uppercase">Страница:</span></li>
+                            <li class="active">1</li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /store bottom filter -->
+            </div>
+        </div>
+        <!-- /MAIN -->
+    </div>
+
+
+
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+
+

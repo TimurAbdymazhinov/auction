@@ -82,7 +82,8 @@
                         <ul class="custom-menu">
                             {% if user.is_authenticated %}
                                 <li><a href="{% url 'profile' %}"><i class="fa fa-user-o"></i> Мой кабинет </a></li>
-                                <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus"></i> Cоздать Аукцион </a></li>
+                                <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus"></i> Cоздать Аукцион </a>
+                                </li>
                                 <li><a href="#"><i class="fa fa-heart-o"></i> Избранные </a></li>
                                 <li><a href="#"><i class="fa fa-exchange"></i> Активные </a></li>
                                 <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i> Выйти</a></li>
@@ -179,16 +180,13 @@
 
                                         <ul class="list-links">
                                             {% for subcat in c.subcategories.all %}
-                                                <li><a href="#">{{ subcat.title }}</a></li>
-                                                {% if subcat == c.subcategories.last %}
-                                                {% else %}
-                                                    <hr>
-
-                                                {% endif %}
-
-
-
+                                                <li><a href="{% url 'auctions' 2 subcat.id %}">{{ subcat.title }}</a>
+                                                </li>
+                                                <hr>
                                             {% endfor %}
+                                            <li><a href="{% url 'auctions' 3 c.id %}">Все</a>
+                                            </li>
+
                                         </ul>
 
 
@@ -199,11 +197,12 @@
                             </li>
 
                         {% else %}
-                            <li><a href="#">{{ c.title }}</a></li>
+                            <li><a href="{% url 'auctions' 1 c.id %}">{{ c.title }}</a></li>
 
                         {% endif %}
 
                     {% endfor %}
+                    <li><a href="{% url 'auctions' 1 0 %}">Все категории</a></li>
 
                 </ul>
             </div>

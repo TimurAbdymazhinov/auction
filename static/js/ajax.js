@@ -13,3 +13,27 @@ $("#id_category").change(function () {
     });
 });
 
+function sortLot(id, type, ss) {
+
+    sel = document.getElementById('sort_select');
+    by = sel.options[sel.selectedIndex].value
+    urls = document.getElementById('url_sort').value;
+
+
+    $.ajax({
+        url: urls,
+        data: {
+            'type': type,
+            'id': id,
+            'by': by,
+            'ss':ss
+
+        },
+        success: function (data) {
+            $("#main_row").html(data);
+        }
+    });
+
+
+}
+
