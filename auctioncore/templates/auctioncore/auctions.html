@@ -31,45 +31,47 @@
                 <!-- store top filter -->
                 <div class="store-filter clearfix">
 
-                        <div class="pull-left">
-                            <div class="row-filter">
-                                <a href="#"><i class="fa fa-th-large"></i></a>
+                    <div class="pull-left">
+                        <div class="row-filter">
+                            <a href="#"><i class="fa fa-th-large"></i></a>
 
-                            </div>
-
-                            <div class="sort-filter">
-                                <span class="text-uppercase">Сортировать по:</span>
-                                <select class="input" id="sort_select">
-                                    <option value="0">Дата</option>
-                                    <option value="1">Цены</option>
-                                    <option value="2">Рейтинг</option>
-                                    <option value="3">Название</option>
-
-                                </select>
-                                <input id="url_sort" value="{% url 'ajax_sort_auctions' %}" hidden>
-
-                                <button onclick="sortLot({{ type }}, {{ id }},1)" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></button>
-                                <button onclick="sortLot({{ type }}, {{ id }},2)" class="main-btn icon-btn"><i class="fa fa-arrow-up"></i></button>
-
-                            </div>
                         </div>
-                        <div class="pull-right">
-                            <div class="page-filter">
-                                <span class="text-uppercase">По:</span>
-                                <select class="input">
-                                    <option value="0">10</option>
-                                    <option value="1">20</option>
-                                    <option value="2">30</option>
-                                </select>
-                            </div>
-                            <ul class="store-pages">
-                                <li><span class="text-uppercase">Страница:</span></li>
-                                <li class="active">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                            </ul>
+
+                        <div class="sort-filter">
+                            <span class="text-uppercase">Сортировать по:</span>
+                            <select class="input" id="sort_select">
+                                <option value="0">Дата</option>
+                                <option value="1">Цены</option>
+                                <option value="2">Рейтинг</option>
+                                <option value="3">Название</option>
+
+                            </select>
+                            <input id="url_sort" value="{% url 'ajax_sort_auctions' %}" hidden>
+
+                            <button onclick="sortLot({{ type }}, {{ id }},1)" class="main-btn icon-btn"><i
+                                    class="fa fa-arrow-down"></i></button>
+                            <button onclick="sortLot({{ type }}, {{ id }},2)" class="main-btn icon-btn"><i
+                                    class="fa fa-arrow-up"></i></button>
+
                         </div>
+                    </div>
+                    <div class="pull-right">
+                        <div class="page-filter">
+                            <span class="text-uppercase">По:</span>
+                            <select class="input">
+                                <option value="0">10</option>
+                                <option value="1">20</option>
+                                <option value="2">30</option>
+                            </select>
+                        </div>
+                        <ul class="store-pages">
+                            <li><span class="text-uppercase">Страница:</span></li>
+                            <li class="active">1</li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- /store top filter -->
@@ -178,19 +180,29 @@
 
                 <!-- store bottom filter -->
                 <div class="store-filter clearfix">
+
                     <div class="pull-left">
                         <div class="row-filter">
                             <a href="#"><i class="fa fa-th-large"></i></a>
 
                         </div>
+
                         <div class="sort-filter">
                             <span class="text-uppercase">Сортировать по:</span>
-                            <select class="input">
+                            <select class="input" id="sort_select">
                                 <option value="0">Дата</option>
-                                <option value="0">Цены</option>
-                                <option value="0">Рейтинг</option>
+                                <option value="1">Цены</option>
+                                <option value="2">Рейтинг</option>
+                                <option value="3">Название</option>
+
                             </select>
-                            <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
+                            <input id="url_sort" value="{% url 'ajax_sort_auctions' %}" hidden>
+
+                            <button onclick="sortLot({{ type }}, {{ id }},1)" class="main-btn icon-btn"><i
+                                    class="fa fa-arrow-down"></i></button>
+                            <button onclick="sortLot({{ type }}, {{ id }},2)" class="main-btn icon-btn"><i
+                                    class="fa fa-arrow-up"></i></button>
+
                         </div>
                     </div>
                     <div class="pull-right">

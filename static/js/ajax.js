@@ -13,7 +13,7 @@ $("#id_category").change(function () {
     });
 });
 
-function sortLot(id, type, ss) {
+function sortLot(type, id, ss) {
 
     sel = document.getElementById('sort_select');
     by = sel.options[sel.selectedIndex].value

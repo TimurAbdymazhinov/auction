@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import Auction, Participants, Acomments
@@ -142,7 +143,7 @@ class AuctionsView(TemplateView):
         category = Category.objects.all().order_by('order')
         a = []
         if type == '1':
-            if id == 0:
+            if id == '0':
                 a = Auction.objects.all()
             else:
                 a = Auction.objects.filter(category_id=id)
@@ -152,7 +153,16 @@ class AuctionsView(TemplateView):
             a = Auction.objects.filter(subcategory=sc, category=sc.owner)
         elif type == '3':
             a = Auction.objects.filter(category_id=id)
-
+        search = ''
+        try:
+            search = request.GET.get('search')
+        except:
+            pass
+        print(a)
+        if search:
+            a = a.filter(Q(title__icontains=search))
+            print(search)
+        print(a)
         return render(request, self.template_name, context={
             "category": category,
             "auctions": a,
@@ -216,14 +226,16 @@ def loadAuctionsBy(request):
     by = request.GET.get('by')
     ss = request.GET.get('ss')
 
+
+
     order = ['created_date', 'start_price', 'star', 'title'][int(by)]
     if ss == '2':
         order = '-' + order
-    print(order)
+
     a = []
     if type == '1':
-        if id == 0:
-            a = Auction.objects.all().order_by('star')
+        if id == '0':
+            a = Auction.objects.all().order_by(order)
         else:
             a = Auction.objects.filter(category_id=id).order_by(order)
     elif type == '2':

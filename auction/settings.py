@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 
     'auctioncore',
     'category',
-    'banner'
+    'banner',
     'main',
     'product',
     'user',
