@@ -34,8 +34,17 @@
                     <div class="col-md-3 col-sm-3 col-xs-12">
 
                         <div class="row center-block">
-                            <img src="{{ user.profile.image|thumbnail_url:'medium' }}"
-                                 class="img-responsive"/>
+
+
+                            {% if user.profile.image %}
+                                <img src="{{ user.profile.image|thumbnail_url:'medium' }}"
+                                     alt=""  class="img-responsive"/>
+                            {% else %}
+                                <img src="{% static 'img/default_medium.jpg' %}" alt=""  class="img-responsive"/>
+
+
+                            {% endif %}
+
 
                         </div>
                         <br>
@@ -141,7 +150,8 @@
                         <tbody>
                         {% for a in auctions %}
                             <tr>
-                                <td class="thumb"><img src="{{ a.lot.image.first.image|thumbnail_url:'m2' }}" alt=""></td>
+                                <td class="thumb"><img src="{{ a.lot.image.first.image|thumbnail_url:'m2' }}" alt="">
+                                </td>
 
                                 <td class="details">
                                     <a href="{% url 'auction_detail' a.id %}">{{ a.title }}</a>
@@ -202,7 +212,8 @@
                         <tbody>
                         {% for a in auctions %}
                             <tr>
-                                <td class="thumb"><img src="{{ a.lot.image.first.image|thumbnail_url:'m2' }}" alt=""></td>
+                                <td class="thumb"><img src="{{ a.lot.image.first.image|thumbnail_url:'m2' }}" alt="">
+                                </td>
 
                                 <td class="details">
                                     <a href="{% url 'auction_detail' a.id %}">{{ a.title }}</a>

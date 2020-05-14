@@ -158,11 +158,9 @@ class AuctionsView(TemplateView):
             search = request.GET.get('search')
         except:
             pass
-        print(a)
         if search:
             a = a.filter(Q(title__icontains=search))
-            print(search)
-        print(a)
+
         return render(request, self.template_name, context={
             "category": category,
             "auctions": a,

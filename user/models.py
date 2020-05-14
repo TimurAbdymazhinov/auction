@@ -8,7 +8,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     is_client = models.BooleanField(default=False)
     is_auction_owner = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='user', default='user/profile_photo.png',
+    image = models.ImageField(upload_to='user',
                               verbose_name='Фотография', null=True, blank=True)
     country = models.CharField(max_length=200, verbose_name='Страна', null=True, blank=True)
     city = models.CharField(max_length=200, verbose_name='Город', null=True, blank=True)
