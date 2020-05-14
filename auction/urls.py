@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('main.urls')),
     path('user/', include('user.urls')),
     path('auctions/', include('auctioncore.urls')),
+    path('page/', include('banner.urls')),
 
 ]
 if settings.DEBUG:

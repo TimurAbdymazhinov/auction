@@ -108,3 +108,23 @@ class ProfileSettingsView(LoginRequiredMixin, TemplateView):
             "profileform": p,
 
         })
+
+
+class FavoriteView(TemplateView):
+    template_name = 'user/favorite.html'
+
+    def get(self, request, *args, **kwargs):
+        category = Category.objects.all().order_by('order')
+
+        return render(request, self.template_name, context={
+            "category": category,
+
+        })
+
+    def post(self, request, *args, **kwargs):
+        category = Category.objects.all().order_by('order')
+
+        return render(request, self.template_name, context={
+            "category": category,
+
+        })

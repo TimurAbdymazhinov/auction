@@ -1,102 +1,118 @@
 {% load static %}
-  <!-- FOOTER -->
-    <footer id="footer" class="section section-grey">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <!-- footer widget -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="footer">
-                        <!-- footer logo -->
-                        <div class="footer-logo">
-                            <a class="logo" href="#">
-                                <img src="{% static 'img/logobig.png' %}" alt="">
-                            </a>
+<!-- FOOTER -->
+<footer id="footer" class="section section-grey">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- footer widget -->
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="footer">
+                    <!-- footer logo -->
+                    <div class="footer-logo">
+                        <a class="logo" href="#">
+                            <img src="{% static 'img/logo.png' %}" alt="">
+                        </a>
+                    </div>
+                    <!-- /footer logo -->
+
+                    <p>E-auction - самая легкая интернет платформа для проведения электронных аукционов и не только ...
+                    </p>
+
+                    <!-- footer social -->
+                    <ul class="footer-social">
+                        <li><a href="https://www.facebook.com/profile.php?id=100006527793332"><i
+                                class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/timurabdymazhinov/"><i class="fa fa-instagram"></i></a>
+                        </li>
+
+                        <li><a href="https://www.linkedin.com/in/timur-abdymazhinov-086bb5186/"><i
+                                class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://github.com/TimurAbdymazhinov/"><i class="fa fa-github"></i></a></li>
+                        <li><a href="https://gitlab.com/TimurAbdymazhinov"><i class="fa fa-gitlab"></i></a></li>
+
+
+                    </ul>
+                    <!-- /footer social -->
+                </div>
+            </div>
+            <!-- /footer widget -->
+
+            <!-- footer widget -->
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="footer">
+                    <h3 class="footer-header">Мой кабинет</h3>
+                    <ul class="list-links">
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'profile' %}">Мой кабинет </a></li>
+                            <li><a href="{% url 'auction_create' %}">Создать Аукцион </a></li>
+                            <li><a href="{% url 'favorite' %}">Избранные </a></li>
+                            <li><a href="#">Активные </a></li>
+                            <li><a href="{% url 'logout' %}">Выйти</a></li>
+                        {% else %}
+                            <li><a href="{% url 'login' %}">Войти</a></li>
+                            <li><a href="{% url 'register' %}">Регистрация</a></li>
+
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- /footer widget -->
+
+            <div class="clearfix visible-sm visible-xs"></div>
+
+            <!-- footer widget -->
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="footer">
+                    <h3 class="footer-header">Страницы</h3>
+                    <ul class="list-links">
+                        <li><a href="{% url 'index' %}">Главная</a></li>
+                        <li><a href="{% url 'page_aboutAuctions' %}">Об аукционах</a></li>
+                        <li><a href="{% url 'page_contacts' %}">Контакты</a></li>
+                        <li><a href="{% url 'page_aboutUs' %}">O нас</a></li>
+                        <li><a href="{% url 'page_blog' %}">Блог</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- /footer widget -->
+
+            <!-- footer subscribe -->
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="footer">
+                    <h3 class="footer-header">Оставайтесь на связи</h3>
+                    <p> Подписывайтесь на нашу платформу и будьте в курсе последних новостей из из мира E-auction.kg.</p>
+                    <form>
+                        <div class="form-group">
+                            <input class="input" placeholder="Ваш электронный адрес">
                         </div>
-                        <!-- /footer logo -->
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna</p>
-
-                        <!-- footer social -->
-                        <ul class="footer-social">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                        <!-- /footer social -->
-                    </div>
-                </div>
-                <!-- /footer widget -->
-
-                <!-- footer widget -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-header">My Account</h3>
-                        <ul class="list-links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">My Wishlist</a></li>
-                            <li><a href="#">Compare</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Login</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /footer widget -->
-
-                <div class="clearfix visible-sm visible-xs"></div>
-
-                <!-- footer widget -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-header">Customer Service</h3>
-                        <ul class="list-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Shiping & Return</a></li>
-                            <li><a href="#">Shiping Guide</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /footer widget -->
-
-                <!-- footer subscribe -->
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-header">Stay Connected</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-                        <form>
-                            <div class="form-group">
-                                <input class="input" placeholder="Enter Email Address">
-                            </div>
-                            <button class="primary-btn">Join Newslatter</button>
-                        </form>
-                    </div>
-                </div>
-                <!-- /footer subscribe -->
-            </div>
-            <!-- /row -->
-            <hr>
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <!-- footer copyright -->
-                    <div class="footer-copyright">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                        All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                                                            aria-hidden="true"></i> by <a
-                            href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                    <!-- /footer copyright -->
+                        <button class="primary-btn">Подписаться</button>
+                    </form>
                 </div>
             </div>
-            <!-- /row -->
+            <!-- /footer subscribe -->
         </div>
-        <!-- /container -->
-    </footer>
-    <!-- /FOOTER -->
+        <!-- /row -->
+        <hr>
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <!-- footer copyright -->
+                <div class="footer-copyright">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <script>document.write(new Date().getFullYear());</script>
+                    Интернет-платформа E-auction | Специально для вас с <i class="fa fa-heart-o"
+                                                                        aria-hidden="true"></i>...
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+                <!-- /footer copyright -->
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</footer>
+<!-- /FOOTER -->

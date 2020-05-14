@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/registration/', RegistrationView.as_view(), name='register'),
 
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('profile/favorite/', FavoriteView.as_view(), name='favorite'),
     path('profile/settings/', ProfileSettingsView.as_view(), name='profile_settings'),
 
     # path('', Login.as_view(), name='index'),

@@ -1,4 +1,5 @@
 {% load static %}
+{% load thumbnail %}
 <!-- HEADER -->
 <header>
     <!-- top Header -->
@@ -42,13 +43,13 @@
             <div class="pull-left">
                 <!-- Logo -->
                 <div class="header-logo">
-                    <a class="logo" href="#">
+                    <a class="logo" href="{% url 'index' %}">
                         <img src="{% static 'img/logo.png' %}" alt="">
                     </a>
                 </div>
                 <!-- /Logo -->
 
-              <!-- Search -->
+                <!-- Search -->
                 <div class="header-search">
                     <form action="{% url 'auctions' 1 0 %}" method="get">
                         <input class="input search-input" name="search" type="text" placeholder="Поиск">
@@ -76,10 +77,12 @@
                         <ul class="custom-menu">
                             {% if user.is_authenticated %}
                                 <li><a href="{% url 'profile' %}"><i class="fa fa-user-o"></i> Мой кабинет </a></li>
-                                <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus-circle"></i> Cоздать Аукцион </a></li>
+                                <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus"></i> Cоздать Аукцион </a>
+                                </li>
                                 <li><a href="#"><i class="fa fa-heart-o"></i> Избранные </a></li>
                                 <li><a href="#"><i class="fa fa-exchange"></i> Активные </a></li>
                                 <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i> Выйти</a></li>
+                                {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
                             {% else %}
 
                                 <li><a href="{% url 'login' %}"><i class="fa fa-user"></i>Войти</a></li>
@@ -93,51 +96,73 @@
 
                     <!-- /Account -->
 
-                    <!-- Cart -->
-                    <li class="header-cart dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                            <div class="header-btns-icon">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span class="qty">3</span>
-                            </div>
-                            <strong class="text-uppercase">My Cart:</strong>
-                            <br>
-                            <span>35.20$</span>
-                        </a>
-                        <div class="custom-menu">
-                            <div id="shopping-cart">
-                                <div class="shopping-cart-list">
-                                    <div class="product product-widget">
-                                        <div class="product-thumb">
-                                            <img src="{% static 'img/thumb-product01.jpg' %}" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-                                            <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                                        </div>
-                                        <button class="cancel-btn"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <div class="product product-widget">
-                                        <div class="product-thumb">
-                                            <img src="{% static 'img/thumb-product01.jpg' %}" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-                                            <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-                                        </div>
-                                        <button class="cancel-btn"><i class="fa fa-trash"></i></button>
-                                    </div>
+                    {% if user.is_authenticated %}
+                        <!-- Cart -->
+                        <li class="header-cart dropdown default-dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <div class="header-btns-icon">
+                                    <i class="fa fa-hourglass-half"></i>
+                                    <span class="qty">3</span>
                                 </div>
-                                <div class="shopping-cart-btns">
-                                    <button class="main-btn">View Cart</button>
-                                    <button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- /Cart -->
+                                <strong class="text-uppercase">Мои ставки:</strong>
+                                <br>
+                                <span>35.20$</span>
+                            </a>
+                            <div class="custom-menu">
+                                <div id="shopping-cart">
+                                    <div class="shopping-cart-list">
+                                        {% for part in  user.participants.all %}
+                                            <div class="product product-widget">
+                                                <div class="product-thumb">
+                                                    <img src="{{ part.auction.lot.image.first.image|thumbnail_url:'small' }}"
+                                                         alt="">
 
+
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-price">{{ part.bet }}</h3>
+                                                    <h2 class="product-name"><a
+                                                            href="{% url 'auction_detail'  part.auction.id %}">{{ part.auction.title }}</a>
+                                                    </h2>
+                                                    <p>
+                                                        Активность:{% if part.auction.is_active %}
+                                                        <i style="color: green"
+                                                                                             class="fa fa-check"></i>
+
+                                                    {% else %}
+                                                       <i style="color: red"
+                                                                                             class="fa fa-minus "></i>
+
+                                                    {% endif %}
+                                                        Ставка: {% if part.auction.is_active %}
+                                                        <i style="color: green"
+                                                                                             class="fa fa-check"></i>
+
+                                                    {% else %}
+                                                       <i style="color: red"
+                                                                                             class="fa fa-minus "></i>
+
+                                                    {% endif %}
+                                                    </p>
+
+                                                </div>
+                                                <button class="cancel-btn"><i class="fa fa-trash"></i></button>
+
+                                            </div>
+                                            <hr>
+                                        {% endfor %}
+
+                                    </div>
+
+
+                                    <a href="{% url 'profile' %}" class="primary-btn">Мой Ставки <i class="fa fa-arrow-circle-right"></i>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </li>
+                        <!-- /Cart -->
+                    {% endif %}
                     <!-- Mobile nav toggle-->
                     <li class="nav-toggle">
                         <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
@@ -207,18 +232,21 @@
                 <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                 <ul class="menu-list">
                     <li><a href="{% url 'index' %}">Главная</a></li>
-                    <li><a href="#">Об аукционах</a></li>
-                    <li><a href="#">Совершенные аукционы</a></li>
-                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-                                                             aria-expanded="true">Страницы<i
-                            class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="products.html">Products</a></li>
-                            <li><a href="product-page.html">Product Details</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{% url 'page_aboutAuctions' %}">Об аукционах</a></li>
+                    <li><a href="{% url 'page_contacts' %}">Контакты</a></li>
+                    <li><a href="{% url 'page_aboutUs' %}">O нас</a></li>
+                    <li><a href="{% url 'page_blog' %}">Блог</a></li>
+
+                    {#                    <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown"#}
+                    {#                                                             aria-expanded="true">Страницы<i#}
+                    {#                            class="fa fa-caret-down"></i></a>#}
+                    {#                        <ul class="custom-menu">#}
+                    {#                            <li><a href="index.html">Home</a></li>#}
+                    {#                            <li><a href="products.html">Products</a></li>#}
+                    {#                            <li><a href="product-page.html">Product Details</a></li>#}
+                    {#                            <li><a href="checkout.html">Checkout</a></li>#}
+                    {#                        </ul>#}
+                    {#                    </li>#}
                 </ul>
             </div>
             <!-- menu nav -->

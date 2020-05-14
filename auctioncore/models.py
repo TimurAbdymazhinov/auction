@@ -8,7 +8,8 @@ from category.models import Category, SubCategory
 class Auction(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='auctions')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='auctions')
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='auctions', null=True, blank=True)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='auctions', null=True,
+                                    blank=True)
 
     title = models.CharField(max_length=50)
     description = models.TextField(blank=True, null=True)
@@ -37,6 +38,11 @@ class Participants(models.Model):
     auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name='participants')
     bet = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     bed_date = models.DateTimeField(auto_now_add=True)
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorite')
+    auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name='favorite')
 
 
 class Acomments(models.Model):
