@@ -10,25 +10,17 @@
             </div>
             <div class="pull-right">
                 <ul class="header-top-links">
-                    <li><a href="#">Store</a></li>
-                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Карта</a></li>
+                    <li><a href="{% url 'page_contacts' %}">Контакты</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Язык <i
                                 class="fa fa-caret-down"></i></a>
                         <ul class="custom-menu">
-                            <li><a href="#">English (ENG)</a></li>
-                            <li><a href="#">Russian (Ru)</a></li>
-                            <li><a href="#">French (FR)</a></li>
-                            <li><a href="#">Spanish (Es)</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i
-                                class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="#">USD ($)</a></li>
-                            <li><a href="#">EUR (€)</a></li>
+                            <li><a href="#">Кыргызча (KY)</a></li>
+                            <li><a href="#">Русский (RU)</a></li>
+                            <li><a href="#">English (EN)</a></li>
+
                         </ul>
                     </li>
                 </ul>
@@ -79,18 +71,35 @@
                                 <li><a href="{% url 'profile' %}"><i class="fa fa-user-o"></i> Мой кабинет </a></li>
                                 <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus"></i> Cоздать Аукцион </a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-heart-o"></i> Избранные </a></li>
+                                <li><a href="{% url 'favorite' %}"><i class="fa fa-heart-o"></i> Избранные </a></li>
                                 <li><a href="#"><i class="fa fa-exchange"></i> Активные </a></li>
                                 <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i> Выйти</a></li>
                                 {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
                             {% else %}
 
-                                <li><a href="{% url 'login' %}"><i class="fa fa-user"></i>Войти</a></li>
-                                <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Регистрация</a>
+                                <li><a onclick="loginAjax()" href="{% url 'login' %}" data-toggle="modal"
+                                       data-target=".bd-example-modal-lg"><i class="fa fa-user"></i>Войти</a></li>
+                                <li><a onclick="registerAjax()" href="{% url 'register' %}" data-toggle="modal"
+                                       data-target=".bd-example-modal-lg"><i class="fa fa-user-plus"></i>Регистрация</a>
                                 </li>
 
+
+
+
+
                             {% endif %}
+
                         </ul>
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div id="login_form_content" class="modal-content">
+
+                                </div>
+
+                            </div>
+                        </div>
+
                     </li>
 
 
@@ -106,7 +115,7 @@
                                 </div>
                                 <strong class="text-uppercase">Мои ставки:</strong>
                                 <br>
-                                <span>35.20$</span>
+                                <hr>
                             </a>
                             <div class="custom-menu">
                                 <div id="shopping-cart">
@@ -127,20 +136,20 @@
                                                     <p>
                                                         Активность:{% if part.auction.is_active %}
                                                         <i style="color: green"
-                                                                                             class="fa fa-check"></i>
+                                                           class="fa fa-check"></i>
 
                                                     {% else %}
-                                                       <i style="color: red"
-                                                                                             class="fa fa-minus "></i>
+                                                        <i style="color: red"
+                                                           class="fa fa-minus "></i>
 
                                                     {% endif %}
                                                         Ставка: {% if part.auction.is_active %}
                                                         <i style="color: green"
-                                                                                             class="fa fa-check"></i>
+                                                           class="fa fa-check"></i>
 
                                                     {% else %}
-                                                       <i style="color: red"
-                                                                                             class="fa fa-minus "></i>
+                                                        <i style="color: red"
+                                                           class="fa fa-minus "></i>
 
                                                     {% endif %}
                                                     </p>
@@ -155,7 +164,8 @@
                                     </div>
 
 
-                                    <a href="{% url 'profile' %}" class="primary-btn">Мой Ставки <i class="fa fa-arrow-circle-right"></i>
+                                    <a href="{% url 'profile' %}" class="primary-btn">Мой Ставки <i
+                                            class="fa fa-arrow-circle-right"></i>
                                     </a>
 
                                 </div>

@@ -19,7 +19,7 @@ class AuctionForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'rows': 20, 'cols': 15, 'style':  'height: 200px; width: 600px;'}),
         }
         fields = ['category', 'subcategory', 'title', 'description', 'country', 'city', 'is_active', 'is_done',
-                  'start_price']
+                  'start_price', 'increment']
 
     def __init__(self, *args, **kwargs):
         super(AuctionForm, self).__init__(*args, **kwargs)

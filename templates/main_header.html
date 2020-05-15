@@ -77,12 +77,29 @@
                                 {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
                             {% else %}
 
-                                <li><a href="{% url 'login' %}"><i class="fa fa-user"></i>Войти</a></li>
-                                <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Регистрация</a>
+                                <li><a onclick="loginAjax()" href="{% url 'login' %}" data-toggle="modal"
+                                       data-target=".bd-example-modal-lg"><i class="fa fa-user"></i>Войти</a></li>
+                                <li><a onclick="registerAjax()" href="{% url 'register' %}" data-toggle="modal"
+                                       data-target=".bd-example-modal-lg"><i class="fa fa-user-plus"></i>Регистрация</a>
                                 </li>
 
+
+
+
+
                             {% endif %}
+
                         </ul>
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div id="login_form_content" class="modal-content">
+
+                                </div>
+
+                            </div>
+                        </div>
+
                     </li>
 
 
@@ -98,7 +115,7 @@
                                 </div>
                                 <strong class="text-uppercase">Мои ставки:</strong>
                                 <br>
-                                <span>35.20$</span>
+                                <hr>
                             </a>
                             <div class="custom-menu">
                                 <div id="shopping-cart">

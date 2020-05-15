@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-</head>
-<body>
-<form action="{% url 'register' %}" method="POST">
+<form style="margin: 50px" action="{% url 'register' %}" method="POST">
     {% csrf_token %}
+    <div class="section-title">
+        <h3 class="title">Регистрация</h3>
+    </div>
 
-    {% if form.errors %}
-        <p>{{ form.errors}}</p>
+    {% for f in form %}
+        <div class="form-group">
 
-    {% endif %}
-    {{ form.as_p}}
-    <input type="submit" value="Registration">
+            <label for="exampleInputEmail1">{{ f.label }}</label>
+
+            {{ f }}
+
+        </div>
+    {% endfor %}
+
+    <button class="primary-btn" type="submit">Регистрация</button>
+    <a onclick="loginAjax()" class="primary-btn" style="float: right">Войти</a>
+
+
 </form>
-
-</body>
-</html>

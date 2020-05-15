@@ -6,6 +6,13 @@ from category.models import Category, SubCategory
 
 
 class Auction(models.Model):
+    PR = (
+        (1, '1%'),
+        (2, '2%'),
+        (3, '3%'),
+        (4, '4%'),
+        (5, '5%'),
+    )
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='auctions')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='auctions')
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='auctions', null=True,
@@ -20,12 +27,13 @@ class Auction(models.Model):
     is_done = models.BooleanField(default=False)
 
     start_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    increment = models.IntegerField(blank=True, null=True)
+    increment = models.IntegerField(blank=True, null=True, choices=PR)
 
     created_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     last_bet = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    next_bet = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     star = models.IntegerField(blank=True, null=True)
 
@@ -38,6 +46,9 @@ class Participants(models.Model):
     auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name='participants')
     bet = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     bed_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-bed_date']
 
 
 class Favorite(models.Model):

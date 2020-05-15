@@ -37,3 +37,37 @@ function sortLot(type, id, ss) {
 
 }
 
+
+function loginAjax() {
+    urls = '/user/accounts/login/'
+
+    $.ajax({
+        url: urls,
+
+        data: {
+        },
+        success: function (data) {
+
+            $("#login_form_content").html(data);
+        }
+    });
+
+
+}
+function registerAjax() {
+    urls = '/user/accounts/registration/'
+
+    $.ajax({
+        url: urls,
+
+        data: {
+        },
+        success: function (data) {
+
+            $("#login_form_content").html(data);
+        }
+    });
+
+
+}
+

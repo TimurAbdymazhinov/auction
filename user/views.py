@@ -8,34 +8,26 @@ from category.models import Category
 from auctioncore.models import Auction
 from auction.settings import LOGIN_URL
 from .models import Profile
-from .forms import UserForm, ProfileForm
+from .forms import UserForm, ProfileForm, MyAuthenticationForm, MyUserCreationForm
+from django.contrib.auth.views import LoginView
 
 
-class Login(TemplateView):
-    template_name = 'user/logreg/login.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, context={
-
-        })
-
-    def post(self, request, *args, **kwargs):
-        return render(request, self.template_name, context={
-        })
+class MyLoginView(LoginView):
+    form_class = MyAuthenticationForm
 
 
 class RegistrationView(TemplateView):
     template_name = 'registration/register.html'
 
     def get(self, request, *args, **kwargs):
-        form = UserCreationForm()
+        form = MyUserCreationForm()
 
         return render(request, self.template_name, context={
             'form': form
         })
 
     def post(self, request, *args, **kwargs):
-        form = UserCreationForm(data=request.POST)
+        form = MyUserCreationForm(data=request.POST)
         print(form.errors)
         if form.is_valid():
 

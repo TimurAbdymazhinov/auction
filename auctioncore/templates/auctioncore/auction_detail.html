@@ -57,7 +57,7 @@
                             </h3>
                             <div>
 
-                                {% if auction.star == 0 %}
+                                {% if auction.star == 0 or auction.star == None %}
                                     <div class="product-rating">
                                         <i class="fa fa-star-o empty"></i>
                                         <i class="fa fa-star-o empty"></i>
@@ -130,7 +130,7 @@
                                     {% csrf_token %}
                                     <div class="qty-input">
                                         <span class="text-uppercase">Ставка: </span>
-                                        <input type="text" class="input" name="bet" value="{{ auction.last_bet }}">
+                                        <input type="text" class="input" name="bet" value="{{ auction.next_bet   }}" >
 
                                     </div>
 
@@ -165,6 +165,7 @@
                                             <tr>
                                                 <th>Участник</th>
                                                 <th></th>
+
                                                 <th class="text-center">Ставка</th>
                                                 <th class="text-center">Дата</th>
 
@@ -289,12 +290,6 @@
 
                                                 {% endfor %}
 
-                                                {#                                                <ul class="reviews-pages">#}
-                                                {#                                                    <li class="active">1</li>#}
-                                                {#                                                    <li><a href="#">2</a></li>#}
-                                                {#                                                    <li><a href="#">3</a></li>#}
-                                                {#                                                    <li><a href="#"><i class="fa fa-caret-right"></i></a></li>#}
-                                                {#                                                </ul>#}
                                             </div>
                                         </div>
                                         <div class="col-md-6">

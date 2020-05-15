@@ -1,3 +1,5 @@
+import decimal
+
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
@@ -92,6 +94,9 @@ class AuctionCreateView(LoginRequiredMixin, TemplateView):
             auction = a.save(commit=False)
             product = p.save(commit=False)
             auction.owner = request.user
+            auction.last_bet = auction.start_price
+            auction.next_bet = auction.last_bet + decimal.Decimal(auction.start_price / 100 * auction.increment)
+
             auction.save()
             product.auction = auction
             product.save()
@@ -182,10 +187,23 @@ class AuctionMakeBetView(LoginRequiredMixin, TemplateView):
     def post(self, request, *args, **kwargs):
         id = kwargs['id']
         d = dict(request.POST)
+
         auction = Auction.objects.get(id=id)
+        if request.user == auction.owner:
+            return redirect('auction_detail', id=id)
+        puser = Participants.objects.filter(auction=auction, user=request.user)
+
+        if len(puser):
+            return redirect('auction_detail', id=id)
+        if puser:
+            if puser.first().bet == auction.last_bet:
+                return redirect('auction_detail', id=id)
+
         bet = float(d['bet'][0].replace(',', '.'))
         Participants.objects.create(user=request.user, auction=auction, bet=bet)
-
+        auction.last_bet = decimal.Decimal(bet)
+        auction.next_bet = auction.last_bet + decimal.Decimal(auction.start_price / 100 * auction.increment)
+        auction.save()
         return redirect('auction_detail', id=id)
 
 
@@ -223,8 +241,6 @@ def loadAuctionsBy(request):
     id = request.GET.get('id')
     by = request.GET.get('by')
     ss = request.GET.get('ss')
-
-
 
     order = ['created_date', 'start_price', 'star', 'title'][int(by)]
     if ss == '2':
