@@ -13,6 +13,7 @@ $("#id_category").change(function () {
     });
 });
 
+
 function sortLot(type, id, ss) {
 
     sel = document.getElementById('sort_select');
@@ -26,7 +27,7 @@ function sortLot(type, id, ss) {
             'type': type,
             'id': id,
             'by': by,
-            'ss':ss
+            'ss': ss
 
         },
         success: function (data) {
@@ -44,8 +45,7 @@ function loginAjax() {
     $.ajax({
         url: urls,
 
-        data: {
-        },
+        data: {},
         success: function (data) {
 
             $("#login_form_content").html(data);
@@ -54,14 +54,63 @@ function loginAjax() {
 
 
 }
+
+// $(document).ready(function () {
+//     $("#login_form").submit(function (event) {
+//
+//         event.preventDefault(); //prevent default action
+//         alert('wer')
+//         //
+//         // var post_url = $(this).attr("action");
+//         // var request_method = $(this).attr("method");
+//         // var form_data = $(this).serialize();
+//         //
+//         // $.ajax({
+//         // 	url : post_url,
+//         // 	type: request_method,
+//         // 	data : form_data
+//         // }).done(function(response){ //
+//         // 	$("#login_form_content").html(response);
+//         // });
+//     })
+// });
+
+function submitLoginAjax() {
+
+    form = $("#login_form")
+
+
+    var post_url = form.attr("action");
+    var request_method = form.attr("method");
+    var form_data = form.serialize();
+
+
+    $.ajax({
+        url: post_url,
+        type: request_method,
+        data: form_data
+    }).done(function (response) { //
+        console.log(response)
+        if (response.includes("html")) {
+
+            location.reload();
+        } else
+            $("#login_form_content").html(response);
+
+
+    });
+
+
+}
+
+
 function registerAjax() {
     urls = '/user/accounts/registration/'
 
     $.ajax({
         url: urls,
 
-        data: {
-        },
+        data: {},
         success: function (data) {
 
             $("#login_form_content").html(data);

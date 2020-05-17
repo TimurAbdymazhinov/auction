@@ -28,7 +28,7 @@ class RegistrationView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         form = MyUserCreationForm(data=request.POST)
-        print(form.errors)
+
         if form.is_valid():
 
             form.save()
@@ -37,7 +37,6 @@ class RegistrationView(TemplateView):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-
             return redirect('index')
         return render(request, self.template_name, context={
             'form': form

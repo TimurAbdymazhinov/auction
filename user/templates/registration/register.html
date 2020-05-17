@@ -1,4 +1,4 @@
-<form style="margin: 50px" action="{% url 'register' %}" method="POST">
+<form id="login_form" style="margin: 50px" action="{% url 'register' %}" method="POST">
     {% csrf_token %}
     <div class="section-title">
         <h3 class="title">Регистрация</h3>
@@ -13,8 +13,18 @@
 
         </div>
     {% endfor %}
+    <div class="form-group">
+        {% if form.errors %}
 
-    <button class="primary-btn" type="submit">Регистрация</button>
+            <p>{{ form.errors }}</p>
+
+
+        {% endif %}
+    </div>
+
+
+    <a onclick="submitLoginAjax()" class="primary-btn">Регистрация</a>
+
     <a onclick="loginAjax()" class="primary-btn" style="float: right">Войти</a>
 
 
