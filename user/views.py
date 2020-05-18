@@ -38,6 +38,7 @@ class RegistrationView(TemplateView):
             if user:
                 login(request, user)
             return redirect('index')
+        print("yse")
         return render(request, self.template_name, context={
             'form': form
         })

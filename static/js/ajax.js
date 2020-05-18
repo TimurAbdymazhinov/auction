@@ -90,10 +90,11 @@ function submitLoginAjax() {
         type: request_method,
         data: form_data
     }).done(function (response) { //
-        console.log(response)
+
         if (response.includes("html")) {
 
             location.reload();
+
         } else
             $("#login_form_content").html(response);
 
