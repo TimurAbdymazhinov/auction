@@ -3,7 +3,7 @@ import datetime
 from django.contrib.auth.models import User
 from django.db import models
 from category.models import Category, SubCategory
-
+from datetime import datetime
 
 class Auction(models.Model):
     PR = (
@@ -26,11 +26,11 @@ class Auction(models.Model):
     is_active = models.BooleanField(default=True)
     is_done = models.BooleanField(default=False)
 
-    start_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    increment = models.IntegerField(blank=True, null=True, choices=PR)
+    start_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=0)
+    increment = models.IntegerField(blank=True, null=True, choices=PR, default=1)
 
     created_date = models.DateTimeField(auto_now_add=True)
-    end_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    end_date = models.DateTimeField(null=True, blank=True, default=datetime.now())
 
     last_bet = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     next_bet = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)

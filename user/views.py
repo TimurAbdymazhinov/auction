@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 
+from auctioncore.tools import is_time_out
 from category.models import Category
-from auctioncore.models import Auction
+from auctioncore.models import Auction, Participants
 from auction.settings import LOGIN_URL
 from .models import Profile
 from .forms import UserForm, ProfileForm, MyAuthenticationForm, MyUserCreationForm
@@ -28,7 +29,6 @@ class RegistrationView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         form = MyUserCreationForm(data=request.POST)
-
         if form.is_valid():
 
             form.save()
@@ -50,14 +50,18 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     login_url = LOGIN_URL
 
     def get(self, request, *args, **kwargs):
+        is_time_out()
         category = Category.objects.all().order_by('order')
         n = [i for i in range(10)]
 
-        auctions = Auction.objects.filter(owner=request.user)
+        auctions = Auction.objects.filter(owner=request.user).order_by('-created_date')
+        parts = Participants.objects.filter(user=request.user).order_by('-bed_date')
+
         return render(request, self.template_name, context={
             "category": category,
             "n": n,
-            "auctions": auctions
+            "auctions": auctions,
+            "part": parts
 
         })
 

@@ -11,6 +11,7 @@ from .forms import AuctionForm
 from product.forms import ProductForm
 from product.models import ImageModel
 import operator
+from .tools import is_time_out
 
 
 class AuctionDeleteView(LoginRequiredMixin, TemplateView):
@@ -18,7 +19,32 @@ class AuctionDeleteView(LoginRequiredMixin, TemplateView):
 
     def get(self, request, *args, **kwargs):
         id = kwargs['id']
-        Auction.objects.get(pk=id).delete()
+        a = Auction.objects.get(pk=id)
+        if request.user == a.owner:
+            a.delete()
+
+        return redirect('profile')
+
+
+class ParticipantsDeleteView(LoginRequiredMixin, TemplateView):
+    login_url = LOGIN_URL
+
+    def get(self, request, *args, **kwargs):
+        id = kwargs['id']
+        a = Auction.objects.get(pk=id)
+        u = request.user
+        p = Participants.objects.get(auction=a, user=u)
+        if p.bet == a.last_bet:
+            p.delete()
+            p = Participants.objects.filter(auction=a)[0]
+            if p:
+                a.last_bet = p.bet
+            else:
+                a.last_bet = a.start_price
+            a.next_bet = a.last_bet + decimal.Decimal(a.start_price / 100 * a.increment)
+            a.save()
+        else:
+            p.delete()
 
         return redirect('profile')
 
@@ -144,7 +170,7 @@ class AuctionsView(TemplateView):
     def get(self, request, *args, **kwargs):
         id = kwargs['id']
         type = kwargs['type']
-
+        is_time_out()
         category = Category.objects.all().order_by('order')
         a = []
         if type == '1':
@@ -193,12 +219,11 @@ class AuctionMakeBetView(LoginRequiredMixin, TemplateView):
             return redirect('auction_detail', id=id)
         puser = Participants.objects.filter(auction=auction, user=request.user)
 
-        if len(puser):
-            return redirect('auction_detail', id=id)
         if puser:
             if puser.first().bet == auction.last_bet:
                 return redirect('auction_detail', id=id)
-
+            else:
+                puser.delete()
         bet = float(d['bet'][0].replace(',', '.'))
         Participants.objects.create(user=request.user, auction=auction, bet=bet)
         auction.last_bet = decimal.Decimal(bet)
@@ -225,6 +250,19 @@ class AuctionCommentView(LoginRequiredMixin, TemplateView):
         s = round(s / auction.comments.all().count())
         auction.star = s
         auction.save()
+
+        s = 0
+        c = 0
+        for i in Auction.objects.filter(owner=auction.owner):
+            c += 1
+            if i.star:
+                s += i.star
+        s = s * 100 / 5
+
+        s = round(s / c)
+        auction.owner.profile.star = s
+        auction.owner.profile.save()
+
         return redirect('auction_detail', id=id)
 
 
@@ -236,6 +274,7 @@ def loadSubCategories(request):
 
 
 def loadAuctionsBy(request):
+    is_time_out()
     type = request.GET.get('type')
 
     id = request.GET.get('id')

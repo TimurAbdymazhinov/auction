@@ -77,7 +77,7 @@
                                 <ul>
                                     <li><span>{{ user.first_name }}</span></li>
                                     <li><span>{{ user.last_name }}</span></li>
-                                    <li><span>{{ user.email }}</span></li>
+                                    <li><span>{{ user.profile.phone_number }}</span></li>
                                     <li><span>{{ user.email }}</span></li>
                                 </ul>
                             </div>
@@ -102,10 +102,10 @@
                             <div class="col-md-4 col-sm-6 col-xs-12">
 
                                 <ul>
-                                    <li><span>23</span></li>
-                                    <li><span>45</span></li>
-                                    <li><span>32/100</span></li>
-                                    <li><span>20.02.2020</span></li>
+                                    <li><span>{{ user.auctions.count }}</span></li>
+                                    <li><span>{{ user.participants.count }}</span></li>
+                                    <li><span>{{ user.profile.star }}/100</span></li>
+                                    <li><span>{{ user.date_joined}}</span></li>
                                 </ul>
                             </div>
 
@@ -162,7 +162,7 @@
                                 </td>
                                 <td class="price text-center">
 
-                                    <strong>{{ a.start_price }}</strong><br>
+                                    <strong>{{ a.last_bet }}</strong><br>
                                     <del class="font-weak"><small>{{ a.start_price }}</small></del>
                                 </td>
 
@@ -202,33 +202,33 @@
                         <tr>
                             <th>Аукционы</th>
                             <th></th>
-                            <th class="text-center">Цена</th>
-                            <th class="text-center">Статус</th>
-                            <th class="text-right">Редактировать</th>
+                            <th class="text-center">Моя ставка</th>
+                            <th class="text-center">Статус аукциона</th>
+                            <th class="text-right">Актуальность</th>
                             <th class="text-right">Удалить</th>
 
                         </tr>
                         </thead>
                         <tbody>
-                        {% for a in auctions %}
+                        {% for p in part %}
                             <tr>
-                                <td class="thumb"><img src="{{ a.lot.image.first.image|thumbnail_url:'m2' }}" alt="">
+                                <td class="thumb"><img src="{{ p.auction.lot.image.first.image|thumbnail_url:'m2' }}" alt="">
                                 </td>
 
                                 <td class="details">
-                                    <a href="{% url 'auction_detail' a.id %}">{{ a.title }}</a>
+                                    <a href="{% url 'auction_detail' p.auction.id %}">{{ p.auction.title }}</a>
                                     <ul>
-                                        <li><span>Дата создания: {{ a.created_date }}</span></li>
-                                        <li><span>Дата окончания: {{ a.end_date }}</span></li>
+                                        <li><span>Дата создания: {{ p.auction.created_date }}</span></li>
+                                        <li><span>Дата окончания: {{ p.auction.end_date }}</span></li>
                                     </ul>
                                 </td>
                                 <td class="price text-center">
 
-                                    <strong>{{ a.start_price }}</strong><br>
-                                    <del class="font-weak"><small>{{ a.start_price }}</small></del>
+                                    <strong>{{ p.bet }}</strong><br>
+                                    <del class="font-weak"><small>{{ p.auction.start_price }}</small></del>
                                 </td>
                                 <td class="qty text-center">
-                                    {% if a.is_active %}
+                                    {% if p.auction.is_active %}
                                         <button class="main-btn icon-btn"><i style="color: green"
                                                                              class="fa fa-check"></i></button>
                                     {% else %}
@@ -237,12 +237,18 @@
 
                                     {% endif %}
                                 </td>
-                                <td class="total text-right">
-                                    <a href="{% url 'auction_edit'  a.id %}" class="main-btn icon-btn"><i
-                                            class="fa fa-bars"></i></a>
+                                  <td class="qty text-center">
+                                    {% if p.bet == p.auction.last_bet %}
+                                        <button class="main-btn icon-btn"><i style="color: green"
+                                                                             class="fa fa-check"></i></button>
+                                    {% else %}
+                                        <button class="main-btn icon-btn"><i style="color: red"
+                                                                             class="fa fa-minus "></i></button>
+
+                                    {% endif %}
                                 </td>
                                 <td class="text-right">
-                                    <a href="{% url 'auction_delete'  a.id %}" class="main-btn icon-btn"><i
+                                    <a href="{% url 'auction_participants_delete'  p.auction.id %}" class="main-btn icon-btn"><i
                                             class="fa fa-close"></i></a>
                                 </td>
 

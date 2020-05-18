@@ -37,17 +37,21 @@
                                 <h3 class="title">Создание аукциона</h3>
                             </div>
 
-                            {% if auctionform.errors %}
-                                <p>{{ auctionform.errors }}</p>
-                            {% endif %}
-                            {% if productform.errors %}
-                                <p>{{ productform.errors }}</p>
-                            {% endif %}
+
                             {% for a in auctionform %}
 
                                 <div class="form-group">
                                     <p>{{ a.label }}:</p>
                                     {{ a }}
+
+                                </div>
+                                <div class="form-group" style="color: red">
+                                    {% if a.errors %}
+
+                                        <p>{{ a.errors }}</p>
+
+
+                                    {% endif %}
 
                                 </div>
                             {% endfor %}
@@ -62,13 +66,22 @@
                                     {{ p }}
                                 </div>
 
+                                <div class="form-group" style="color: red">
+                                    {% if f.errors %}
+
+                                        <p>{{ p.errors }}</p>
+
+
+                                    {% endif %}
+                                </div>
+
                             {% endfor %}
 
                             <div id="for_image">
 
                             </div>
                             <div class="form-group">
-                                <button type="button"  onclick="add_photo()" >Добавить фото</button>
+                                <button type="button" onclick="add_photo()">Добавить фото</button>
                             </div>
 
 

@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from category.models import Category
 from auctioncore.models import Auction
 from banner.models import Banner
-
+from auctioncore.tools import is_time_out
 
 class MainView(TemplateView):
     template_name = 'main/index.html'
@@ -11,7 +11,9 @@ class MainView(TemplateView):
     def get(self, request, *args, **kwargs):
         # Category
         category = Category.objects.all().order_by('order')
-        a = Auction.objects.all()
+        is_time_out()
+        a = Auction.objects.filter(is_active=True)
+
         b = Banner.objects.all()
         return render(request, self.template_name, context={
             "category": category,

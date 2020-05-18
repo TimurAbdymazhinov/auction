@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'django_cleanup',
 
-
-
 ]
 
 MIDDLEWARE = [
@@ -117,13 +115,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Bishkek'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -174,3 +172,18 @@ THUMBNAIL_ALIASES = {
 
 # THUMBNAIL_MEDIA_URL = ''
 # THUMBNAIL_MEDIA_ROOT = ''
+
+
+# for sending information to owner and winner
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'eauction.kg@gmail.com'
+# EMAIL_HOST_PASSWORD = 'qwe321QWE#@!'
+#
+# EMAIL_USE_TSL = False
+# EMAIL_USE_SSL = True
+#
+# DEFAULT_FROM_EMAIL = 'eauction.kg@gmail.com'
+# SERVER_EMAIL = 'eauction.kg@gmail.com'
+#

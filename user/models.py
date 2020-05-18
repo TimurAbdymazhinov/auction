@@ -12,7 +12,11 @@ class Profile(models.Model):
                               verbose_name='Фотография', null=True, blank=True)
     country = models.CharField(max_length=200, verbose_name='Страна', null=True, blank=True)
     city = models.CharField(max_length=200, verbose_name='Город', null=True, blank=True)
+    phone = models.CharField(max_length=200, verbose_name='Номер телефона', null=True, blank=True)
+
     is_active = models.BooleanField(default=True)
+
+    star = models.IntegerField(blank=True, null=True, default=0)
 
     def __str__(self):
         return self.user.username
