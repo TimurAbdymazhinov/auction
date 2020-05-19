@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from auctioncore.tools import is_time_out
 from category.models import Category
-from auctioncore.models import Auction, Participants
+from auctioncore.models import Auction, Participants, Favorite
 from auction.settings import LOGIN_URL
 from .models import Profile
 from .forms import UserForm, ProfileForm, MyAuthenticationForm, MyUserCreationForm
@@ -111,9 +111,10 @@ class FavoriteView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         category = Category.objects.all().order_by('order')
-
+        fa = Favorite.objects.filter(user=request.user)
         return render(request, self.template_name, context={
             "category": category,
+            "fa": fa,
 
         })
 

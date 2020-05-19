@@ -18,16 +18,16 @@
                 <!-- home slick -->
                 <div id="home-slick">
                     {% for b in banners %}
-                    <!-- banner -->
-                    <div class="banner banner-1">
-                        <img src="{{ b.image|thumbnail_url:'banner' }}" alt="">
-                        <div class="banner-caption">
-                            <h1 class="white-color">{{ b.name}}</h1>
-                            <button class="primary-btn">Подробнее</button>
+                        <!-- banner -->
+                        <div class="banner banner-1">
+                            <img src="{{ b.image|thumbnail_url:'banner' }}" alt="">
+                            <div class="banner-caption">
+                                <h1 class="white-color">{{ b.name }}</h1>
+                                <button class="primary-btn">Подробнее</button>
+                            </div>
                         </div>
-                    </div>
-                    <!-- /banner -->
-                    {%  endfor %}
+                        <!-- /banner -->
+                    {% endfor %}
 
 
                 </div>
@@ -60,8 +60,14 @@
                         <div class="product product-single">
                             <div class="product-thumb">
                                 <div class="product-label">
-                                    <span>{{ auction.is_active }}</span>
-                                    <span class="sale">{{ auction.last_bet }}</span>
+                                    {% if auction.is_active %}
+                                        <span>Статус: Активен</span>
+                                        <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                    {% else %}
+                                        <span>Статус: Завершен</span>
+                                        <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                    {% endif %}
+
                                 </div>
                                 <a href="{% url 'auction_detail' auction.id %}" class="main-btn quick-view"><i
                                         class="fa fa-search-plus"></i> Смотреть
@@ -75,7 +81,7 @@
                                 {% endif %}
                             </div>
                             <div class="product-body">
-                                <h3 class="product-price">{{ auction.start_price }}</h3>
+                                <h3 class="product-price">{{ auction.start_price }} {{ auction.som }}</h3>
 
                                 {% if auction.star == None or auction.star == 0 %}
                                     <div class="product-rating">
@@ -133,8 +139,9 @@
                                 {% endif %}
                                 <h2 class="product-name"><a href="#">{{ auction.title }}</a></h2>
                                 <div class="product-btns">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    {% if user.is_authenticated %}
+                                        <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    {% endif %}
                                     <a href="{% url 'auction_detail' auction.id %}" class="primary-btn add-to-cart"><i
                                             class="fa fa-gavel"></i> Сделать ставку
                                     </a>
@@ -149,156 +156,129 @@
             </div>
         </div>
     </div>
+    <!-- /section -->
 
 
+    <!-- section -->
+    <div class="section">
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title"> Все завершенные аукционы</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- section title -->
+                {% for auction in done_auctions %}
+                    <!-- Product Single -->
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    {% if auction.is_active %}
+                                        <span>Статус: Активен</span>
+                                        <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                    {% else %}
+                                        <span>Статус: Завершен</span>
+                                        <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                    {% endif %}
+
+                                </div>
+                                <a href="{% url 'auction_detail' auction.id %}" class="main-btn quick-view"><i
+                                        class="fa fa-search-plus"></i> Смотреть
+                                </a>
+                                {% if auction.lot.image.all %}
+                                    <img src="{{ auction.lot.image.first.image|thumbnail_url:'medium' }}" alt="">
+                                {% else %}
+                                    <img src="{% static 'img/default_medium.jpg' %}" alt="">
+
+
+                                {% endif %}
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">{{ auction.start_price }} {{ auction.som }}</h3>
+
+                                {% if auction.star == None or auction.star == 0 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                {% elif auction.star == 1 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 2 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 3 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 4 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 5 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+
+                                {% endif %}
+                                <h2 class="product-name"><a href="#">{{ auction.title }}</a></h2>
+                                <div class="product-btns">
+                                    {% if user.is_authenticated %}
+                                        <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    {% endif %}
+                                    <a href="{% url 'auction_detail' auction.id %}" class="primary-btn add-to-cart"><i
+                                            class="fa fa-gavel"></i> Сделать ставку
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product Single -->
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
     <!-- /section -->
 
 
 
-{#    <!-- section -->#}
-{#    <div class="section">#}
-{#        <!-- container -->#}
-{#        <div class="container">#}
-{##}
-{##}
-{#            <!-- row -->#}
-{#            <div class="row">#}
-{##}
-{#                <!-- section title -->#}
-{#                <div class="col-md-12">#}
-{#                    <div class="section-title">#}
-{#                        <h2 class="title">Picked For You</h2>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <!-- section title -->#}
-{##}
-{##}
-{#                <!-- Product Single -->#}
-{#                <div class="col-md-3 col-sm-6 col-xs-6">#}
-{#                    <div class="product product-single">#}
-{#                        <div class="product-thumb">#}
-{#                            <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>#}
-{#                            <img src="{% static 'img/product01.jpg' %}" alt="">#}
-{#                        </div>#}
-{#                        <div class="product-body">#}
-{#                            <h3 class="product-price">$32.50</h3>#}
-{#                            <div class="product-rating">#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star-o empty"></i>#}
-{#                            </div>#}
-{#                            <h2 class="product-name"><a href="#">dfgsdfgsdfgsd</a></h2>#}
-{#                            <div class="product-btns">#}
-{#                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>#}
-{#                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>#}
-{#                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart#}
-{#                                </button>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <!-- /Product Single -->#}
-{##}
-{#                <!-- Product Single -->#}
-{#                <div class="col-md-3 col-sm-6 col-xs-6">#}
-{#                    <div class="product product-single">#}
-{#                        <div class="product-thumb">#}
-{#                            <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>#}
-{#                            <img src="{% static 'img/product04.jpg' %}" alt="">#}
-{#                        </div>#}
-{#                        <div class="product-body">#}
-{#                            <h3 class="product-price">$32.50</h3>#}
-{#                            <div class="product-rating">#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star-o empty"></i>#}
-{#                            </div>#}
-{#                            <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>#}
-{#                            <div class="product-btns">#}
-{#                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>#}
-{#                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>#}
-{#                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart#}
-{#                                </button>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <!-- /Product Single -->#}
-{##}
-{#                <!-- Product Single -->#}
-{#                <div class="col-md-3 col-sm-6 col-xs-6">#}
-{#                    <div class="product product-single">#}
-{#                        <div class="product-thumb">#}
-{#                            <div class="product-label">#}
-{#                                <span>New</span>#}
-{#                            </div>#}
-{#                            <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>#}
-{#                            <img src="{% static 'img/product03.jpg' %}" alt="">#}
-{#                        </div>#}
-{#                        <div class="product-body">#}
-{#                            <h3 class="product-price">$32.50</h3>#}
-{#                            <div class="product-rating">#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star-o empty"></i>#}
-{#                            </div>#}
-{#                            <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>#}
-{#                            <div class="product-btns">#}
-{#                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>#}
-{#                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>#}
-{#                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart#}
-{#                                </button>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <!-- /Product Single -->#}
-{##}
-{#                <!-- Product Single -->#}
-{#                <div class="col-md-3 col-sm-6 col-xs-6">#}
-{#                    <div class="product product-single">#}
-{#                        <div class="product-thumb">#}
-{#                            <div class="product-label">#}
-{#                                <span class="sale">-20%</span>#}
-{#                            </div>#}
-{#                            <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>#}
-{#                            <img src="{% static 'img/product02.jpg' %}" alt="">#}
-{#                        </div>#}
-{#                        <div class="product-body">#}
-{#                            <h3 class="product-price">$32.50#}
-{#                                <del class="product-old-price">$45.00</del>#}
-{#                            </h3>#}
-{#                            <div class="product-rating">#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star"></i>#}
-{#                                <i class="fa fa-star-o empty"></i>#}
-{#                            </div>#}
-{#                            <h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>#}
-{#                            <div class="product-btns">#}
-{#                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>#}
-{#                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>#}
-{#                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart#}
-{#                                </button>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <!-- /Product Single -->#}
-{##}
-{#            </div>#}
-{#            <!-- /row -->#}
-{#        </div>#}
-{#        <!-- /container -->#}
-{#    </div>#}
-{#    <!-- /section -->#}
 {% endblock %}
 {% block footer %}
     {% include 'footer.html' %}

@@ -29,7 +29,7 @@ class AuctionForm(forms.ModelForm):
 
         }
         fields = ['category', 'subcategory', 'title', 'description', 'country', 'city',
-                  'start_price', 'increment', 'end_date']
+                  'start_price', 'som', 'increment', 'end_date']
 
     def __init__(self, *args, **kwargs):
         super(AuctionForm, self).__init__(*args, **kwargs)

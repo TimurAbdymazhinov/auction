@@ -176,14 +176,14 @@ THUMBNAIL_ALIASES = {
 
 # for sending information to owner and winner
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 465
-# EMAIL_HOST_USER = 'eauction.kg@gmail.com'
-# EMAIL_HOST_PASSWORD = 'qwe321QWE#@!'
-#
-# EMAIL_USE_TSL = False
-# EMAIL_USE_SSL = True
-#
-# DEFAULT_FROM_EMAIL = 'eauction.kg@gmail.com'
-# SERVER_EMAIL = 'eauction.kg@gmail.com'
-#
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'eauction.kg@gmail.com'
+EMAIL_HOST_PASSWORD = 'qwe321QWE#@!'
+
+EMAIL_USE_TSL = False
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = 'eauction.kg@gmail.com'
+SERVER_EMAIL = 'eauction.kg@gmail.com'
+

@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from category.models import Category, SubCategory
 from datetime import datetime
+from django.utils import timezone
+
 
 class Auction(models.Model):
     PR = (
@@ -12,6 +14,10 @@ class Auction(models.Model):
         (3, '3%'),
         (4, '4%'),
         (5, '5%'),
+    )
+    som = (
+        ('som', 'som'),
+        ('$', '$'),
     )
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='auctions')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='auctions')
@@ -27,10 +33,11 @@ class Auction(models.Model):
     is_done = models.BooleanField(default=False)
 
     start_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=0)
-    increment = models.IntegerField(blank=True, null=True, choices=PR, default=1)
+    increment = models.IntegerField(choices=PR, default=1)
+    som = models.CharField(max_length=10, choices=som, default='som')
 
     created_date = models.DateTimeField(auto_now_add=True)
-    end_date = models.DateTimeField(null=True, blank=True, default=datetime.now())
+    end_date = models.DateTimeField()
 
     last_bet = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     next_bet = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)

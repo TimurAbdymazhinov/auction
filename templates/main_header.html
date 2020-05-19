@@ -105,13 +105,15 @@
 
                     <!-- /Account -->
 
-                    {% if user.is_authenticated %}
+                     {% if user.is_authenticated %}
                         <!-- Cart -->
                         <li class="header-cart dropdown default-dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <div class="header-btns-icon">
                                     <i class="fa fa-hourglass-half"></i>
-                                    <span class="qty">3</span>
+                                    {% if user.participants %}
+                                        <span class="qty">{{ user.participants.count }}</span>
+                                    {% endif %}
                                 </div>
                                 <strong class="text-uppercase">Мои ставки:</strong>
                                 <br>
@@ -120,46 +122,54 @@
                             <div class="custom-menu">
                                 <div id="shopping-cart">
                                     <div class="shopping-cart-list">
-                                        {% for part in  user.participants.all %}
-                                            <div class="product product-widget">
-                                                <div class="product-thumb">
-                                                    <img src="{{ part.auction.lot.image.first.image|thumbnail_url:'small' }}"
-                                                         alt="">
+                                        {% if user.participants %}
+                                            {% for part in  user.participants.all %}
+                                                <div class="product product-widget">
+                                                    <div class="product-thumb">
+                                                        <img src="{{ part.auction.lot.image.first.image|thumbnail_url:'small' }}"
+                                                             alt="">
 
+
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <h3 class="product-price">{{ part.bet }}</h3>
+                                                        <h2 class="product-name"><a
+                                                                href="{% url 'auction_detail'  part.auction.id %}">{{ part.auction.title }}</a>
+                                                        </h2>
+                                                        <p>
+                                                            Активность:{% if part.auction.is_active %}
+                                                            <i style="color: green"
+                                                               class="fa fa-check"></i>
+
+                                                        {% else %}
+                                                            <i style="color: red"
+                                                               class="fa fa-minus "></i>
+
+                                                        {% endif %}
+                                                            Ставка: {% if part.auction.is_active %}
+                                                            <i style="color: green"
+                                                               class="fa fa-check"></i>
+
+                                                        {% else %}
+                                                            <i style="color: red"
+                                                               class="fa fa-minus "></i>
+
+                                                        {% endif %}
+                                                        </p>
+
+                                                    </div>
+                                                    <button class="cancel-btn"><i class="fa fa-trash"></i></button>
 
                                                 </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-price">{{ part.bet }}</h3>
-                                                    <h2 class="product-name"><a
-                                                            href="{% url 'auction_detail'  part.auction.id %}">{{ part.auction.title }}</a>
-                                                    </h2>
-                                                    <p>
-                                                        Активность:{% if part.auction.is_active %}
-                                                        <i style="color: green"
-                                                           class="fa fa-check"></i>
-
-                                                    {% else %}
-                                                        <i style="color: red"
-                                                           class="fa fa-minus "></i>
-
-                                                    {% endif %}
-                                                        Ставка: {% if part.auction.is_active %}
-                                                        <i style="color: green"
-                                                           class="fa fa-check"></i>
-
-                                                    {% else %}
-                                                        <i style="color: red"
-                                                           class="fa fa-minus "></i>
-
-                                                    {% endif %}
-                                                    </p>
-
-                                                </div>
-                                                <button class="cancel-btn"><i class="fa fa-trash"></i></button>
+                                                <hr>
+                                            {% endfor %}
+                                        {% else %}
+                                            <div class="product-thumb">
+                                                <p>Пусто</p>
 
                                             </div>
-                                            <hr>
-                                        {% endfor %}
+
+                                        {% endif %}
 
                                     </div>
 
@@ -171,7 +181,7 @@
                                 </div>
                             </div>
                         </li>
-                        <!-- /Cart -->
+
                     {% endif %}
                     <!-- Mobile nav toggle-->
                     <li class="nav-toggle">

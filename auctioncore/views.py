@@ -1,9 +1,10 @@
 import decimal
 
 from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from .models import Auction, Participants, Acomments
+from .models import Auction, Participants, Acomments, Favorite
 from django.contrib.auth.mixins import LoginRequiredMixin
 from category.models import Category, SubCategory
 from auction.settings import LOGIN_URL
@@ -230,6 +231,25 @@ class AuctionMakeBetView(LoginRequiredMixin, TemplateView):
         auction.next_bet = auction.last_bet + decimal.Decimal(auction.start_price / 100 * auction.increment)
         auction.save()
         return redirect('auction_detail', id=id)
+
+
+def auctionFavorite(request):
+    id = request.GET.get('id')
+    user = request.user
+    auction = Auction.objects.get(id=id)
+    if user:
+        if not Favorite.objects.filter(user=user, auction=auction):
+            Favorite.objects.create(user=user, auction=auction)
+    return HttpResponse(request, 'success')
+
+
+def deleteFavorite(request):
+    id = request.GET.get('id')
+    user = request.user
+    auction = Auction.objects.get(id=id)
+    Favorite.objects.get(user=user, auction=auction).delete()
+
+    return HttpResponse(request, 'success')
 
 
 class AuctionCommentView(LoginRequiredMixin, TemplateView):

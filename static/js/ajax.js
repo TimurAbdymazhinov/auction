@@ -121,3 +121,40 @@ function registerAjax() {
 
 }
 
+function addFavorite(id) {
+    urls = '/auctions/favorite/'
+
+    $.ajax({
+        url: urls,
+
+        data: {
+            'id': id,
+        },
+        success: function (data) {
+
+            alert('успешно добавлено в избранные')
+        }
+    });
+
+
+}
+
+function deleteFavorite(id) {
+    urls = '/auctions/fdelete/'
+
+    $.ajax({
+        url: urls,
+
+        data: {
+            'id': id,
+        },
+        success: function (data) {
+
+            alert('успешно добавлено удалена')
+            location.reload();
+        }
+    });
+
+
+}
+

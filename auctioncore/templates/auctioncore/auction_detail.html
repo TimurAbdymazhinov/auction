@@ -30,30 +30,38 @@
                     <div class="col-md-6">
                         <div id="product-main-view">
                             {% for image in auction.lot.image.all %}
-                            <div class="product-view">
-                                <img src="{{ image.image|thumbnail_url:'big' }}" alt="">
-                            </div>
+                                <div class="product-view">
+                                    <img src="{{ image.image|thumbnail_url:'big' }}" alt="">
+                                </div>
                             {% endfor %}
 
                         </div>
                         <div id="product-view">
                             {% for image in auction.lot.image.all %}
 
-                            <div class="product-view">
-                                <img src="{{ image.image|thumbnail_url:'small' }}" alt="">
-                            </div>
+                                <div class="product-view">
+                                    <img src="{{ image.image|thumbnail_url:'small' }}" alt="">
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="product-body">
+
                             <div class="product-label">
-                                <span>New</span>
-                                <span class="sale">-20%</span>
+                                {% if auction.is_active %}
+                                    <span>Статус: Активен</span>
+                                    <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                {% else %}
+                                    <span>Статус: Завершен</span>
+                                    <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                {% endif %}
+
+
                             </div>
                             <h2 class="product-name">{{ auction.title }}</h2>
-                            <h3 class="product-price">{{ auction.start_price }}
-                                <del class="product-old-price">{{ auction.start_price }}</del>
+                            <h3 class="product-price">{{ auction.last_bet }}  {{ auction.som }}
+                                <del class="product-old-price">{{ auction.start_price }} {{ auction.som }}</del>
                             </h3>
                             <div>
 
@@ -118,32 +126,55 @@
                             </p>
                             <p><strong>Дата начала аукциона:</strong> {{ auction.created_date }}</p>
                             <p><strong>Дата завершения аукциона:</strong> {{ auction.end_date }}</p>
-                            <p><strong>Начальная цена:</strong> {{ auction.start_price }}</p>
-                            <p><strong>Шаг аукциона:</strong> {{ auction.increment }}</p>
+                            <p><strong>Начальная цена:</strong> {{ auction.start_price }}  {{ auction.som }}</p>
+                            <p><strong>Шаг аукциона:</strong> {{ auction.increment }}%</p>
                             <p><strong>Город:</strong> {{ auction.city }}</p>
                             <p><strong>Страна:</strong> {{ auction.country }}</p>
                             <p><strong>Описание:</strong> {{ auction.description }}</p>
 
+                            {% if auction.is_active %}
 
-                            <div class="product-btns">
-                                <form method="post" action="{% url 'make_bet' auction.id %}">
-                                    {% csrf_token %}
-                                    <div class="qty-input">
-                                        <span class="text-uppercase">Ставка: </span>
-                                        <input type="text" class="input" name="bet" value="{{ auction.next_bet   }}" >
+                                <div class="product-btns">
+                                    <form method="post" action="{% url 'make_bet' auction.id %}">
+                                        {% csrf_token %}
+                                        <div class="qty-input">
+                                            <span class="text-uppercase">Ставка: </span>
+                                            <input type="text" class="input" name="bet" value="{{ auction.next_bet }}">   {{ auction.som }}
+
+                                        </div>
+
+                                        <button type="submit" class="primary-btn add-to-cart"><i
+                                                class="fa fa-gavel"></i> Сделать
+                                            ставку
+                                        </button>
+                                    </form>
+                                    <div class="pull-right">
+                                        {% if user.is_authenticated %}
+                                            <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i
+                                                    class="fa fa-heart"></i></button>
+
+                                        {% endif %}
 
                                     </div>
 
-                                    <button type="submit" class="primary-btn add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i> Сделать
-                                        ставку
-                                    </button>
-                                </form>
-                                <div class="pull-right">
-                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-
                                 </div>
-                            </div>
+                                <br>
+                                <p><strong>Лидер
+                                    ставок:</strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
+                                </p>
+                            {% endif %}
+                            <hr>
+                        {% if not auction.is_active %}
+                            {% if auction.is_done %}
+
+                                <p><strong>Победитель
+                                    аукциона: </strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
+                                </p>
+                            {% else %}
+                                <p><strong>Аукцион не состоялся </strong></p>
+
+                            {% endif %}
+                        {% endif %}
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -187,7 +218,7 @@
                                                     </td>
                                                     <td class="price text-center">
 
-                                                        <strong>{{ p.bet }}</strong><br>
+                                                        <strong>{{ p.bet }}  {{ auction.som }}</strong><br>
                                                     </td>
                                                     <td class="qty text-center">{{ p.bed_date }}</td>
 
@@ -204,7 +235,7 @@
                                 <div id="tab2" class="tab-pane fade in ">
                                     <p><strong>Дата начала аукциона:</strong> {{ auction.created_date }}</p>
                                     <p><strong>Дата завершения аукциона:</strong> {{ auction.end_date }}</p>
-                                    <p><strong>Начальная цена:</strong> {{ auction.start_price }}</p>
+                                    <p><strong>Начальная цена:</strong> {{ auction.start_price }} {{ auction.som }}</p>
                                     <p><strong>Шаг аукциона:</strong> {{ auction.increment }}</p>
                                     <p><strong>Город:</strong> {{ auction.city }}</p>
                                     <p><strong>Страна:</strong> {{ auction.country }}</p>

@@ -9,6 +9,9 @@ urlpatterns = [
     path('edit/<str:id>', AuctionEditView.as_view(), name='auction_edit'),
     path('detail/<str:id>', AuctionDetailView.as_view(), name='auction_detail'),
     path('bet/<str:id>', AuctionMakeBetView.as_view(), name='make_bet'),
+    path('favorite/', auctionFavorite, name='add_to_favorite'),
+    path('fdelete/', deleteFavorite, name='delete_from_favorite'),
+
     path('comment/<str:id>', AuctionCommentView.as_view(), name='comment'),
 
     path('create/', AuctionCreateView.as_view(), name='auction_create'),

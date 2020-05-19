@@ -44,6 +44,106 @@
         <!-- container -->
         <div class="container">
             <!-- row -->
+                {% for f in fa %}
+                    <!-- Product Single -->
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    {% if f.auction.is_active %}
+                                        <span>Статус: Активен</span>
+                                        <span class="sale">Начальная цена: {{ f.auction.last_bet }}</span>
+                                    {% else %}
+                                        <span>Статус: Завершен</span>
+                                        <span class="sale">Начальная цена: {{ f.auction.last_bet }}</span>
+                                    {% endif %}
+
+                                </div>
+                                <a href="{% url 'auction_detail' f.auction.id %}" class="main-btn quick-view"><i
+                                        class="fa fa-search-plus"></i> Смотреть
+                                </a>
+                                {% if auction.lot.image.all %}
+                                    <img src="{{ f.auction.lot.image.first.image|thumbnail_url:'medium' }}" alt="">
+                                {% else %}
+                                    <img src="{% static 'img/default_medium.jpg' %}" alt="">
+
+
+                                {% endif %}
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">{{ f.auction.start_price }}</h3>
+
+                                {% if auction.star == None or auction.star == 0 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                {% elif auction.star == 1 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 2 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 3 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 4 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+
+                                {% elif auction.star == 5 %}
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+
+                                {% endif %}
+                                <h2 class="product-name"><a href="#">{{ f.auction.title }}</a></h2>
+                                <div class="product-btns">
+                                    {% if user.is_authenticated %}
+                                        <button onclick="addFavorite({{ f.auction.id }})" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                        <button onclick="deleteFavorite({{ f.auction.id }})" class="main-btn icon-btn"><i class="fa fa-trash"></i></button>
+
+                                    {% endif %}
+                                    <a href="{% url 'auction_detail' f.auction.id %}" class="primary-btn add-to-cart"><i
+                                            class="fa fa-gavel"></i> Сделать ставку
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product Single -->
+                {% endfor %}
+
 
 
         </div>

@@ -13,12 +13,14 @@ class MainView(TemplateView):
         category = Category.objects.all().order_by('order')
         is_time_out()
         a = Auction.objects.filter(is_active=True)
+        da = Auction.objects.filter(is_active=False)
 
         b = Banner.objects.all()
         return render(request, self.template_name, context={
             "category": category,
             "auctions": a,
             "banners": b,
+            "done_auctions": da
 
         })
 
