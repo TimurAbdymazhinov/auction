@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load i18n %}
+{% load static i18n %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -10,8 +12,8 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li class="active">Мой кабинет</li>
+                <li><a href="{% url 'index' %}">{% trans 'Главная' %}</a></li>
+                <li class="active">{% trans 'Мой кабинет' %}</li>
             </ul>
         </div>
     </div>
@@ -25,7 +27,7 @@
                 <!-- section title -->
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h2 class="title">Добро пожаловать {{ user.first_name }} {{ user.last_name }}</h2>
+                        <h2 class="title">{% trans 'Добро пожаловать' %} {{ user.first_name }} {{ user.last_name }}</h2>
                     </div>
                 </div>
                 <!-- section title -->
@@ -50,25 +52,25 @@
                         <br>
 
                         <a href="{% url 'profile_settings' %}">
-                            <button class="primary-btn">Настрока аккаунта</button>
+                            <button class="primary-btn">{% trans 'Настрока аккаунта' %}</button>
                         </a>
                         <a href="{% url 'auction_create' %}">
-                            <button class="primary-btn">Создать акуцион</button>
+                            <button class="primary-btn">{% trans 'Создать акуцион' %}</button>
                         </a>
                         <a href="{% url 'profile_settings' %}">
-                            <button class="primary-btn">Мои аукционы</button>
+                            <button class="primary-btn">{% trans 'Мои аукционы' %}</button>
                         </a>
 
                     </div>
                     <div class="col-md-9">
                         <div class="row">
-                            <span class="col-sm-12"><h5>Контактные информации</h5></span>
+                            <span class="col-sm-12"><h5>{% trans 'Контактные информации' %}</h5></span>
                             <div class="col-md-4 col-sm-6 col-xs-12 ">
                                 <ul>
-                                    <li><span><h6>Имя:</h6></span></li>
-                                    <li><span><h6>Фамилия:</h6></span></li>
-                                    <li><span><h6>Номер телефона:</h6></span></li>
-                                    <li><span><h6>Электронный адресс:</h6></span></li>
+                                    <li><span><h6>{% trans 'Имя' %}:</h6></span></li>
+                                    <li><span><h6>{% trans 'Фамилия' %}:</h6></span></li>
+                                    <li><span><h6>{% trans 'Номер телефона' %}:</h6></span></li>
+                                    <li><span><h6>{% trans 'Электронный адресс' %}:</h6></span></li>
 
                                 </ul>
                             </div>
@@ -89,13 +91,13 @@
                         </div>
                         <hr>
                         <div class="row">
-                            <span class="col-sm-12"><h5>Данные</h5></span>
+                            <span class="col-sm-12"><h5>{% trans 'Данные' %}</h5></span>
                             <div class="col-md-4 col-sm-6 col-xs-12 ">
                                 <ul>
-                                    <li><span><h6>Созданные аукционы:</h6></span></li>
-                                    <li><span><h6>Участие в аукционах:</h6></span></li>
-                                    <li><span><h6>Рейтинг:</h6></span></li>
-                                    <li><span><h6>Дата регистрации:</h6></span></li>
+                                    <li><span><h6>{% trans 'Созданные аукционы' %}:</h6></span></li>
+                                    <li><span><h6>{% trans 'Участие в аукционах' %}:</h6></span></li>
+                                    <li><span><h6>{% trans 'Рейтинг' %}:</h6></span></li>
+                                    <li><span><h6>{% trans 'Дата регистрации' %}:</h6></span></li>
 
                                 </ul>
                             </div>
@@ -133,17 +135,17 @@
             <div class="col-md-12">
                 <div class="order-summary clearfix">
                     <div class="section-title">
-                        <h3 class="title">Мои аукционы</h3>
+                        <h3 class="title">{% trans 'Мои аукционы' %}</h3>
                     </div>
                     <table class="shopping-cart-table table">
                         <thead>
                         <tr>
                             <th>Аукционы</th>
                             <th></th>
-                            <th class="text-center">Цена</th>
-                            <th class="text-center">Статус</th>
-                            <th class="text-right">Редактировать</th>
-                            <th class="text-right">Удалить</th>
+                            <th class="text-center">{% trans 'Цена' %}</th>
+                            <th class="text-center">{% trans 'Статус' %}</th>
+                            <th class="text-right">{% trans 'Редактировать' %}</th>
+                            <th class="text-right">{% trans 'Удалить' %}</th>
 
                         </tr>
                         </thead>
@@ -156,8 +158,8 @@
                                 <td class="details">
                                     <a href="{% url 'auction_detail' a.id %}">{{ a.title }}</a>
                                     <ul>
-                                        <li><span>Дата создания: {{ a.created_date }}</span></li>
-                                        <li><span>Дата окончания: {{ a.end_date }}</span></li>
+                                        <li><span>{% trans 'Дата создания' %}: {{ a.created_date }}</span></li>
+                                        <li><span>{% trans 'Дата окончания' %}: {{ a.end_date }}</span></li>
                                     </ul>
                                 </td>
                                 <td class="price text-center">
@@ -195,17 +197,17 @@
             <div class="col-md-12">
                 <div class="order-summary clearfix">
                     <div class="section-title">
-                        <h3 class="title">Мои ставки</h3>
+                        <h3 class="title">{% trans 'Мои ставки' %}</h3>
                     </div>
                     <table class="shopping-cart-table table">
                         <thead>
                         <tr>
-                            <th>Аукционы</th>
+                            <th>{% trans 'Аукционы' %}</th>
                             <th></th>
-                            <th class="text-center">Моя ставка</th>
-                            <th class="text-center">Статус аукциона</th>
-                            <th class="text-right">Актуальность</th>
-                            <th class="text-right">Удалить</th>
+                            <th class="text-center">{% trans 'Моя ставка' %}</th>
+                            <th class="text-center">{% trans 'Статус аукциона' %}</th>
+                            <th class="text-right">{% trans 'Актуальность' %}</th>
+                            <th class="text-right">{% trans 'Удалить' %}</th>
 
                         </tr>
                         </thead>
@@ -218,8 +220,8 @@
                                 <td class="details">
                                     <a href="{% url 'auction_detail' p.auction.id %}">{{ p.auction.title }}</a>
                                     <ul>
-                                        <li><span>Дата создания: {{ p.auction.created_date }}</span></li>
-                                        <li><span>Дата окончания: {{ p.auction.end_date }}</span></li>
+                                        <li><span>{% trans 'Дата создания' %}: {{ p.auction.created_date }}</span></li>
+                                        <li><span>{% trans 'Дата окончания' %}: {{ p.auction.end_date }}</span></li>
                                     </ul>
                                 </td>
                                 <td class="price text-center">

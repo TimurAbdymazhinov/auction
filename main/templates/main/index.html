@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load i18n %}
+{% load static i18n %}
 {% block title %}
-    <title>Главная</title>
+    <title>{% trans 'Главная' %}</title>
 {% endblock %}
 
 {% block header %}
@@ -23,7 +25,7 @@
                             <img src="{{ b.image|thumbnail_url:'banner' }}" alt="">
                             <div class="banner-caption">
                                 <h1 class="white-color">{{ b.name }}</h1>
-                                <button class="primary-btn">Подробнее</button>
+                                <button class="primary-btn">{% trans 'Подробнее' %}</button>
                             </div>
                         </div>
                         <!-- /banner -->
@@ -48,10 +50,11 @@
                 <!-- section title -->
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h2 class="title"> Все аукционы</h2>
+                        <h2 class="title">{% trans 'Все аукционы' %} </h2>
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <!-- section title -->
                 {% for auction in auctions %}
@@ -61,16 +64,16 @@
                             <div class="product-thumb">
                                 <div class="product-label">
                                     {% if auction.is_active %}
-                                        <span>Статус: Активен</span>
-                                        <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                        <span>{% trans 'Статус' %}: {% trans 'Активен' %} </span>
+                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
                                     {% else %}
-                                        <span>Статус: Завершен</span>
-                                        <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                        <span>{% trans 'Статус' %}: {% trans 'Завершен' %} </span>
+                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
                                     {% endif %}
 
                                 </div>
                                 <a href="{% url 'auction_detail' auction.id %}" class="main-btn quick-view"><i
-                                        class="fa fa-search-plus"></i> Смотреть
+                                        class="fa fa-search-plus"></i> {% trans 'Смотреть' %}
                                 </a>
                                 {% if auction.lot.image.all %}
                                     <img src="{{ auction.lot.image.first.image|thumbnail_url:'medium' }}" alt="">
@@ -143,7 +146,7 @@
                                         <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                     {% endif %}
                                     <a href="{% url 'auction_detail' auction.id %}" class="primary-btn add-to-cart"><i
-                                            class="fa fa-gavel"></i> Сделать ставку
+                                            class="fa fa-gavel"></i> {% trans 'Сделать ставку' %}
                                     </a>
                                 </div>
                             </div>
@@ -167,29 +170,29 @@
                 <!-- section title -->
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h2 class="title"> Все завершенные аукционы</h2>
+                        <h2 class="title"> {% trans 'Все завершенные аукционы' %}</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <!-- section title -->
                 {% for auction in done_auctions %}
-                    <!-- Product Single -->
+                                <!-- Product Single -->
                     <div class="col-md-3 col-sm-6 col-xs-6">
                         <div class="product product-single">
                             <div class="product-thumb">
                                 <div class="product-label">
                                     {% if auction.is_active %}
-                                        <span>Статус: Активен</span>
-                                        <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                        <span>{% trans 'Статус' %}: {% trans 'Активен' %} </span>
+                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
                                     {% else %}
-                                        <span>Статус: Завершен</span>
-                                        <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                        <span>{% trans 'Статус' %}: {% trans 'Завершен' %} </span>
+                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
                                     {% endif %}
 
                                 </div>
                                 <a href="{% url 'auction_detail' auction.id %}" class="main-btn quick-view"><i
-                                        class="fa fa-search-plus"></i> Смотреть
+                                        class="fa fa-search-plus"></i> {% trans 'Смотреть' %}
                                 </a>
                                 {% if auction.lot.image.all %}
                                     <img src="{{ auction.lot.image.first.image|thumbnail_url:'medium' }}" alt="">
@@ -262,7 +265,7 @@
                                         <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                     {% endif %}
                                     <a href="{% url 'auction_detail' auction.id %}" class="primary-btn add-to-cart"><i
-                                            class="fa fa-gavel"></i> Сделать ставку
+                                            class="fa fa-gavel"></i> {% trans 'Сделать ставку' %}
                                     </a>
                                 </div>
                             </div>

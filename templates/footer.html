@@ -1,4 +1,7 @@
 {% load static %}
+{% load thumbnail %}
+{% load i18n %}
+{% load static i18n %}
 <!-- FOOTER -->
 <footer id="footer" class="section section-grey">
     <!-- container -->
@@ -16,7 +19,7 @@
                     </div>
                     <!-- /footer logo -->
 
-                    <p>E-auction - самая легкая интернет платформа для проведения электронных аукционов и не только ...
+                    <p>{% trans 'E-auction - самая легкая интернет платформа для проведения электронных аукционов и не только ...' %}
                     </p>
 
                     <!-- footer social -->
@@ -41,17 +44,17 @@
             <!-- footer widget -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="footer">
-                    <h3 class="footer-header">Мой кабинет</h3>
+                    <h3 class="footer-header">{% trans 'Мой кабинет' %}</h3>
                     <ul class="list-links">
                         {% if user.is_authenticated %}
-                            <li><a href="{% url 'profile' %}">Мой кабинет </a></li>
-                            <li><a href="{% url 'auction_create' %}">Создать Аукцион </a></li>
-                            <li><a href="{% url 'favorite' %}">Избранные </a></li>
-                            <li><a href="#">Активные </a></li>
-                            <li><a href="{% url 'logout' %}">Выйти</a></li>
+                            <li><a href="{% url 'profile' %}">{% trans 'Мой кабинет' %} </a></li>
+                            <li><a href="{% url 'auction_create' %}">{% trans 'Создать Аукцион' %} </a></li>
+                            <li><a href="{% url 'favorite' %}">{% trans 'Избранные' %} </a></li>
+                            <li><a href="#">{% trans 'Активные' %} </a></li>
+                            <li><a href="{% url 'logout' %}">{% trans 'Выйти' %}</a></li>
                         {% else %}
-                            <li><a href="{% url 'login' %}">Войти</a></li>
-                            <li><a href="{% url 'register' %}">Регистрация</a></li>
+                            <li><a href="{% url 'login' %}">{% trans 'Войти' %}</a></li>
+                            <li><a href="{% url 'register' %}">{% trans 'Регистрация' %}</a></li>
 
                         {% endif %}
                     </ul>
@@ -66,13 +69,13 @@
             <!-- footer widget -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="footer">
-                    <h3 class="footer-header">Страницы</h3>
+                    <h3 class="footer-header">{% trans 'Страницы' %}</h3>
                     <ul class="list-links">
-                        <li><a href="{% url 'index' %}">Главная</a></li>
-                        <li><a href="{% url 'page_aboutAuctions' %}">Об аукционах</a></li>
-                        <li><a href="{% url 'page_contacts' %}">Контакты</a></li>
-                        <li><a href="{% url 'page_aboutUs' %}">O нас</a></li>
-                        <li><a href="{% url 'page_blog' %}">Блог</a></li>
+                        <li><a href="{% url 'index' %}">{% trans 'Главная' %}</a></li>
+                        <li><a href="{% url 'page_aboutAuctions' %}">{% trans 'Об аукционах' %}</a></li>
+                        <li><a href="{% url 'page_contacts' %}">{% trans 'Контакты' %}</a></li>
+                        <li><a href="{% url 'page_aboutUs' %}">{% trans 'O нас' %}</a></li>
+                        <li><a href="{% url 'page_blog' %}">{% trans 'Блог' %}</a></li>
                     </ul>
                 </div>
             </div>
@@ -83,13 +86,13 @@
             <!-- footer subscribe -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="footer">
-                    <h3 class="footer-header">Оставайтесь на связи</h3>
-                    <p> Подписывайтесь на нашу платформу и будьте в курсе последних новостей из из мира E-auction.kg.</p>
+                    <h3 class="footer-header">{% trans 'Оставайтесь на связи' %}</h3>
+                    <p> {% trans 'Подписывайтесь на нашу платформу и будьте в курсе последних новостей из из мира E-auction.kg.' %}</p>
                     <form>
                         <div class="form-group">
-                            <input class="input" placeholder="Ваш электронный адрес">
+                            <input class="input" placeholder="{% trans 'Ваш электронный адрес' %}">
                         </div>
-                        <button class="primary-btn">Подписаться</button>
+                        <button class="primary-btn">{% trans 'Подписаться' %}</button>
                     </form>
                 </div>
             </div>
@@ -104,7 +107,7 @@
                 <div class="footer-copyright">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <script>document.write(new Date().getFullYear());</script>
-                    Интернет-платформа E-auction | Специально для вас с <i class="fa fa-heart-o"
+                    {% trans 'Интернет-платформа E-auction | Специально для вас с ' %}Интернет-платформа E-auction | Специально для вас с <i class="fa fa-heart-o"
                                                                         aria-hidden="true"></i>...
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>

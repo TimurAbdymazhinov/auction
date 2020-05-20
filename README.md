@@ -38,7 +38,7 @@ Go through each of your projects apps migration folder and remove everything ins
 статичный локализация
 
     django-admin compilemessages
-    django-admin.py makemessages -a
+    django-admin makemessages -a
 
 project update
 

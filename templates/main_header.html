@@ -1,27 +1,49 @@
 {% load static %}
 {% load thumbnail %}
+{% load i18n %}
+{% load static i18n %}
 <!-- HEADER -->
 <header>
     <!-- top Header -->
     <div id="top-header">
         <div class="container">
             <div class="pull-left">
-                <span>Добро пожаловать в e-auction!</span>
+                <span>{% trans 'Добро пожаловать в e-auction!' %}</span>
             </div>
+
+
             <div class="pull-right">
                 <ul class="header-top-links">
-                    <li><a href="#">Карта</a></li>
-                    <li><a href="{% url 'page_contacts' %}">Контакты</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Язык <i
-                                class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="#">Кыргызча (KY)</a></li>
-                            <li><a href="#">Русский (RU)</a></li>
-                            <li><a href="#">English (EN)</a></li>
-
-                        </ul>
+                    <li><a href="#">{% trans 'Карта' %}</a></li>
+                    <li><a href="{% url 'page_contacts' %}">{% trans 'Контакты' %}</a></li>
+                    <li><a href="#">{% trans 'FAQ' %}</a></li>
+{#                    <li class="dropdown default-dropdown">#}
+{#                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Язык <i#}
+{#                                class="fa fa-caret-down"></i></a>#}
+{#                        <ul class="custom-menu">#}
+{#                            <li><a href="#">Кыргызча (KY)</a></li>#}
+{#                            <li><a href="#">Русский (RU)</a></li>#}
+{#                            <li><a href="#">English (EN)</a></li>#}
+{##}
+{#                        </ul>#}
+{##}
+{#                    </li>#}
+                    <li>
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <select name="language">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                            selected{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" value="{% trans 'Перевод' %}">
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -44,7 +66,7 @@
                 <!-- Search -->
                 <div class="header-search">
                     <form action="{% url 'auctions' 1 0 %}" method="get">
-                        <input class="input search-input" name="search" type="text" placeholder="Поиск">
+                        <input class="input search-input" name="search" type="text" placeholder="{% trans 'Поиск' %}">
 
                         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
@@ -61,26 +83,26 @@
                             <div class="header-btns-icon">
                                 <i class="fa fa-user-o"></i>
                             </div>
-                            <strong class="text-uppercase">Кабинет <i class="fa fa-caret-down"></i></strong>
+                            <strong class="text-uppercase">{% trans 'Кабинет' %} <i class="fa fa-caret-down"></i></strong>
                         </div>
                         <a class="text-uppercase">{{ user.username }}</a>
 
 
                         <ul class="custom-menu">
                             {% if user.is_authenticated %}
-                                <li><a href="{% url 'profile' %}"><i class="fa fa-user-o"></i> Мой кабинет </a></li>
-                                <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus"></i> Cоздать Аукцион </a>
+                                <li><a href="{% url 'profile' %}"><i class="fa fa-user-o"></i>{% trans 'Мой кабинет' %}  </a></li>
+                                <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus"></i>{% trans 'Cоздать Аукцион' %} </a>
                                 </li>
-                                <li><a href="{% url 'favorite' %}"><i class="fa fa-heart-o"></i> Избранные </a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i> Активные </a></li>
-                                <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i> Выйти</a></li>
+                                <li><a href="{% url 'favorite' %}"><i class="fa fa-heart-o"></i>{% trans 'Избранные' %}  </a></li>
+                                <li><a href="#"><i class="fa fa-exchange"></i>{% trans 'Активные' %}  </a></li>
+                                <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i>{% trans 'Выйти' %} </a></li>
                                 {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
                             {% else %}
 
                                 <li><a onclick="loginAjax()" href="{% url 'login' %}" data-toggle="modal"
-                                       data-target=".bd-example-modal-lg"><i class="fa fa-user"></i>Войти</a></li>
+                                       data-target=".bd-example-modal-lg"><i class="fa fa-user"></i>{% trans 'Войти' %} </a></li>
                                 <li><a onclick="registerAjax()" href="{% url 'register' %}" data-toggle="modal"
-                                       data-target=".bd-example-modal-lg"><i class="fa fa-user-plus"></i>Регистрация</a>
+                                       data-target=".bd-example-modal-lg"><i class="fa fa-user-plus"></i>{% trans 'Регистрация' %}</a>
                                 </li>
 
 
@@ -105,7 +127,7 @@
 
                     <!-- /Account -->
 
-                     {% if user.is_authenticated %}
+                    {% if user.is_authenticated %}
                         <!-- Cart -->
                         <li class="header-cart dropdown default-dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
@@ -115,7 +137,7 @@
                                         <span class="qty">{{ user.participants.count }}</span>
                                     {% endif %}
                                 </div>
-                                <strong class="text-uppercase">Мои ставки:</strong>
+                                <strong class="text-uppercase">{% trans 'Мои ставки' %}:</strong>
                                 <br>
                                 <hr>
                             </a>
@@ -137,7 +159,7 @@
                                                                 href="{% url 'auction_detail'  part.auction.id %}">{{ part.auction.title }}</a>
                                                         </h2>
                                                         <p>
-                                                            Активность:{% if part.auction.is_active %}
+                                                            {% trans 'Активность' %}:{% if part.auction.is_active %}
                                                             <i style="color: green"
                                                                class="fa fa-check"></i>
 
@@ -146,7 +168,7 @@
                                                                class="fa fa-minus "></i>
 
                                                         {% endif %}
-                                                            Ставка: {% if part.auction.is_active %}
+                                                            {% trans 'Ставка' %}: {% if part.auction.is_active %}
                                                             <i style="color: green"
                                                                class="fa fa-check"></i>
 
@@ -165,7 +187,7 @@
                                             {% endfor %}
                                         {% else %}
                                             <div class="product-thumb">
-                                                <p>Пусто</p>
+                                                <p>{% trans 'Пусто' %}</p>
 
                                             </div>
 
@@ -174,7 +196,7 @@
                                     </div>
 
 
-                                    <a href="{% url 'profile' %}" class="primary-btn">Мой Ставки <i
+                                    <a href="{% url 'profile' %}" class="primary-btn">{% trans 'Мои ставки' %} <i
                                             class="fa fa-arrow-circle-right"></i>
                                     </a>
 
@@ -204,7 +226,7 @@
         <div id="responsive-nav">
             <!-- category nav -->
             <div class="category-nav">
-                <span class="category-header"> Категории <i class="fa fa-list"></i></span>
+                <span class="category-header"> {% trans 'Категории' %} <i class="fa fa-list"></i></span>
                 <ul class="category-list">
                     {% for c in category %}
                         {% if c.subcategories.all|length > 0 %}
@@ -221,7 +243,7 @@
                                                 </li>
                                                 <hr>
                                             {% endfor %}
-                                            <li><a href="{% url 'auctions' 3 c.id %}">Все</a>
+                                            <li><a href="{% url 'auctions' 3 c.id %}">{% trans 'Все' %}</a>
                                             </li>
 
                                         </ul>
@@ -239,7 +261,7 @@
                         {% endif %}
 
                     {% endfor %}
-                    <li><a href="{% url 'auctions' 1 0 %}">Все категории</a></li>
+                    <li><a href="{% url 'auctions' 1 0 %}">{% trans 'Все категории' %}</a></li>
 
                 </ul>
             </div>
@@ -249,11 +271,11 @@
             <div class="menu-nav">
                 <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                 <ul class="menu-list">
-                    <li><a href="{% url 'index' %}">Главная</a></li>
-                    <li><a href="{% url 'page_aboutAuctions' %}">Об аукционах</a></li>
-                    <li><a href="{% url 'page_contacts' %}">Контакты</a></li>
-                    <li><a href="{% url 'page_aboutUs' %}">O нас</a></li>
-                    <li><a href="{% url 'page_blog' %}">Блог</a></li>
+                    <li><a href="{% url 'index' %}">{% trans 'Главная' %}</a></li>
+                    <li><a href="{% url 'page_aboutAuctions' %}">{% trans 'Об аукционах' %}</a></li>
+                    <li><a href="{% url 'page_contacts' %}">{% trans 'Контакты' %}</a></li>
+                    <li><a href="{% url 'page_aboutUs' %}">{% trans 'O нас' %}</a></li>
+                    <li><a href="{% url 'page_blog' %}">{% trans 'Блог' %}</a></li>
 
 
                 </ul>

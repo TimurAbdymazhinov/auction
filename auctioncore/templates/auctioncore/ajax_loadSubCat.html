@@ -1,4 +1,8 @@
+{% load static %}
+{% load thumbnail %}
+{% load i18n %}
+{% load static i18n %}
 <option value="" selected="">---------</option>
 {% for s in sc %}
-<option value="{{ s.pk }}">{{ s.title }}</option>
+    <option value="{{ s.pk }}">{{ s.title }}</option>
 {% endfor %}

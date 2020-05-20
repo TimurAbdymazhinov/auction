@@ -1,16 +1,18 @@
 from django.contrib import admin
 from .models import Category, SubCategory
 
+from modeltranslation.admin import TranslationAdmin
 
-class CategoryAdmin(admin.ModelAdmin):
+
+@admin.register(Category)
+class CategoryAdmin(TranslationAdmin):
     list_display = ["title"]
-    search_fields = ["title"]
 
 
-class SubCategoryAdmin(admin.ModelAdmin):
+@admin.register(SubCategory)
+class SubCategoryAdmin(TranslationAdmin):
     list_display = ["title"]
-    search_fields = ["title"]
 
 
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(SubCategory, SubCategoryAdmin)
+# admin.site.register(Category, CategoryAdmin)
+# admin.site.register(SubCategory, SubCategoryAdmin)

@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # install
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,6 +59,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # locale
+    'django.middleware.locale.LocaleMiddleware',
+
 ]
 
 ROOT_URLCONF = 'auction.urls'
@@ -114,6 +119,45 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'ru-ru'
+
+from django.conf import global_settings
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('ru', gettext('Russia')),
+    ('ky', gettext('Kyrgyz')),
+)
+
+# add Kyrgyz lang
+###########################################################
+EXTRA_LANG_INFO = {
+    'ky': {
+        'bidi': False,
+        'code': 'ky',
+        'name': 'Kyrgyz',
+        'name_local': u"Кыргызча",
+
+    },
+}
+
+# Add custom languages not provided by Django
+import django.conf.locale
+from django.conf import global_settings
+
+import django.conf.locale
+LANG_INFO = dict(django.conf.locale.LANG_INFO, **EXTRA_LANG_INFO)
+django.conf.locale.LANG_INFO = LANG_INFO
+
+global_settings.LANGUAGES = global_settings.LANGUAGES + [("ky", 'Кыргызча')]
+
+
+import os
+
+PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+###########################################################
 
 TIME_ZONE = 'Asia/Bishkek'
 
@@ -186,4 +230,3 @@ EMAIL_USE_SSL = True
 
 DEFAULT_FROM_EMAIL = 'eauction.kg@gmail.com'
 SERVER_EMAIL = 'eauction.kg@gmail.com'
-
