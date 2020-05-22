@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 {% load thumbnail %}
+{% load i18n %}
+{% load static i18n %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -11,8 +12,11 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'index' %}">{{ auction.category.title }}</a></li>
+                <li><a href="{% url 'index' %}">{% trans 'Главная' %}</a></li>
+                <li><a href="{% url 'auctions' 1 auction.category.id %}">{{ auction.category.title }}</a></li>
+                {% if auction.subcategory %}
+                    <li><a href="{% url 'auctions' 2 auction.subcategory.id %}">{{ auction.subcategory.title }}</a></li>
+                {% endif %}
                 <li class="active">{{ auction.title }}</li>
             </ul>
         </div>
@@ -50,17 +54,17 @@
 
                             <div class="product-label">
                                 {% if auction.is_active %}
-                                    <span>Статус: Активен</span>
-                                    <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                    <span>{% trans 'Статус' %}: {% trans 'Активен' %}</span>
+                                    <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
                                 {% else %}
-                                    <span>Статус: Завершен</span>
-                                    <span class="sale">Начальная цена: {{ auction.last_bet }} {{ auction.som }}</span>
+                                    <span>{% trans 'Статус' %}: {% trans 'Завершен' %}</span>
+                                    <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
                                 {% endif %}
 
 
                             </div>
                             <h2 class="product-name">{{ auction.title }}</h2>
-                            <h3 class="product-price">{{ auction.last_bet }}  {{ auction.som }}
+                            <h3 class="product-price">{{ auction.last_bet }} {{ auction.som }}
                                 <del class="product-old-price">{{ auction.start_price }} {{ auction.som }}</del>
                             </h3>
                             <div>
@@ -120,17 +124,18 @@
 
                                 {% endif %}
 
-                                <a href="#">{{ auction.comments.all.count }} отзыв </a>
+                                <a href="#">{{ auction.comments.all.count }} {% trans 'отзыв' %} </a>
                             </div>
-                            <p><strong>Владелец:</strong> {{ auction.owner.first_name }} {{ auction.owner.last_name }}
+                            <p>
+                                <strong>{% trans 'Владелец' %}:</strong> {{ auction.owner.first_name }} {{ auction.owner.last_name }}
                             </p>
-                            <p><strong>Дата начала аукциона:</strong> {{ auction.created_date }}</p>
-                            <p><strong>Дата завершения аукциона:</strong> {{ auction.end_date }}</p>
-                            <p><strong>Начальная цена:</strong> {{ auction.start_price }}  {{ auction.som }}</p>
-                            <p><strong>Шаг аукциона:</strong> {{ auction.increment }}%</p>
-                            <p><strong>Город:</strong> {{ auction.city }}</p>
-                            <p><strong>Страна:</strong> {{ auction.country }}</p>
-                            <p><strong>Описание:</strong> {{ auction.description }}</p>
+                            <p><strong>{% trans 'Дата начала аукциона' %}:</strong> {{ auction.created_date }}</p>
+                            <p><strong>{% trans 'Дата завершения аукциона' %}:</strong> {{ auction.end_date }}</p>
+                            <p><strong>{% trans 'Начальная цена' %}:</strong> {{ auction.start_price }} {{ auction.som }}</p>
+                            <p><strong>{% trans 'Шаг аукциона' %}:</strong> {{ auction.increment }}%</p>
+                            <p><strong>{% trans 'Город' %}:</strong> {{ auction.city }}</p>
+                            <p><strong>{% trans 'Страна' %}:</strong> {{ auction.country }}</p>
+                            <p><strong>{% trans 'Описание' %}:</strong> {{ auction.description }}</p>
 
                             {% if auction.is_active %}
 
@@ -138,14 +143,14 @@
                                     <form method="post" action="{% url 'make_bet' auction.id %}">
                                         {% csrf_token %}
                                         <div class="qty-input">
-                                            <span class="text-uppercase">Ставка: </span>
-                                            <input type="text" class="input" name="bet" value="{{ auction.next_bet }}">   {{ auction.som }}
+                                            <span class="text-uppercase">{% trans 'Ставка' %}: </span>
+                                            <input type="text" class="input" name="bet"
+                                                   value="{{ auction.next_bet }}"> {{ auction.som }}
 
                                         </div>
 
                                         <button type="submit" class="primary-btn add-to-cart"><i
-                                                class="fa fa-gavel"></i> Сделать
-                                            ставку
+                                                class="fa fa-gavel"></i> {% trans 'Сделать ставку' %}
                                         </button>
                                     </form>
                                     <div class="pull-right">
@@ -159,46 +164,45 @@
 
                                 </div>
                                 <br>
-                                <p><strong>Лидер
-                                    ставок:</strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
+                                <p><strong>{% trans 'Лидер ставок' %}:</strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
                                 </p>
                             {% endif %}
                             <hr>
-                        {% if not auction.is_active %}
-                            {% if auction.is_done %}
+                            {% if not auction.is_active %}
+                                {% if auction.is_done %}
 
-                                <p><strong>Победитель
-                                    аукциона: </strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
-                                </p>
-                            {% else %}
-                                <p><strong>Аукцион не состоялся </strong></p>
+                                    <p><strong>{% trans 'Победитель аукциона' %}: </strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
+                                    </p>
+                                {% else %}
+                                    <p><strong>{% trans 'Аукцион не состоялся' %} </strong></p>
 
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="product-tab">
                             <ul class="tab-nav">
-                                <li class="active"><a data-toggle="tab" href="#tab1">Ставки</a></li>
-                                <li><a data-toggle="tab" href="#tab2">Информация</a></li>
-                                <li><a data-toggle="tab" href="#tab3">Комментарий ({{ auction.comments.all.count }})</a>
+                                <li class="active"><a data-toggle="tab" href="#tab1">{% trans 'Ставки' %}</a></li>
+                                <li><a data-toggle="tab" href="#tab2">{% trans 'Информация' %}</a></li>
+                                <li><a data-toggle="tab" href="#tab3">{% trans 'Комментарий' %}
+                                    ({{ auction.comments.all.count }})</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div id="tab1" class="tab-pane fade in active">
                                     <div class="order-summary clearfix">
                                         <div class="section-title">
-                                            <h3 class="title">Список участников аукциона</h3>
+                                            <h3 class="title">{% trans 'Список участников аукциона' %}</h3>
                                         </div>
                                         <table class="shopping-cart-table table">
                                             <thead>
                                             <tr>
-                                                <th>Участник</th>
+                                                <th>{% trans 'Участник' %}</th>
                                                 <th></th>
 
-                                                <th class="text-center">Ставка</th>
-                                                <th class="text-center">Дата</th>
+                                                <th class="text-center">{% trans 'Ставка' %}</th>
+                                                <th class="text-center">{% trans 'Дата' %}</th>
 
                                             </tr>
                                             </thead>
@@ -212,13 +216,12 @@
                                                     <td class="details">
                                                         <a href="#">{{ p.user.first_name }} {{ p.user.last_name }}</a>
                                                         <ul>
-                                                            <li><span>Rating </span></li>
-                                                            <li><span>Stars</span></li>
+                                                            <li><span>{% trans 'Рейтинг' %} </span></li>
                                                         </ul>
                                                     </td>
                                                     <td class="price text-center">
 
-                                                        <strong>{{ p.bet }}  {{ auction.som }}</strong><br>
+                                                        <strong>{{ p.bet }} {{ auction.som }}</strong><br>
                                                     </td>
                                                     <td class="qty text-center">{{ p.bed_date }}</td>
 
@@ -233,13 +236,15 @@
                                 </div>
 
                                 <div id="tab2" class="tab-pane fade in ">
-                                    <p><strong>Дата начала аукциона:</strong> {{ auction.created_date }}</p>
-                                    <p><strong>Дата завершения аукциона:</strong> {{ auction.end_date }}</p>
-                                    <p><strong>Начальная цена:</strong> {{ auction.start_price }} {{ auction.som }}</p>
-                                    <p><strong>Шаг аукциона:</strong> {{ auction.increment }}</p>
-                                    <p><strong>Город:</strong> {{ auction.city }}</p>
-                                    <p><strong>Страна:</strong> {{ auction.country }}</p>
-                                    <p><strong>Описание:</strong> {{ auction.description }}</p>
+                                    <p><strong>{% trans 'Дата начала аукциона' %}:</strong> {{ auction.created_date }}
+                                    </p>
+                                    <p><strong>{% trans 'Дата завершения аукциона' %}:</strong> {{ auction.end_date }}
+                                    </p>
+                                    <p><strong>{% trans 'Начальная цена' %}:</strong> {{ auction.start_price }} {{ auction.som }}</p>
+                                    <p><strong>{% trans 'Шаг аукциона' %}:</strong> {{ auction.increment }}</p>
+                                    <p><strong>{% trans 'Город' %}:</strong> {{ auction.city }}</p>
+                                    <p><strong>{% trans 'Страна' %}:</strong> {{ auction.country }}</p>
+                                    <p><strong>{% trans 'Описание' %}:</strong> {{ auction.description }}</p>
                                 </div>
 
                                 <div id="tab3" class="tab-pane fade in">
@@ -324,7 +329,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <h4 class="text-uppercase">Оставить отзыв</h4>
+                                            <h4 class="text-uppercase">{% trans 'Оставить отзыв' %}</h4>
                                             {% if user.is_authenticated %}
 
                                                 <form class="review-form" method="post"
@@ -332,11 +337,11 @@
                                                     {% csrf_token %}
                                                     <div class="form-group">
                                                         <textarea class="input" name="comment"
-                                                                  placeholder="Ваш комментарий"></textarea>
+                                                                  placeholder="{% trans 'Ваш комментарий' %}"></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="input-rating">
-                                                            <strong class="text-uppercase">Ваша оценка: </strong>
+                                                            <strong class="text-uppercase">{% trans 'Ваша оценка' %}: </strong>
                                                             <div class="stars">
                                                                 <input type="radio" id="star5" name="rating"
                                                                        value="5"/><label for="star5"></label>
@@ -351,12 +356,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button class="primary-btn">Submit</button>
+                                                    <button class="primary-btn">{% trans 'Оставить комментарий' %}</button>
                                                 </form>
 
                                             {% else %}
-                                                <p>Войдите для того, чтобы оставить комментарий</p>
-                                                <a href="{% url 'login' %}" class="primary-btn">Войти</a>
+                                                <p>{% trans 'Войдите для того, чтобы оставить комментарий' %}</p>
+                                                <a href="{% url 'login' %}" class="primary-btn">{% trans 'Войти' %}</a>
                                             {% endif %}
 
                                         </div>

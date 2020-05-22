@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 {% load thumbnail %}
+{% load i18n %}
+{% load static i18n %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -8,15 +9,17 @@
 {% block content %}
 
     <!-- BREADCRUMB -->
+       <!-- BREADCRUMB -->
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'profile' %}">Мой кабинет</a></li>
-                <li class="active">Настройка аукциона</li>
+                <li><a href="{% url 'index' %}">{% trans 'Главная' %}</a></li>
+                <li><a href="{% url 'profile' %}">{% trans 'Мой кабинет' %}</a></li>
+                <li class="active">{% trans 'Создать аукцион' %}</li>
             </ul>
         </div>
     </div>
+    <!-- /BREADCRUMB -->
     <!-- /BREADCRUMB -->
 
     <!-- section -->
@@ -34,59 +37,114 @@
                         <div class="billing-details">
 
                             <div class="section-title">
-                                <h3 class="title">Создание аукциона</h3>
+                                <h3 class="title">{% trans 'Создание аукциона' %}</h3>
                             </div>
 
 
-                            {% for a in auctionform %}
+                            <div class="form-group">
+                                <p>{% trans 'Категория' %}:</p>
+                                {{ auctionform.category }}
 
-                                <div class="form-group">
-                                    <p>{{ a.label }}:</p>
-                                    {{ a }}
+                            </div>
 
-                                </div>
-                                <div class="form-group" style="color: red">
-                                    {% if a.errors %}
+                            <div class="form-group">
+                                <p>{% trans 'Подкатегория' %}:</p>
+                                {{ auctionform.subcategory }}
 
-                                        <p>{{ a.errors }}</p>
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Название' %}:</p>
+                                {{ auctionform.title }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Описание' %}:</p>
+                                {{ auctionform.description }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Страна' %}:</p>
+                                {{ auctionform.country }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Город' %}:</p>
+                                {{ auctionform.city }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Начальная цена' %}:</p>
+                                {{ auctionform.start_price }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Валюта' %}:</p>
+                                {{ auctionform.som }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Шаг' %}:</p>
+                                {{ auctionform.increment }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Конечная дата' %}:</p>
+                                {{ auctionform.end_date }}
+
+                            </div>
+                            {% if auctionform.errors %}
+
+                                <p>{{ auctionform.errors }}</p>
 
 
-                                    {% endif %}
+                            {% endif %}
 
-                                </div>
-                            {% endfor %}
                             <br>
                             <div class="section-title">
-                                <h4 class="title">Создание лота аукциона</h4>
+                                <h4 class="title">{% trans 'Создание лота аукциона' %}</h4>
                             </div>
 
-                            {% for p in productform %}
-                                <div class="form-group">
-                                    <p>{{ p.label }}:</p>
-                                    {{ p }}
-                                </div>
 
-                                <div class="form-group" style="color: red">
-                                    {% if f.errors %}
+                            <div class="form-group">
+                                <p>{% trans 'Название' %}:</p>
+                                {{ productform.name }}
+                            </div>
 
-                                        <p>{{ p.errors }}</p>
+                            <div class="form-group">
+                                <p>{% trans 'Брэнд' %}:</p>
+                                {{ productform.brand }}
+                            </div>
+
+                            <div class="form-group">
+                                <p>{% trans 'Статус' %}:</p>
+                                {{ productform.status }}
+                            </div>
+                            {% if productform.errors %}
+
+                                <p>{{ productform.errors }}</p>
 
 
-                                    {% endif %}
-                                </div>
+                            {% endif %}
 
-                            {% endfor %}
 
                             <div id="for_image">
 
                             </div>
                             <div class="form-group">
-                                <button type="button" onclick="add_photo()">Добавить фото</button>
+                                <button type="button" onclick="add_photo()">{% trans 'Добавить фото' %}</button>
                             </div>
 
 
                             <div class="pull-right" style="margin-top: 10px">
-                                <button class="primary-btn" type="submit">Создать</button>
+                                <button class="primary-btn" type="submit">{% trans 'Создать' %}</button>
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-21 01:31+0600\n"
+"POT-Creation-Date: 2020-05-22 16:49+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,18 @@ msgstr ""
 
 #: auction/settings.py:127
 msgid "Russia"
-msgstr ""
+msgstr "Орусча"
 
 #: auction/settings.py:128
 msgid "Kyrgyz"
-msgstr ""
+msgstr "Кыргызча"
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:12
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:15
+#: auctioncore/templates/auctioncore/auction_create.html:127
+#: auctioncore/templates/auctioncore/auction_detail.html:57
+#: auctioncore/templates/auctioncore/auction_detail.html:60
+#: auctioncore/templates/auctioncore/auction_edit.html:125
 #: auctioncore/templates/auctioncore/auctions.html:91
 #: auctioncore/templates/auctioncore/auctions.html:94
 #: main/templates/main/index.html:67 main/templates/main/index.html:70
@@ -35,1560 +39,571 @@ msgstr ""
 #: user/templates/user/favorite.html:56 user/templates/user/favorite.html:59
 #: user/templates/user/profile.html:146
 msgid "Статус"
-msgstr ""
+msgstr "Статусу"
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:12
+#: auctioncore/templates/auctioncore/auction_detail.html:57
 #: auctioncore/templates/auctioncore/auctions.html:91
 #: main/templates/main/index.html:67 main/templates/main/index.html:186
 #: user/templates/user/favorite.html:56
-#, fuzzy
-#| msgid "Активные"
 msgid "Активен"
-msgstr "Активдүүлөр"
+msgstr "Активдүү"
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:13
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:16
+#: auctioncore/templates/auctioncore/auction_create.html:81
+#: auctioncore/templates/auctioncore/auction_detail.html:58
+#: auctioncore/templates/auctioncore/auction_detail.html:61
+#: auctioncore/templates/auctioncore/auction_detail.html:134
+#: auctioncore/templates/auctioncore/auction_detail.html:243
+#: auctioncore/templates/auctioncore/auction_edit.html:79
 #: auctioncore/templates/auctioncore/auctions.html:92
 #: auctioncore/templates/auctioncore/auctions.html:95
 #: main/templates/main/index.html:68 main/templates/main/index.html:71
 #: main/templates/main/index.html:187 main/templates/main/index.html:190
 #: user/templates/user/favorite.html:57 user/templates/user/favorite.html:60
 msgid "Начальная цена"
-msgstr ""
+msgstr "Баштапкы баа"
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:15
+#: auctioncore/templates/auctioncore/auction_detail.html:60
 #: auctioncore/templates/auctioncore/auctions.html:94
 #: main/templates/main/index.html:70 main/templates/main/index.html:189
 #: user/templates/user/favorite.html:59
 msgid "Завершен"
-msgstr ""
+msgstr "Бүттү"
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:21
 #: auctioncore/templates/auctioncore/auctions.html:100
 #: main/templates/main/index.html:76 main/templates/main/index.html:195
 #: user/templates/user/favorite.html:65
 msgid "Смотреть"
-msgstr ""
+msgstr "Карап көрүү"
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:97
+#: auctioncore/templates/auctioncore/auction_detail.html:153
 #: auctioncore/templates/auctioncore/auctions.html:176
-#: main/templates/main/index.html:149 main/templates/main/index.html:268
-#: user/templates/user/favorite.html:142
-#, fuzzy
-#| msgid "Cоздать Аукцион"
+#: main/templates/main/index.html:268 user/templates/user/favorite.html:142
 msgid "Сделать ставку"
-msgstr "Аукцио түзүү"
+msgstr "Баа коюуу"
 
+#: auctioncore/templates/auctioncore/auction_create.html:16
+#: auctioncore/templates/auctioncore/auction_detail.html:15
+#: auctioncore/templates/auctioncore/auction_edit.html:15
 #: auctioncore/templates/auctioncore/auctions.html:16
 #: banner/templates/banner/aboutAuctions.html:15
 #: banner/templates/banner/aboutUs.html:15 banner/templates/banner/blog.html:15
 #: banner/templates/banner/contacts.html:15 main/templates/main/index.html:7
-#: templates/footer.html:74 templates/header.html:284
+#: templates/footer.html:74 templates/header.html:285
 #: templates/main_header.html:274 user/templates/user/favorite.html:15
 #: user/templates/user/profile.html:15
+#: user/templates/user/profile_settings.html:16
 msgid "Главная"
+msgstr "Баштапкы бет"
+
+#: auctioncore/templates/auctioncore/auction_create.html:17
+#: auctioncore/templates/auctioncore/auction_edit.html:16
+#: templates/footer.html:47 templates/footer.html:50 templates/header.html:95
+#: templates/main_header.html:93 user/templates/user/profile.html:16
+#: user/templates/user/profile_settings.html:17
+msgid "Мой кабинет"
+msgstr "Менин кабинетим"
+
+#: auctioncore/templates/auctioncore/auction_create.html:18
+msgid "Создать аукцион"
+msgstr "Аукцион түзүү"
+
+#: auctioncore/templates/auctioncore/auction_create.html:40
+msgid "Создание аукциона"
+msgstr "Аукционду түзүү"
+
+#: auctioncore/templates/auctioncore/auction_create.html:45
+#: auctioncore/templates/auctioncore/auction_edit.html:43
+msgid "Категория"
+msgstr "Категория"
+
+#: auctioncore/templates/auctioncore/auction_create.html:51
+#: auctioncore/templates/auctioncore/auction_edit.html:49
+msgid "Подкатегория"
+msgstr "Бала категория"
+
+#: auctioncore/templates/auctioncore/auction_create.html:57
+#: auctioncore/templates/auctioncore/auction_create.html:117
+#: auctioncore/templates/auctioncore/auction_edit.html:55
+#: auctioncore/templates/auctioncore/auction_edit.html:115
+#: auctioncore/templates/auctioncore/auctions.html:48
+#: auctioncore/templates/auctioncore/auctions.html:204
+msgid "Название"
+msgstr "Аталышы"
+
+#: auctioncore/templates/auctioncore/auction_create.html:63
+#: auctioncore/templates/auctioncore/auction_detail.html:138
+#: auctioncore/templates/auctioncore/auction_detail.html:247
+#: auctioncore/templates/auctioncore/auction_edit.html:61
+msgid "Описание"
+msgstr "Cүрөттөлүшү"
+
+#: auctioncore/templates/auctioncore/auction_create.html:69
+#: auctioncore/templates/auctioncore/auction_detail.html:137
+#: auctioncore/templates/auctioncore/auction_detail.html:246
+#: auctioncore/templates/auctioncore/auction_edit.html:67
+#: user/templates/user/profile_settings.html:74
+msgid "Страна"
+msgstr "Мамлекет"
+
+#: auctioncore/templates/auctioncore/auction_create.html:75
+#: auctioncore/templates/auctioncore/auction_detail.html:136
+#: auctioncore/templates/auctioncore/auction_detail.html:245
+#: auctioncore/templates/auctioncore/auction_edit.html:73
+#: user/templates/user/profile_settings.html:78
+msgid "Город"
+msgstr "Шаар"
+
+#: auctioncore/templates/auctioncore/auction_create.html:87
+#: auctioncore/templates/auctioncore/auction_edit.html:85
+msgid "Валюта"
+msgstr "Акча бирдиги"
+
+#: auctioncore/templates/auctioncore/auction_create.html:93
+#: auctioncore/templates/auctioncore/auction_edit.html:91
+msgid "Шаг"
+msgstr "Кадам"
+
+#: auctioncore/templates/auctioncore/auction_create.html:99
+#: auctioncore/templates/auctioncore/auction_edit.html:97
+msgid "Конечная дата"
+msgstr "Акыркы дата "
+
+#: auctioncore/templates/auctioncore/auction_create.html:112
+msgid "Создание лота аукциона"
+msgstr "Аукциондун лотун түзүү"
+
+#: auctioncore/templates/auctioncore/auction_create.html:122
+#: auctioncore/templates/auctioncore/auction_edit.html:120
+msgid "Брэнд"
+msgstr "Брэнди"
+
+#: auctioncore/templates/auctioncore/auction_create.html:142
+#: auctioncore/templates/auctioncore/auction_edit.html:140
+msgid "Добавить фото"
+msgstr "Сүрөт кошуу"
+
+#: auctioncore/templates/auctioncore/auction_create.html:147
+msgid "Создать"
+msgstr "Түзүү"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:127
+msgid "отзыв"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auctions.html:17
-#: user/templates/user/profile.html:205
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Аукционы"
-msgstr "Аукцио түзүү"
+#: auctioncore/templates/auctioncore/auction_detail.html:130
+msgid "Владелец"
+msgstr "Ээси"
 
-#: auctioncore/templates/auctioncore/auctions.html:43
-#: auctioncore/templates/auctioncore/auctions.html:199
-msgid "Сортировать по"
-msgstr ""
+#: auctioncore/templates/auctioncore/auction_detail.html:132
+#: auctioncore/templates/auctioncore/auction_detail.html:239
 
+msgid "Дата начала аукциона"
+msgstr "Аукциондун башталыш убактысы"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:133
+#: auctioncore/templates/auctioncore/auction_detail.html:241
+
+msgid "Дата завершения аукциона"
+msgstr "Аукциондун бүтүү убактысы"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:135
+#: auctioncore/templates/auctioncore/auction_detail.html:244
+
+msgid "Шаг аукциона"
+msgstr "Аукциондун кадамы"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:146
+#: auctioncore/templates/auctioncore/auction_detail.html:204
+#: templates/header.html:179 templates/main_header.html:171
+msgid "Ставка"
+msgstr "Баа"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:167
+
+msgid "Лидер ставок"
+msgstr "Баа коюуу лидери"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:174
+msgid "Победитель аукциона"
+msgstr "Аукциондун жеңүүчүсү"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:177
+msgid "Аукцион не состоялся"
+msgstr "Аукцион болгон жок"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:186
+
+msgid "Ставки"
+msgstr "Баалар"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:187
+
+msgid "Информация"
+msgstr "Маалымат"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:188
+msgid "Комментарий"
+msgstr "Комментарий"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:196
+
+msgid "Список участников аукциона"
+msgstr "Аукциодорго катышуучулардын тизмеси"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:201
+msgid "Участник"
+msgstr "Катышуучу"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:205
 #: auctioncore/templates/auctioncore/auctions.html:45
 #: auctioncore/templates/auctioncore/auctions.html:201
 msgid "Дата"
-msgstr ""
+msgstr "Убактысы"
 
-#: auctioncore/templates/auctioncore/auctions.html:46
-#: auctioncore/templates/auctioncore/auctions.html:202
-msgid "Цены"
-msgstr ""
-
+#: auctioncore/templates/auctioncore/auction_detail.html:219
 #: auctioncore/templates/auctioncore/auctions.html:47
 #: auctioncore/templates/auctioncore/auctions.html:203
 #: user/templates/user/profile.html:99
 msgid "Рейтинг"
-msgstr ""
+msgstr "Рейтинг"
 
-#: auctioncore/templates/auctioncore/auctions.html:48
-#: auctioncore/templates/auctioncore/auctions.html:204
-msgid "Название"
-msgstr ""
+#: auctioncore/templates/auctioncore/auction_detail.html:332
+
+msgid "Оставить отзыв"
+msgstr "Ой-пикир калтыруу"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:340
+msgid "Ваш комментарий"
+msgstr "Сиздин комментарий"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:344
+msgid "Ваша оценка"
+msgstr "Сиздин бааңыз"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:359
+msgid "Оставить комментарий"
+msgstr "Комментарий калтыруу"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:363
+msgid "Войдите для того, чтобы оставить комментарий"
+msgstr "Комментарий калтыруу үчүн кириңиз"
+
+#: auctioncore/templates/auctioncore/auction_detail.html:364
+#: templates/footer.html:56 templates/header.html:109
+#: templates/main_header.html:103
+msgid "Войти"
+msgstr "Кирүү"
+
+#: auctioncore/templates/auctioncore/auction_edit.html:17
+#: auctioncore/templates/auctioncore/auction_edit.html:38
+msgid "Настройка аукциона"
+msgstr "Аукцион жөндөөлөрү"
+
+#: auctioncore/templates/auctioncore/auction_edit.html:110
+msgid "Настройка лота аукциона"
+msgstr "Аукцион лоттунун жөндөөлөрү"
+
+#: auctioncore/templates/auctioncore/auction_edit.html:145
+#: user/templates/user/profile_settings.html:90
+msgid "Сохранить"
+msgstr "Сактоо"
+
+#: auctioncore/templates/auctioncore/auctions.html:17 templates/header.html:286
+#: templates/main_header.html:275 user/templates/user/profile.html:205
+msgid "Аукционы"
+msgstr "Аукциондор"
+
+#: auctioncore/templates/auctioncore/auctions.html:43
+#: auctioncore/templates/auctioncore/auctions.html:199
+msgid "Сортировать по"
+msgstr "Сорттоо"
+
+#: auctioncore/templates/auctioncore/auctions.html:46
+#: auctioncore/templates/auctioncore/auctions.html:202
+msgid "Цены"
+msgstr "Баа"
 
 #: auctioncore/templates/auctioncore/auctions.html:63
 #: auctioncore/templates/auctioncore/auctions.html:219
 msgid "Страница"
-msgstr ""
+msgstr "Барак"
 
 #: auctioncore/templates/auctioncore/auctions.html:80
 msgid "Ничего не найдено"
-msgstr ""
+msgstr "Эч нерсе табылган жок"
 
 #: banner/templates/banner/aboutAuctions.html:16
 #: banner/templates/banner/aboutAuctions.html:30 templates/footer.html:75
-#: templates/header.html:285 templates/main_header.html:275
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Об аукционах"
-msgstr "Аукцио түзүү"
+msgstr "Аукциодор жөнүндө"
 
 #: banner/templates/banner/aboutUs.html:16
 #: banner/templates/banner/aboutUs.html:30
 msgid "О нас"
-msgstr ""
+msgstr "Биз жөнүндө"
 
 #: banner/templates/banner/blog.html:16 banner/templates/banner/blog.html:30
-#: templates/footer.html:78 templates/header.html:288
+#: templates/footer.html:78 templates/header.html:289
 #: templates/main_header.html:278
 msgid "Блог"
-msgstr ""
+msgstr "Блог"
 
 #: banner/templates/banner/contacts.html:16
 #: banner/templates/banner/contacts.html:30 templates/footer.html:76
-#: templates/header.html:18 templates/header.html:286
+#: templates/header.html:19 templates/header.html:287
 #: templates/main_header.html:18 templates/main_header.html:276
 msgid "Контакты"
 msgstr "Контакттар"
 
 #: main/templates/main/index.html:28
 msgid "Подробнее"
-msgstr ""
+msgstr "Тагыраак"
 
 #: main/templates/main/index.html:53
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Все аукционы"
-msgstr "Аукцио түзүү"
+msgid "Все активные аукционы"
+msgstr "Активдүү аукциондор"
+
+#: main/templates/main/index.html:149
+msgid "Сделать ставку "
+msgstr "Баа коюуу"
 
 #: main/templates/main/index.html:173
 msgid "Все завершенные аукционы"
-msgstr ""
+msgstr "Бардык бүткөн аукциондор"
 
 #: templates/footer.html:22
 msgid ""
 "E-auction - самая легкая интернет платформа для проведения электронных "
 "аукционов и не только ..."
 msgstr ""
-
-#: templates/footer.html:47 templates/footer.html:50 templates/header.html:94
-#: templates/main_header.html:93 user/templates/user/profile.html:16
-msgid "Мой кабинет"
-msgstr "Менин кабинетим"
+"E-auction - аукциондорду өткөрүүгө багытталган атайын интернет платформа "
 
 #: templates/footer.html:51
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Создать Аукцион"
-msgstr "Аукцио түзүү"
+msgstr "Аукцион түзүү"
 
-#: templates/footer.html:52 templates/header.html:99
+#: templates/footer.html:52 templates/header.html:100
 #: templates/main_header.html:96
 msgid "Избранные"
 msgstr "Тандалгандар"
 
-#: templates/footer.html:53 templates/header.html:101
+#: templates/footer.html:53 templates/header.html:102
 #: templates/main_header.html:97
 msgid "Активные"
 msgstr "Активдүүлөр"
 
-#: templates/footer.html:54 templates/header.html:102
+#: templates/footer.html:54 templates/header.html:103
 #: templates/main_header.html:98
 msgid "Выйти"
 msgstr "Чыгуу"
 
-#: templates/footer.html:56 templates/header.html:108
-#: templates/main_header.html:103
-msgid "Войти"
-msgstr "Кирүү"
-
-#: templates/footer.html:57 templates/header.html:112
+#: templates/footer.html:57 templates/header.html:113
 #: templates/main_header.html:105
 msgid "Регистрация"
 msgstr "Катталуу"
 
 #: templates/footer.html:72
 msgid "Страницы"
-msgstr ""
+msgstr "Барактар"
 
-#: templates/footer.html:77 templates/header.html:287
+#: templates/footer.html:77 templates/header.html:288
 #: templates/main_header.html:277
 msgid "O нас"
-msgstr ""
+msgstr "Биз жөнүндө"
 
 #: templates/footer.html:89
 msgid "Оставайтесь на связи"
-msgstr ""
+msgstr "Биз менен калыңыз"
 
 #: templates/footer.html:90
 msgid ""
 "Подписывайтесь на нашу платформу и будьте в курсе последних новостей из из "
 "мира E-auction.kg."
 msgstr ""
+"Биздин платформага катталып жана E-auction.kg дүйнөсүнөн акыркы жаңылыктарды "
+"биринчи угуңуз "
 
 #: templates/footer.html:93
 msgid "Ваш электронный адрес"
-msgstr ""
+msgstr "Сиздин электрондук дарегиңиз"
 
 #: templates/footer.html:95
 msgid "Подписаться"
-msgstr ""
+msgstr "Катталуу"
 
 #: templates/footer.html:110
 msgid "Интернет-платформа E-auction | Специально для вас с "
-msgstr ""
+msgstr "Интернет-платформа E-auction | Атайын сиз үчүн "
 
 #: templates/header.html:11 templates/main_header.html:11
 msgid "Добро пожаловать в e-auction!"
-msgstr "E-auctionго кош келиниз!"
+msgstr "E-auction-го кош келиңиз!"
 
-#: templates/header.html:17 templates/main_header.html:17
+#: templates/header.html:18 templates/main_header.html:17
 msgid "Карта"
 msgstr "Карта"
 
-#: templates/header.html:19 templates/main_header.html:19
+#: templates/header.html:20 templates/main_header.html:19
 msgid "FAQ"
 msgstr "КСС"
 
-#: templates/header.html:45 templates/main_header.html:45
+#: templates/header.html:46 templates/main_header.html:45
 msgid "Перевод"
 msgstr "Которуу"
 
-#: templates/header.html:69 templates/main_header.html:69
+#: templates/header.html:70 templates/main_header.html:69
 msgid "Поиск"
 msgstr "Издөө"
 
-#: templates/header.html:86 templates/main_header.html:86
+#: templates/header.html:87 templates/main_header.html:86
 msgid "Кабинет"
 msgstr "Кабинет"
 
-#: templates/header.html:97 templates/main_header.html:94
+#: templates/header.html:98 templates/main_header.html:94
 msgid "Cоздать Аукцион"
-msgstr "Аукцио түзүү"
+msgstr "Аукцион түзүү"
 
-#: templates/header.html:147 templates/header.html:206
+#: templates/header.html:148 templates/header.html:207
 #: templates/main_header.html:140 templates/main_header.html:199
 #: user/templates/user/profile.html:200
 msgid "Мои ставки"
-msgstr ""
+msgstr "Менин бааларым"
 
-#: templates/header.html:169 templates/main_header.html:162
-#, fuzzy
-#| msgid "Активные"
+#: templates/header.html:170 templates/main_header.html:162
 msgid "Активность"
-msgstr "Активдүүлөр"
+msgstr "Активдүүгү"
 
-#: templates/header.html:178 templates/main_header.html:171
-msgid "Ставка"
-msgstr ""
-
-#: templates/header.html:197 templates/main_header.html:190
+#: templates/header.html:198 templates/main_header.html:190
 msgid "Пусто"
-msgstr ""
+msgstr "Эч нерсе жок"
 
-#: templates/header.html:237 templates/main_header.html:229
+#: templates/header.html:238 templates/main_header.html:229
 msgid "Категории"
-msgstr ""
+msgstr "Категориялар"
 
-#: templates/header.html:254 templates/main_header.html:246
+#: templates/header.html:255 templates/main_header.html:246
 msgid "Все"
-msgstr ""
+msgstr "Баардыгы"
 
-#: templates/header.html:272 templates/main_header.html:264
+#: templates/header.html:273 templates/main_header.html:264
 msgid "Все категории"
-msgstr ""
+msgstr "Бардык категориялар"
+
+#: templates/my.html:15
+msgid "Фото"
+msgstr "Cүрөт"
+
+#: templates/my.html:18 user/templates/user/profile.html:148
+#: user/templates/user/profile.html:210
+msgid "Удалить"
+msgstr "Өчүрүү"
 
 #: user/templates/user/favorite.html:16 user/templates/user/favorite.html:30
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Мои избранные аукционы"
-msgstr "Аукцио түзүү"
+msgstr "Менин тандалган аукциондорум"
 
 #: user/templates/user/profile.html:30
-#, fuzzy
-#| msgid "Добро пожаловать в e-auction!"
 msgid "Добро пожаловать"
-msgstr "E-auctionго кош келиниз!"
+msgstr "Кош келиңиз"
 
 #: user/templates/user/profile.html:55
-msgid "Настрока аккаунта"
-msgstr ""
+#: user/templates/user/profile_settings.html:39
+msgid "Настройка аккаунта"
+msgstr "Аккаунттун жөндөөлөрү"
 
 #: user/templates/user/profile.html:58
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Создать акуцион"
-msgstr "Аукцио түзүү"
+msgstr "Аукцион түзүү"
 
 #: user/templates/user/profile.html:61 user/templates/user/profile.html:138
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Мои аукционы"
-msgstr "Аукцио түзүү"
+msgstr "Менин аукциондорум "
 
 #: user/templates/user/profile.html:67
 msgid "Контактные информации"
-msgstr ""
+msgstr "Байланыш маалыматтар"
 
 #: user/templates/user/profile.html:70
+#: user/templates/user/profile_settings.html:54
 msgid "Имя"
-msgstr ""
+msgstr "Аты"
 
 #: user/templates/user/profile.html:71
+#: user/templates/user/profile_settings.html:59
 msgid "Фамилия"
-msgstr ""
+msgstr "Фамилиясы"
 
 #: user/templates/user/profile.html:72
+#: user/templates/user/profile_settings.html:70
 msgid "Номер телефона"
-msgstr ""
+msgstr "Телефон номери"
 
 #: user/templates/user/profile.html:73
 msgid "Электронный адресс"
-msgstr ""
+msgstr "Электрондук дарек"
 
 #: user/templates/user/profile.html:94
-#, fuzzy
-#| msgid "Избранные"
 msgid "Данные"
-msgstr "Тандалгандар"
+msgstr "Маалыматтар"
 
 #: user/templates/user/profile.html:97
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Созданные аукционы"
-msgstr "Аукцио түзүү"
+msgstr "Түзүлгөн аукциондор"
 
 #: user/templates/user/profile.html:98
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Участие в аукционах"
-msgstr "Аукцио түзүү"
+msgstr "Аукциодорго катышуу"
 
 #: user/templates/user/profile.html:100
-#, fuzzy
-#| msgid "Регистрация"
 msgid "Дата регистрации"
-msgstr "Катталуу"
+msgstr "Катталуу убактысы"
 
 #: user/templates/user/profile.html:145
 msgid "Цена"
-msgstr ""
+msgstr "Баа"
 
 #: user/templates/user/profile.html:147
 msgid "Редактировать"
-msgstr ""
-
-#: user/templates/user/profile.html:148 user/templates/user/profile.html:210
-msgid "Удалить"
-msgstr ""
+msgstr "Оңдоо"
 
 #: user/templates/user/profile.html:161 user/templates/user/profile.html:223
 msgid "Дата создания"
-msgstr ""
+msgstr "Түзүлгөн убактысы"
 
 #: user/templates/user/profile.html:162 user/templates/user/profile.html:224
 msgid "Дата окончания"
-msgstr ""
+msgstr "Бүтүү убактысы"
 
 #: user/templates/user/profile.html:207
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Моя ставка"
-msgstr "Аукцио түзүү"
+msgstr "Менин баам"
 
 #: user/templates/user/profile.html:208
-#, fuzzy
-#| msgid "Cоздать Аукцион"
 msgid "Статус аукциона"
-msgstr "Аукцио түзүү"
+msgstr "Аукциондун статусу"
 
 #: user/templates/user/profile.html:209
-#, fuzzy
-#| msgid "Активные"
 msgid "Актуальность"
-msgstr "Активдүүлөр"
-
-#: venv/lib/python3.7/site-packages/django/contrib/messages/apps.py:7
-msgid "Messages"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/contrib/sitemaps/apps.py:7
-msgid "Site Maps"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/contrib/staticfiles/apps.py:9
-msgid "Static Files"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/contrib/syndication/apps.py:7
-msgid "Syndication"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/paginator.py:45
-msgid "That page number is not an integer"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/paginator.py:47
-msgid "That page number is less than 1"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/paginator.py:52
-msgid "That page contains no results"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:31
-msgid "Enter a valid value."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:102
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:658
-msgid "Enter a valid URL."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:154
-msgid "Enter a valid integer."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:165
-msgid "Enter a valid email address."
-msgstr ""
-
-#. Translators: "letters" means latin letters: a-z and A-Z.
-#: venv/lib/python3.7/site-packages/django/core/validators.py:239
-msgid ""
-"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:246
-msgid ""
-"Enter a valid 'slug' consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:255
-#: venv/lib/python3.7/site-packages/django/core/validators.py:275
-msgid "Enter a valid IPv4 address."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:260
-#: venv/lib/python3.7/site-packages/django/core/validators.py:276
-msgid "Enter a valid IPv6 address."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:270
-#: venv/lib/python3.7/site-packages/django/core/validators.py:274
-msgid "Enter a valid IPv4 or IPv6 address."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:304
-msgid "Enter only digits separated by commas."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:310
-#, python-format
-msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:342
-#, python-format
-msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:351
-#, python-format
-msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:361
-#, python-format
-msgid ""
-"Ensure this value has at least %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:376
-#, python-format
-msgid ""
-"Ensure this value has at most %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:395
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:290
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:325
-msgid "Enter a number."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:397
-#, python-format
-msgid "Ensure that there are no more than %(max)s digit in total."
-msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:402
-#, python-format
-msgid "Ensure that there are no more than %(max)s decimal place."
-msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:407
-#, python-format
-msgid ""
-"Ensure that there are no more than %(max)s digit before the decimal point."
-msgid_plural ""
-"Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:469
-#, python-format
-msgid ""
-"File extension '%(extension)s' is not allowed. Allowed extensions are: "
-"'%(allowed_extensions)s'."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/core/validators.py:521
-msgid "Null characters are not allowed."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/base.py:1162
-#: venv/lib/python3.7/site-packages/django/forms/models.py:756
-msgid "and"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/base.py:1164
-#, python-format
-msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:104
-#, python-format
-msgid "Value %(value)r is not a valid choice."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:105
-msgid "This field cannot be null."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:106
-msgid "This field cannot be blank."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:107
-#, python-format
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr ""
-
-#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
-#. Eg: "Title must be unique for pub_date year"
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:111
-#, python-format
-msgid ""
-"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:128
-#, python-format
-msgid "Field of type: %(field_type)s"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:905
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1772
-msgid "Integer"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:909
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1770
-#, python-format
-msgid "'%(value)s' value must be an integer."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:984
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1850
-msgid "Big (8 byte) integer"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:996
-#, python-format
-msgid "'%(value)s' value must be either True or False."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:997
-#, python-format
-msgid "'%(value)s' value must be either True, False, or None."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:999
-msgid "Boolean (Either True or False)"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1040
-#, python-format
-msgid "String (up to %(max_length)s)"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1104
-msgid "Comma-separated integers"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1153
-#, python-format
-msgid ""
-"'%(value)s' value has an invalid date format. It must be in YYYY-MM-DD "
-"format."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1155
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1298
-#, python-format
-msgid ""
-"'%(value)s' value has the correct format (YYYY-MM-DD) but it is an invalid "
-"date."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1158
-msgid "Date (without time)"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1296
-#, python-format
-msgid ""
-"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1300
-#, python-format
-msgid ""
-"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1304
-msgid "Date (with time)"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1452
-#, python-format
-msgid "'%(value)s' value must be a decimal number."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1454
-msgid "Decimal number"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1593
-#, python-format
-msgid ""
-"'%(value)s' value has an invalid format. It must be in [DD] [HH:[MM:]]ss[."
-"uuuuuu] format."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1596
-msgid "Duration"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1646
-msgid "Email address"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1669
-msgid "File path"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1735
-#, python-format
-msgid "'%(value)s' value must be a float."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1737
-msgid "Floating point number"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1866
-msgid "IPv4 address"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1897
-msgid "IP address"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1977
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1978
-#, python-format
-msgid "'%(value)s' value must be either None, True or False."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:1980
-msgid "Boolean (Either True, False or None)"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2015
-msgid "Positive integer"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2028
-msgid "Positive small integer"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2042
-#, python-format
-msgid "Slug (up to %(max_length)s)"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2074
-msgid "Small integer"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2081
-msgid "Text"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2109
-#, python-format
-msgid ""
-"'%(value)s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
-"format."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2111
-#, python-format
-msgid ""
-"'%(value)s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
-"invalid time."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2114
-msgid "Time"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2240
-msgid "URL"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2262
-msgid "Raw binary data"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2312
-#, python-format
-msgid "'%(value)s' is not a valid UUID."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/__init__.py:2314
-msgid "Universally unique identifier"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/files.py:221
-msgid "File"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/files.py:360
-msgid "Image"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:778
-#, python-format
-msgid "%(model)s instance with %(field)s %(value)r does not exist."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:780
-msgid "Foreign Key (type determined by related field)"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:1007
-msgid "One-to-one relationship"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:1057
-#, python-format
-msgid "%(from)s-%(to)s relationship"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:1058
-#, python-format
-msgid "%(from)s-%(to)s relationships"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/db/models/fields/related.py:1100
-msgid "Many-to-many relationship"
-msgstr ""
-
-#. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
-#: venv/lib/python3.7/site-packages/django/forms/boundfield.py:146
-msgid ":?.!"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:53
-msgid "This field is required."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:245
-msgid "Enter a whole number."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:396
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:1126
-msgid "Enter a valid date."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:420
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:1127
-msgid "Enter a valid time."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:442
-msgid "Enter a valid date/time."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:471
-msgid "Enter a valid duration."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:472
-#, python-brace-format
-msgid "The number of days must be between {min_days} and {max_days}."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:532
-msgid "No file was submitted. Check the encoding type on the form."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:533
-msgid "No file was submitted."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:534
-msgid "The submitted file is empty."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:536
-#, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural ""
-"Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:539
-msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:600
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:762
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:852
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1270
-#, python-format
-msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:853
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:968
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1269
-msgid "Enter a list of values."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:969
-msgid "Enter a complete value."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/fields.py:1185
-msgid "Enter a valid UUID."
-msgstr ""
-
-#. Translators: This is the default suffix added to form field labels
-#: venv/lib/python3.7/site-packages/django/forms/forms.py:86
-msgid ":"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/forms.py:212
-#, python-format
-msgid "(Hidden field %(name)s) %(error)s"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:91
-msgid "ManagementForm data is missing or has been tampered with"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:338
-#, python-format
-msgid "Please submit %d or fewer forms."
-msgid_plural "Please submit %d or fewer forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:345
-#, python-format
-msgid "Please submit %d or more forms."
-msgid_plural "Please submit %d or more forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:371
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:373
-msgid "Order"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/formsets.py:375
-msgid "Delete"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/models.py:751
-#, python-format
-msgid "Please correct the duplicate data for %(field)s."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/models.py:755
-#, python-format
-msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/models.py:761
-#, python-format
-msgid ""
-"Please correct the duplicate data for %(field_name)s which must be unique "
-"for the %(lookup)s in %(date_field)s."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/models.py:770
-msgid "Please correct the duplicate values below."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1091
-msgid "The inline value did not match the parent instance."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1158
-msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/models.py:1272
-#, python-format
-msgid "\"%(pk)s\" is not a valid value."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/utils.py:162
-#, python-format
-msgid ""
-"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it "
-"may be ambiguous or it may not exist."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:395
-msgid "Clear"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:396
-msgid "Currently"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:397
-msgid "Change"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:711
-msgid "Unknown"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:712
-msgid "Yes"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/forms/widgets.py:713
-msgid "No"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:788
-msgid "yes,no,maybe"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:817
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:834
-#, python-format
-msgid "%(size)d byte"
-msgid_plural "%(size)d bytes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:836
-#, python-format
-msgid "%s KB"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:838
-#, python-format
-msgid "%s MB"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:840
-#, python-format
-msgid "%s GB"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:842
-#, python-format
-msgid "%s TB"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/template/defaultfilters.py:844
-#, python-format
-msgid "%s PB"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:62
-msgid "p.m."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:63
-msgid "a.m."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:68
-msgid "PM"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:69
-msgid "AM"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:150
-msgid "midnight"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dateformat.py:152
-msgid "noon"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Monday"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Tuesday"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Wednesday"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Thursday"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:6
-msgid "Friday"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:7
-msgid "Saturday"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:7
-msgid "Sunday"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Mon"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Tue"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Wed"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Thu"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:10
-msgid "Fri"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:11
-msgid "Sat"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:11
-msgid "Sun"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "January"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "February"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:14
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "August"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "September"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "October"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:15
-msgid "November"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:16
-msgid "December"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "jan"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "feb"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "mar"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "apr"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "may"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:19
-msgid "jun"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "jul"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "aug"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "sep"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "oct"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "nov"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:20
-msgid "dec"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:23
-msgctxt "abbrev. month"
-msgid "Jan."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:24
-msgctxt "abbrev. month"
-msgid "Feb."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:25
-msgctxt "abbrev. month"
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:26
-msgctxt "abbrev. month"
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:27
-msgctxt "abbrev. month"
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:28
-msgctxt "abbrev. month"
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:29
-msgctxt "abbrev. month"
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:30
-msgctxt "abbrev. month"
-msgid "Aug."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:31
-msgctxt "abbrev. month"
-msgid "Sept."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:32
-msgctxt "abbrev. month"
-msgid "Oct."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:33
-msgctxt "abbrev. month"
-msgid "Nov."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:34
-msgctxt "abbrev. month"
-msgid "Dec."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:37
-msgctxt "alt. month"
-msgid "January"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:38
-msgctxt "alt. month"
-msgid "February"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:39
-msgctxt "alt. month"
-msgid "March"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:40
-msgctxt "alt. month"
-msgid "April"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:41
-msgctxt "alt. month"
-msgid "May"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:42
-msgctxt "alt. month"
-msgid "June"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:43
-msgctxt "alt. month"
-msgid "July"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:44
-msgctxt "alt. month"
-msgid "August"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:45
-msgctxt "alt. month"
-msgid "September"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:46
-msgctxt "alt. month"
-msgid "October"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:47
-msgctxt "alt. month"
-msgid "November"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/dates.py:48
-msgctxt "alt. month"
-msgid "December"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/ipv6.py:8
-msgid "This is not a valid IPv6 address."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/text.py:67
-#, python-format
-msgctxt "String to return when truncating text"
-msgid "%(truncated_text)s…"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/text.py:233
-msgid "or"
-msgstr ""
-
-#. Translators: This string is used as a separator between list elements
-#: venv/lib/python3.7/site-packages/django/utils/text.py:252
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:83
-msgid ", "
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:9
-#, python-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:10
-#, python-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:11
-#, python-format
-msgid "%d week"
-msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:12
-#, python-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:13
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:14
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: venv/lib/python3.7/site-packages/django/utils/timesince.py:72
-msgid "0 minutes"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:110
-msgid "Forbidden"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:111
-msgid "CSRF verification failed. Request aborted."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:115
-msgid ""
-"You are seeing this message because this HTTPS site requires a 'Referer "
-"header' to be sent by your Web browser, but none was sent. This header is "
-"required for security reasons, to ensure that your browser is not being "
-"hijacked by third parties."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:120
-msgid ""
-"If you have configured your browser to disable 'Referer' headers, please re-"
-"enable them, at least for this site, or for HTTPS connections, or for 'same-"
-"origin' requests."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:124
-msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the 'Referrer-Policy: no-referrer' header, please remove them. The "
-"CSRF protection requires the 'Referer' header to do strict referer checking. "
-"If you're concerned about privacy, use alternatives like <a rel=\"noreferrer"
-"\" ...> for links to third-party sites."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:132
-msgid ""
-"You are seeing this message because this site requires a CSRF cookie when "
-"submitting forms. This cookie is required for security reasons, to ensure "
-"that your browser is not being hijacked by third parties."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:137
-msgid ""
-"If you have configured your browser to disable cookies, please re-enable "
-"them, at least for this site, or for 'same-origin' requests."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/csrf.py:142
-msgid "More information is available with DEBUG=True."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:41
-msgid "No year specified"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:61
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:111
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:208
-msgid "Date out of range"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:90
-msgid "No month specified"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:142
-msgid "No day specified"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:188
-msgid "No week specified"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:338
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:367
-#, python-format
-msgid "No %(verbose_name_plural)s available"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:589
-#, python-format
-msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/dates.py:623
-#, python-format
-msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/detail.py:54
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/list.py:67
-msgid "Page is not 'last', nor can it be converted to an int."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/list.py:72
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/generic/list.py:154
-#, python-format
-msgid "Empty list and '%(class_name)s.allow_empty' is False."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/static.py:40
-msgid "Directory indexes are not allowed here."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/static.py:42
-#, python-format
-msgid "\"%(path)s\" does not exist"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/static.py:80
-#, python-format
-msgid "Index of %(directory)s"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:6
-msgid "Django: the Web framework for perfectionists with deadlines."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:345
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:367
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:368
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:383
-msgid "Django Documentation"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:384
-msgid "Topics, references, &amp; how-to's"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:395
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:396
-msgid "Get started with Django"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:407
-msgid "Django Community"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/django/views/templates/default_urlconf.html:408
-msgid "Connect, get help, or contribute"
-msgstr ""
-
-#: venv/lib/python3.7/site-packages/modeltranslation/widgets.py:25
-msgid "None"
-msgstr ""
+msgstr "Актуалдуулугу"
+
+#: user/templates/user/profile_settings.html:18
+msgid "Настройки"
+msgstr "Жөндөөлөр"
+
+#: user/templates/user/profile_settings.html:49
+msgid "Имя пользователя"
+msgstr "Колдонуучунун аты"
+
+#: user/templates/user/profile_settings.html:64
+msgid "Адрес электронной почты"
+msgstr "Электрондук почтанын дареги"
+
+#: user/templates/user/profile_settings.html:82
+msgid "Фотография"
+msgstr "Сүрөт"

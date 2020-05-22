@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load i18n %}
+{% load static i18n %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -11,9 +13,9 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'profile' %}">Мой кабинет</a></li>
-                <li class="active">Настройки</li>
+                <li><a href="{% url 'index' %}">{% trans 'Главная' %}</a></li>
+                <li><a href="{% url 'profile' %}">{% trans 'Мой кабинет' %}</a></li>
+                <li class="active">{% trans 'Настройки' %}</li>
             </ul>
         </div>
     </div>
@@ -34,7 +36,7 @@
                         <div class="billing-details">
 
                             <div class="section-title">
-                                <h3 class="title">Настройка аккаунта</h3>
+                                <h3 class="title">{% trans 'Настройка аккаунта' %}</h3>
                             </div>
                             {% if userform.errors %}
                                 <p>{{ userform.errors }}</p>
@@ -42,31 +44,54 @@
                             {% if profileform.errors %}
                                 <p>{{ profileform.errors }}</p>
                             {% endif %}
-                            {% for u in userform %}
 
-                                <div class="form-group">
-                                    <p>{{ u.label }}:</p>
-                                    {{ u }}
+                            <div class="form-group">
+                                <p>{% trans 'Имя пользователя' %}:</p>
+                                {{ userform.username }}
 
-                                </div>
-                            {% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <p>{% trans 'Имя' %}:</p>
+                                {{ userform.first_name }}
 
-                            {% for p in profileform %}
-                                <div class="form-group">
-                                    <p class="title">{{ p.label }}:</p>
-                                    {{ p }}
-                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>{% trans 'Фамилия' %}:</p>
+                                {{ userform.last_name }}
 
-                            {% endfor %}
+                            </div>
+                            <div class="form-group">
+                                <p>{% trans 'Адрес электронной почты' %}:</p>
+                                {{ userform.email }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <p class="title">{% trans 'Номер телефона' %}:</p>
+                                {{ profileform.phone }}
+                            </div>
+                            <div class="form-group">
+                                <p class="title">{% trans 'Страна' %}:</p>
+                                {{ profileform.country }}
+                            </div>
+                            <div class="form-group">
+                                <p class="title">{% trans 'Город' %}:</p>
+                                {{ profileform.city }}
+                            </div>
+                            <div class="form-group">
+                                <p class="title">{% trans 'Фотография' %}:</p>
+                                {{ profileform.image }}
+                            </div>
 
 
+
+                        </div>
+                        <div class="pull-right">
+                            <button class="primary-btn" type="submit">{% trans 'Сохранить' %}</button>
                         </div>
                     </div>
 
 
-                    <div class="pull-right">
-                        <button class="primary-btn" type="submit">Сохранить</button>
-                    </div>
                 </form>
             </div>
             <!-- /row -->
