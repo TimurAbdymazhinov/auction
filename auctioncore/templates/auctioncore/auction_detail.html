@@ -2,6 +2,10 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load static i18n %}
+
+{% block title %}
+    {{ auction.title }}
+{% endblock %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -131,7 +135,9 @@
                             </p>
                             <p><strong>{% trans 'Дата начала аукциона' %}:</strong> {{ auction.created_date }}</p>
                             <p><strong>{% trans 'Дата завершения аукциона' %}:</strong> {{ auction.end_date }}</p>
-                            <p><strong>{% trans 'Начальная цена' %}:</strong> {{ auction.start_price }} {{ auction.som }}</p>
+                            <p>
+                                <strong>{% trans 'Начальная цена' %}:</strong> {{ auction.start_price }} {{ auction.som }}
+                            </p>
                             <p><strong>{% trans 'Шаг аукциона' %}:</strong> {{ auction.increment }}%</p>
                             <p><strong>{% trans 'Город' %}:</strong> {{ auction.city }}</p>
                             <p><strong>{% trans 'Страна' %}:</strong> {{ auction.country }}</p>
@@ -164,14 +170,16 @@
 
                                 </div>
                                 <br>
-                                <p><strong>{% trans 'Лидер ставок' %}:</strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
+                                <p>
+                                    <strong>{% trans 'Лидер ставок' %}:</strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
                                 </p>
                             {% endif %}
                             <hr>
                             {% if not auction.is_active %}
                                 {% if auction.is_done %}
 
-                                    <p><strong>{% trans 'Победитель аукциона' %}: </strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
+                                    <p>
+                                        <strong>{% trans 'Победитель аукциона' %}: </strong> {{ auction.participants.all.first.user.first_name }} {{ auction.participants.all.first.user.last_name }}
                                     </p>
                                 {% else %}
                                     <p><strong>{% trans 'Аукцион не состоялся' %} </strong></p>
@@ -240,7 +248,9 @@
                                     </p>
                                     <p><strong>{% trans 'Дата завершения аукциона' %}:</strong> {{ auction.end_date }}
                                     </p>
-                                    <p><strong>{% trans 'Начальная цена' %}:</strong> {{ auction.start_price }} {{ auction.som }}</p>
+                                    <p>
+                                        <strong>{% trans 'Начальная цена' %}:</strong> {{ auction.start_price }} {{ auction.som }}
+                                    </p>
                                     <p><strong>{% trans 'Шаг аукциона' %}:</strong> {{ auction.increment }}</p>
                                     <p><strong>{% trans 'Город' %}:</strong> {{ auction.city }}</p>
                                     <p><strong>{% trans 'Страна' %}:</strong> {{ auction.country }}</p>

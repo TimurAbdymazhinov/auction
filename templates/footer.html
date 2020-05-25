@@ -50,7 +50,7 @@
                             <li><a href="{% url 'profile' %}">{% trans 'Мой кабинет' %} </a></li>
                             <li><a href="{% url 'auction_create' %}">{% trans 'Создать Аукцион' %} </a></li>
                             <li><a href="{% url 'favorite' %}">{% trans 'Избранные' %} </a></li>
-                            <li><a href="#">{% trans 'Активные' %} </a></li>
+
                             <li><a href="{% url 'logout' %}">{% trans 'Выйти' %}</a></li>
                         {% else %}
                             <li><a href="{% url 'login' %}">{% trans 'Войти' %}</a></li>
@@ -75,7 +75,7 @@
                         <li><a href="{% url 'page_aboutAuctions' %}">{% trans 'Об аукционах' %}</a></li>
                         <li><a href="{% url 'page_contacts' %}">{% trans 'Контакты' %}</a></li>
                         <li><a href="{% url 'page_aboutUs' %}">{% trans 'O нас' %}</a></li>
-                        <li><a href="{% url 'page_blog' %}">{% trans 'Блог' %}</a></li>
+
                     </ul>
                 </div>
             </div>

@@ -4,7 +4,7 @@
 {% load i18n %}
 {% load static i18n %}
 {% block title %}
-    <title>{% trans 'Главная' %}</title>
+    {% trans 'Главная' %}
 {% endblock %}
 
 {% block header %}
@@ -143,7 +143,8 @@
                                 <h2 class="product-name"><a href="#">{{ auction.title }}</a></h2>
                                 <div class="product-btns">
                                     {% if user.is_authenticated %}
-                                        <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                        <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i
+                                                class="fa fa-heart"></i></button>
                                     {% endif %}
                                     <a href="{% url 'auction_detail' auction.id %}" class="primary-btn add-to-cart"><i
                                             class="fa fa-gavel"></i> {% trans 'Сделать ставку ' %}
@@ -177,7 +178,7 @@
             <div class="row">
                 <!-- section title -->
                 {% for auction in done_auctions %}
-                                <!-- Product Single -->
+                    <!-- Product Single -->
                     <div class="col-md-3 col-sm-6 col-xs-6">
                         <div class="product product-single">
                             <div class="product-thumb">
@@ -262,7 +263,8 @@
                                 <h2 class="product-name"><a href="#">{{ auction.title }}</a></h2>
                                 <div class="product-btns">
                                     {% if user.is_authenticated %}
-                                        <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                        <button onclick="addFavorite({{ auction.id }})" class="main-btn icon-btn"><i
+                                                class="fa fa-heart"></i></button>
                                     {% endif %}
                                     <a href="{% url 'auction_detail' auction.id %}" class="primary-btn add-to-cart"><i
                                             class="fa fa-gavel"></i> {% trans 'Сделать ставку' %}

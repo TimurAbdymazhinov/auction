@@ -2,6 +2,10 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load static i18n %}
+
+{% block title %}
+    {% trans 'Создать аукцион' %}
+{% endblock %}
 {% block header %}
     {% include 'header.html' %}
 {% endblock %}
@@ -9,7 +13,7 @@
 {% block content %}
 
     <!-- BREADCRUMB -->
-       <!-- BREADCRUMB -->
+    <!-- BREADCRUMB -->
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">

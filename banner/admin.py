@@ -7,7 +7,8 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class PageAdminForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorUploadingWidget())
+    content_ru = forms.CharField(widget=CKEditorUploadingWidget())
+    content_ky = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Page

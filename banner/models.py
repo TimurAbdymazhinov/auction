@@ -14,6 +14,11 @@ class Banner(models.Model):
 class Page(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
     content = RichTextUploadingField()
+    is_active = models.BooleanField(default=True, blank=True, null=True)
+    order = models.IntegerField(unique=True)
+
+    class Meta:
+        ordering = ['order']
 
     def __str__(self):
         return self.name

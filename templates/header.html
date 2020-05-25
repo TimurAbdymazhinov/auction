@@ -2,6 +2,7 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load static i18n %}
+<center>
 <!-- HEADER -->
 <header>
     <!-- top Header -->
@@ -99,7 +100,6 @@
                                 </li>
                                 <li><a href="{% url 'favorite' %}"><i class="fa fa-heart-o"></i>{% trans 'Избранные' %}
                                 </a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i>{% trans 'Активные' %}  </a></li>
                                 <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i>{% trans 'Выйти' %}
                                 </a></li>
                                 {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
@@ -141,7 +141,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <div class="header-btns-icon">
                                     <i class="fa fa-hourglass-half"></i>
-                                    {% if user.participants %}
+                                      {% if user.participants.all %}
                                         <span class="qty">{{ user.participants.count }}</span>
                                     {% endif %}
                                 </div>
@@ -226,7 +226,7 @@
     <!-- container -->
 </header>
 <!-- /HEADER -->
-
+</center>
 <!-- NAVIGATION -->
 <div id="navigation">
     <!-- container -->
@@ -286,7 +286,6 @@
                     <li><a href="{% url 'page_aboutAuctions' %}">{% trans 'Аукционы' %}</a></li>
                     <li><a href="{% url 'page_contacts' %}">{% trans 'Контакты' %}</a></li>
                     <li><a href="{% url 'page_aboutUs' %}">{% trans 'O нас' %}</a></li>
-                    <li><a href="{% url 'page_blog' %}">{% trans 'Блог' %}</a></li>
 
 
                 </ul>

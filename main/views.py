@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from category.models import Category
 from auctioncore.models import Auction
-from banner.models import Banner
+from banner.models import Banner, Page
 from auctioncore.tools import is_time_out
 
 class MainView(TemplateView):
@@ -16,11 +16,13 @@ class MainView(TemplateView):
         da = Auction.objects.filter(is_active=False)
 
         b = Banner.objects.all()
+        dpage = Page.objects.filter(is_active=True)
         return render(request, self.template_name, context={
             "category": category,
             "auctions": a,
             "banners": b,
-            "done_auctions": da
+            "done_auctions": da,
+            "dpage": dpage
 
         })
 
