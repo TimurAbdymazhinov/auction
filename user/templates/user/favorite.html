@@ -57,10 +57,10 @@
                             <div class="product-label">
                                 {% if f.auction.is_active %}
                                     <span>{% trans 'Статус' %}: {% trans 'Активен' %} </span>
-                                    <span class="sale">{% trans 'Начальная цена' %}: {{ f.auction.last_bet }} {{ auction.som }}</span>
+                                    <span class="sale">{% trans 'Начальная цена' %}: {{ f.auction.start_price }} {{ auction.som }}</span>
                                 {% else %}
                                     <span>{% trans 'Статус' %}: {% trans 'Завершен' %} </span>
-                                    <span class="sale">{% trans 'Начальная цена' %}: {{ f.auction.last_bet }} {{ auction.som }}</span>
+                                    <span class="sale">{% trans 'Начальная цена' %}: {{ f.auction.start_price }} {{ auction.som }}</span>
                                 {% endif %}
 
                             </div>
@@ -76,7 +76,7 @@
                             {% endif %}
                         </div>
                         <div class="product-body">
-                            <h3 class="product-price">{{ f.auction.start_price }} {{ f.auction.som }}</h3>
+                            <h3 class="product-price">{{ f.auction.last_bet }} {{ f.auction.som }}</h3>
 
                             {% if f.auction.star == None or f.auction.star == 0 %}
                                 <div class="product-rating">

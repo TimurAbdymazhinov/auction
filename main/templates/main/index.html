@@ -47,10 +47,12 @@
         <div class="container">
             <!-- row -->
             <div class="row">
-                <!-- section title -->
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h2 class="title">{% trans 'Все активные аукционы' %} </h2>
+                <div class="row">
+                    <!-- section title -->
+                    <div class="col-md-12">
+                        <div class="section-title">
+                            <h2 class="title">{% trans 'Все активные аукционы' %} </h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,10 +67,10 @@
                                 <div class="product-label">
                                     {% if auction.is_active %}
                                         <span>{% trans 'Статус' %}: {% trans 'Активен' %} </span>
-                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
+                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.start_price }} {{ auction.som }}</span>
                                     {% else %}
                                         <span>{% trans 'Статус' %}: {% trans 'Завершен' %} </span>
-                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
+                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.start_price }} {{ auction.som }}</span>
                                     {% endif %}
 
                                 </div>
@@ -84,7 +86,7 @@
                                 {% endif %}
                             </div>
                             <div class="product-body">
-                                <h3 class="product-price">{{ auction.start_price }} {{ auction.som }}</h3>
+                                <h3 class="product-price">{{ auction.last_bet }} {{ auction.som }}</h3>
 
                                 {% if auction.star == None or auction.star == 0 %}
                                     <div class="product-rating">
@@ -176,7 +178,7 @@
                 </div>
             </div>
             <div class="row">
-                <!-- section title -->
+
                 {% for auction in done_auctions %}
                     <!-- Product Single -->
                     <div class="col-md-3 col-sm-6 col-xs-6">
@@ -185,10 +187,10 @@
                                 <div class="product-label">
                                     {% if auction.is_active %}
                                         <span>{% trans 'Статус' %}: {% trans 'Активен' %} </span>
-                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
+                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.start_price }} {{ auction.som }}</span>
                                     {% else %}
                                         <span>{% trans 'Статус' %}: {% trans 'Завершен' %} </span>
-                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.last_bet }} {{ auction.som }}</span>
+                                        <span class="sale">{% trans 'Начальная цена' %}: {{ auction.start_price }} {{ auction.som }}</span>
                                     {% endif %}
 
                                 </div>
@@ -204,7 +206,7 @@
                                 {% endif %}
                             </div>
                             <div class="product-body">
-                                <h3 class="product-price">{{ auction.start_price }} {{ auction.som }}</h3>
+                                <h3 class="product-price">{{ auction.last_bet }} {{ auction.som }}</h3>
 
                                 {% if auction.star == None or auction.star == 0 %}
                                     <div class="product-rating">
@@ -267,7 +269,7 @@
                                                 class="fa fa-heart"></i></button>
                                     {% endif %}
                                     <a href="{% url 'auction_detail' auction.id %}" class="primary-btn add-to-cart"><i
-                                            class="fa fa-gavel"></i> {% trans 'Сделать ставку' %}
+                                            class="fa fa-gavel"></i> {% trans 'Сделать ставку ' %}
                                     </a>
                                 </div>
                             </div>

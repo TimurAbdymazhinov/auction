@@ -277,6 +277,7 @@ class AuctionCommentView(LoginRequiredMixin, TemplateView):
             c += 1
             if i.star:
                 s += i.star
+        s /= c
         s = s * 100 / 5
 
         s = round(s / c)

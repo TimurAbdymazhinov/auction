@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-22 16:49+0600\n"
+"POT-Creation-Date: 2020-05-28 17:23+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,34 +20,34 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: auction/settings.py:127
+#: auction/settings.py:129
 msgid "Russia"
 msgstr ""
 
-#: auction/settings.py:128
+#: auction/settings.py:130
 msgid "Kyrgyz"
 msgstr ""
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:12
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:15
-#: auctioncore/templates/auctioncore/auction_create.html:127
-#: auctioncore/templates/auctioncore/auction_detail.html:57
-#: auctioncore/templates/auctioncore/auction_detail.html:60
-#: auctioncore/templates/auctioncore/auction_edit.html:125
-#: auctioncore/templates/auctioncore/auctions.html:91
+#: auctioncore/templates/auctioncore/auction_create.html:131
+#: auctioncore/templates/auctioncore/auction_detail.html:61
+#: auctioncore/templates/auctioncore/auction_detail.html:64
+#: auctioncore/templates/auctioncore/auction_edit.html:128
 #: auctioncore/templates/auctioncore/auctions.html:94
+#: auctioncore/templates/auctioncore/auctions.html:97
 #: main/templates/main/index.html:67 main/templates/main/index.html:70
-#: main/templates/main/index.html:186 main/templates/main/index.html:189
-#: user/templates/user/favorite.html:56 user/templates/user/favorite.html:59
-#: user/templates/user/profile.html:146
+#: main/templates/main/index.html:187 main/templates/main/index.html:190
+#: user/templates/user/favorite.html:59 user/templates/user/favorite.html:62
+#: user/templates/user/profile.html:149
 msgid "Статус"
 msgstr ""
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:12
-#: auctioncore/templates/auctioncore/auction_detail.html:57
-#: auctioncore/templates/auctioncore/auctions.html:91
-#: main/templates/main/index.html:67 main/templates/main/index.html:186
-#: user/templates/user/favorite.html:56
+#: auctioncore/templates/auctioncore/auction_detail.html:61
+#: auctioncore/templates/auctioncore/auctions.html:94
+#: main/templates/main/index.html:67 main/templates/main/index.html:187
+#: user/templates/user/favorite.html:59
 #, fuzzy
 #| msgid "Активные"
 msgid "Активен"
@@ -55,341 +55,320 @@ msgstr "Активные"
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:13
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:16
-#: auctioncore/templates/auctioncore/auction_create.html:81
-#: auctioncore/templates/auctioncore/auction_detail.html:58
-#: auctioncore/templates/auctioncore/auction_detail.html:61
-#: auctioncore/templates/auctioncore/auction_detail.html:134
-#: auctioncore/templates/auctioncore/auction_detail.html:243
-#: auctioncore/templates/auctioncore/auction_edit.html:79
-#: auctioncore/templates/auctioncore/auctions.html:92
+#: auctioncore/templates/auctioncore/auction_create.html:85
+#: auctioncore/templates/auctioncore/auction_detail.html:62
+#: auctioncore/templates/auctioncore/auction_detail.html:65
+#: auctioncore/templates/auctioncore/auction_detail.html:139
+#: auctioncore/templates/auctioncore/auction_detail.html:252
+#: auctioncore/templates/auctioncore/auction_edit.html:82
 #: auctioncore/templates/auctioncore/auctions.html:95
+#: auctioncore/templates/auctioncore/auctions.html:98
 #: main/templates/main/index.html:68 main/templates/main/index.html:71
-#: main/templates/main/index.html:187 main/templates/main/index.html:190
-#: user/templates/user/favorite.html:57 user/templates/user/favorite.html:60
+#: main/templates/main/index.html:188 main/templates/main/index.html:191
+#: user/templates/user/favorite.html:60 user/templates/user/favorite.html:63
 msgid "Начальная цена"
 msgstr ""
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:15
-#: auctioncore/templates/auctioncore/auction_detail.html:60
-#: auctioncore/templates/auctioncore/auctions.html:94
-#: main/templates/main/index.html:70 main/templates/main/index.html:189
-#: user/templates/user/favorite.html:59
+#: auctioncore/templates/auctioncore/auction_detail.html:64
+#: auctioncore/templates/auctioncore/auctions.html:97
+#: main/templates/main/index.html:70 main/templates/main/index.html:190
+#: user/templates/user/favorite.html:62
 msgid "Завершен"
 msgstr ""
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:21
-#: auctioncore/templates/auctioncore/auctions.html:100
-#: main/templates/main/index.html:76 main/templates/main/index.html:195
-#: user/templates/user/favorite.html:65
+#: auctioncore/templates/auctioncore/auctions.html:103
+#: main/templates/main/index.html:76 main/templates/main/index.html:196
+#: user/templates/user/favorite.html:68
 msgid "Смотреть"
 msgstr ""
 
 #: auctioncore/templates/auctioncore/ajax_loadAuctions.html:97
-#: auctioncore/templates/auctioncore/auction_detail.html:153
-#: auctioncore/templates/auctioncore/auctions.html:176
-#: main/templates/main/index.html:268 user/templates/user/favorite.html:142
+#: auctioncore/templates/auctioncore/auction_detail.html:159
+#: auctioncore/templates/auctioncore/auctions.html:179
+#: main/templates/main/index.html:270 user/templates/user/favorite.html:145
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Сделать ставку"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_create.html:16
-#: auctioncore/templates/auctioncore/auction_detail.html:15
-#: auctioncore/templates/auctioncore/auction_edit.html:15
-#: auctioncore/templates/auctioncore/auctions.html:16
-#: banner/templates/banner/aboutAuctions.html:15
-#: banner/templates/banner/aboutUs.html:15 banner/templates/banner/blog.html:15
-#: banner/templates/banner/contacts.html:15 main/templates/main/index.html:7
-#: templates/footer.html:74 templates/header.html:285
-#: templates/main_header.html:274 user/templates/user/favorite.html:15
-#: user/templates/user/profile.html:15
-#: user/templates/user/profile_settings.html:16
-msgid "Главная"
-msgstr ""
-
-#: auctioncore/templates/auctioncore/auction_create.html:17
-#: auctioncore/templates/auctioncore/auction_edit.html:16
-#: templates/footer.html:47 templates/footer.html:50 templates/header.html:95
-#: templates/main_header.html:93 user/templates/user/profile.html:16
-#: user/templates/user/profile_settings.html:17
-msgid "Мой кабинет"
-msgstr "Мой кабинет"
-
-#: auctioncore/templates/auctioncore/auction_create.html:18
+#: auctioncore/templates/auctioncore/auction_create.html:7
+#: auctioncore/templates/auctioncore/auction_create.html:22
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Создать аукцион"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_create.html:40
+#: auctioncore/templates/auctioncore/auction_create.html:20
+#: auctioncore/templates/auctioncore/auction_detail.html:19
+#: auctioncore/templates/auctioncore/auction_edit.html:18
+#: auctioncore/templates/auctioncore/auctions.html:19
+#: banner/templates/banner/dPage.html:20 main/templates/main/index.html:7
+#: templates/footer.html:74 templates/header.html:285
+#: templates/main_header.html:275 user/templates/user/favorite.html:18
+#: user/templates/user/profile.html:18
+#: user/templates/user/profile_settings.html:19
+msgid "Главная"
+msgstr ""
+
+#: auctioncore/templates/auctioncore/auction_create.html:21
+#: auctioncore/templates/auctioncore/auction_edit.html:19
+#: templates/footer.html:47 templates/footer.html:50 templates/header.html:96
+#: templates/main_header.html:94 user/templates/user/profile.html:7
+#: user/templates/user/profile.html:19
+#: user/templates/user/profile_settings.html:20
+msgid "Мой кабинет"
+msgstr "Мой кабинет"
+
+#: auctioncore/templates/auctioncore/auction_create.html:44
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Создание аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_create.html:45
-#: auctioncore/templates/auctioncore/auction_edit.html:43
+#: auctioncore/templates/auctioncore/auction_create.html:49
+#: auctioncore/templates/auctioncore/auction_edit.html:46
 msgid "Категория"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:51
-#: auctioncore/templates/auctioncore/auction_edit.html:49
+#: auctioncore/templates/auctioncore/auction_create.html:55
+#: auctioncore/templates/auctioncore/auction_edit.html:52
 msgid "Подкатегория"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:57
-#: auctioncore/templates/auctioncore/auction_create.html:117
-#: auctioncore/templates/auctioncore/auction_edit.html:55
-#: auctioncore/templates/auctioncore/auction_edit.html:115
-#: auctioncore/templates/auctioncore/auctions.html:48
-#: auctioncore/templates/auctioncore/auctions.html:204
+#: auctioncore/templates/auctioncore/auction_create.html:61
+#: auctioncore/templates/auctioncore/auction_create.html:121
+#: auctioncore/templates/auctioncore/auction_edit.html:58
+#: auctioncore/templates/auctioncore/auction_edit.html:118
+#: auctioncore/templates/auctioncore/auctions.html:51
+#: auctioncore/templates/auctioncore/auctions.html:207
 msgid "Название"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:63
-#: auctioncore/templates/auctioncore/auction_detail.html:138
-#: auctioncore/templates/auctioncore/auction_detail.html:247
-#: auctioncore/templates/auctioncore/auction_edit.html:61
+#: auctioncore/templates/auctioncore/auction_create.html:67
+#: auctioncore/templates/auctioncore/auction_detail.html:144
+#: auctioncore/templates/auctioncore/auction_detail.html:257
+#: auctioncore/templates/auctioncore/auction_edit.html:64
 msgid "Описание"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:69
-#: auctioncore/templates/auctioncore/auction_detail.html:137
-#: auctioncore/templates/auctioncore/auction_detail.html:246
-#: auctioncore/templates/auctioncore/auction_edit.html:67
-#: user/templates/user/profile_settings.html:74
+#: auctioncore/templates/auctioncore/auction_create.html:73
+#: auctioncore/templates/auctioncore/auction_detail.html:143
+#: auctioncore/templates/auctioncore/auction_detail.html:256
+#: auctioncore/templates/auctioncore/auction_edit.html:70
+#: user/templates/user/profile_settings.html:77
 msgid "Страна"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:75
-#: auctioncore/templates/auctioncore/auction_detail.html:136
-#: auctioncore/templates/auctioncore/auction_detail.html:245
-#: auctioncore/templates/auctioncore/auction_edit.html:73
-#: user/templates/user/profile_settings.html:78
+#: auctioncore/templates/auctioncore/auction_create.html:79
+#: auctioncore/templates/auctioncore/auction_detail.html:142
+#: auctioncore/templates/auctioncore/auction_detail.html:255
+#: auctioncore/templates/auctioncore/auction_edit.html:76
+#: user/templates/user/profile_settings.html:81
 msgid "Город"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:87
-#: auctioncore/templates/auctioncore/auction_edit.html:85
+#: auctioncore/templates/auctioncore/auction_create.html:91
+#: auctioncore/templates/auctioncore/auction_edit.html:88
 msgid "Валюта"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:93
-#: auctioncore/templates/auctioncore/auction_edit.html:91
+#: auctioncore/templates/auctioncore/auction_create.html:97
+#: auctioncore/templates/auctioncore/auction_edit.html:94
 msgid "Шаг"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:99
-#: auctioncore/templates/auctioncore/auction_edit.html:97
+#: auctioncore/templates/auctioncore/auction_create.html:103
+#: auctioncore/templates/auctioncore/auction_edit.html:100
 msgid "Конечная дата"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:112
+#: auctioncore/templates/auctioncore/auction_create.html:116
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Создание лота аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_create.html:122
-#: auctioncore/templates/auctioncore/auction_edit.html:120
+#: auctioncore/templates/auctioncore/auction_create.html:126
+#: auctioncore/templates/auctioncore/auction_edit.html:123
 msgid "Брэнд"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:142
-#: auctioncore/templates/auctioncore/auction_edit.html:140
+#: auctioncore/templates/auctioncore/auction_create.html:146
+#: auctioncore/templates/auctioncore/auction_edit.html:143
 msgid "Добавить фото"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_create.html:147
+#: auctioncore/templates/auctioncore/auction_create.html:151
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Создать"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:127
+#: auctioncore/templates/auctioncore/auction_detail.html:131
 msgid "отзыв"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:130
+#: auctioncore/templates/auctioncore/auction_detail.html:134
 msgid "Владелец"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:132
-#: auctioncore/templates/auctioncore/auction_detail.html:239
+#: auctioncore/templates/auctioncore/auction_detail.html:136
+#: auctioncore/templates/auctioncore/auction_detail.html:247
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Дата начала аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:133
-#: auctioncore/templates/auctioncore/auction_detail.html:241
+#: auctioncore/templates/auctioncore/auction_detail.html:137
+#: auctioncore/templates/auctioncore/auction_detail.html:249
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Дата завершения аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:135
-#: auctioncore/templates/auctioncore/auction_detail.html:244
+#: auctioncore/templates/auctioncore/auction_detail.html:141
+#: auctioncore/templates/auctioncore/auction_detail.html:254
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Шаг аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:146
-#: auctioncore/templates/auctioncore/auction_detail.html:204
-#: templates/header.html:179 templates/main_header.html:171
+#: auctioncore/templates/auctioncore/auction_detail.html:152
+#: auctioncore/templates/auctioncore/auction_detail.html:212
+#: templates/header.html:179 templates/main_header.html:172
 msgid "Ставка"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:167
+#: auctioncore/templates/auctioncore/auction_detail.html:174
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Лидер ставок"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:174
+#: auctioncore/templates/auctioncore/auction_detail.html:182
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Победитель аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:177
+#: auctioncore/templates/auctioncore/auction_detail.html:185
 msgid "Аукцион не состоялся"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:186
+#: auctioncore/templates/auctioncore/auction_detail.html:194
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Ставки"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:187
+#: auctioncore/templates/auctioncore/auction_detail.html:195
 #, fuzzy
 #| msgid "Регистрация"
 msgid "Информация"
 msgstr "Регистрация"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:188
+#: auctioncore/templates/auctioncore/auction_detail.html:196
 msgid "Комментарий"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:196
+#: auctioncore/templates/auctioncore/auction_detail.html:204
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Список участников аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_detail.html:201
+#: auctioncore/templates/auctioncore/auction_detail.html:209
 msgid "Участник"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:205
-#: auctioncore/templates/auctioncore/auctions.html:45
-#: auctioncore/templates/auctioncore/auctions.html:201
+#: auctioncore/templates/auctioncore/auction_detail.html:213
+#: auctioncore/templates/auctioncore/auctions.html:48
+#: auctioncore/templates/auctioncore/auctions.html:204
 msgid "Дата"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:219
-#: auctioncore/templates/auctioncore/auctions.html:47
-#: auctioncore/templates/auctioncore/auctions.html:203
-#: user/templates/user/profile.html:99
+#: auctioncore/templates/auctioncore/auction_detail.html:227
+#: auctioncore/templates/auctioncore/auctions.html:50
+#: auctioncore/templates/auctioncore/auctions.html:206
+#: user/templates/user/profile.html:102
 msgid "Рейтинг"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:332
+#: auctioncore/templates/auctioncore/auction_detail.html:342
 msgid "Оставить отзыв"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:340
+#: auctioncore/templates/auctioncore/auction_detail.html:350
 msgid "Ваш комментарий"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:344
+#: auctioncore/templates/auctioncore/auction_detail.html:354
 msgid "Ваша оценка"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:359
+#: auctioncore/templates/auctioncore/auction_detail.html:369
 msgid "Оставить комментарий"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:363
+#: auctioncore/templates/auctioncore/auction_detail.html:373
 msgid "Войдите для того, чтобы оставить комментарий"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auction_detail.html:364
+#: auctioncore/templates/auctioncore/auction_detail.html:374
 #: templates/footer.html:56 templates/header.html:109
-#: templates/main_header.html:103
+#: templates/main_header.html:104 user/templates/registration/login.html:8
+#: user/templates/registration/login.html:36
+#: user/templates/registration/register.html:82
 msgid "Войти"
 msgstr "Войти"
 
-#: auctioncore/templates/auctioncore/auction_edit.html:17
-#: auctioncore/templates/auctioncore/auction_edit.html:38
+#: auctioncore/templates/auctioncore/auction_edit.html:6
+#: auctioncore/templates/auctioncore/auction_edit.html:20
+#: auctioncore/templates/auctioncore/auction_edit.html:41
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Настройка аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_edit.html:110
+#: auctioncore/templates/auctioncore/auction_edit.html:113
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Настройка лота аукциона"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auction_edit.html:145
-#: user/templates/user/profile_settings.html:90
+#: auctioncore/templates/auctioncore/auction_edit.html:148
+#: user/templates/user/profile_settings.html:92
 msgid "Сохранить"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auctions.html:17 templates/header.html:286
-#: templates/main_header.html:275 user/templates/user/profile.html:205
+#: auctioncore/templates/auctioncore/auctions.html:7
+#: auctioncore/templates/auctioncore/auctions.html:20 templates/header.html:286
+#: templates/main_header.html:276 user/templates/user/profile.html:208
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Аукционы"
 msgstr "Cоздать Аукцион"
 
-#: auctioncore/templates/auctioncore/auctions.html:43
-#: auctioncore/templates/auctioncore/auctions.html:199
+#: auctioncore/templates/auctioncore/auctions.html:46
+#: auctioncore/templates/auctioncore/auctions.html:202
 msgid "Сортировать по"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auctions.html:46
-#: auctioncore/templates/auctioncore/auctions.html:202
+#: auctioncore/templates/auctioncore/auctions.html:49
+#: auctioncore/templates/auctioncore/auctions.html:205
 msgid "Цены"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auctions.html:63
-#: auctioncore/templates/auctioncore/auctions.html:219
+#: auctioncore/templates/auctioncore/auctions.html:66
+#: auctioncore/templates/auctioncore/auctions.html:222
 msgid "Страница"
 msgstr ""
 
-#: auctioncore/templates/auctioncore/auctions.html:80
+#: auctioncore/templates/auctioncore/auctions.html:83
 msgid "Ничего не найдено"
 msgstr ""
-
-#: banner/templates/banner/aboutAuctions.html:16
-#: banner/templates/banner/aboutAuctions.html:30 templates/footer.html:75
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Об аукционах"
-msgstr "Cоздать Аукцион"
-
-#: banner/templates/banner/aboutUs.html:16
-#: banner/templates/banner/aboutUs.html:30
-msgid "О нас"
-msgstr ""
-
-#: banner/templates/banner/blog.html:16 banner/templates/banner/blog.html:30
-#: templates/footer.html:78 templates/header.html:289
-#: templates/main_header.html:278
-msgid "Блог"
-msgstr ""
-
-#: banner/templates/banner/contacts.html:16
-#: banner/templates/banner/contacts.html:30 templates/footer.html:76
-#: templates/header.html:19 templates/header.html:287
-#: templates/main_header.html:18 templates/main_header.html:276
-msgid "Контакты"
-msgstr "Контакты"
 
 #: main/templates/main/index.html:28
 msgid "Подробнее"
@@ -401,13 +380,13 @@ msgstr ""
 msgid "Все активные аукционы"
 msgstr "Cоздать Аукцион"
 
-#: main/templates/main/index.html:149
+#: main/templates/main/index.html:150
 #, fuzzy
 #| msgid "Cоздать Аукцион"
 msgid "Сделать ставку "
 msgstr "Cоздать Аукцион"
 
-#: main/templates/main/index.html:173
+#: main/templates/main/index.html:174
 msgid "Все завершенные аукционы"
 msgstr ""
 
@@ -423,23 +402,20 @@ msgstr ""
 msgid "Создать Аукцион"
 msgstr "Cоздать Аукцион"
 
-#: templates/footer.html:52 templates/header.html:100
-#: templates/main_header.html:96
+#: templates/footer.html:52 templates/header.html:101
+#: templates/main_header.html:97
 msgid "Избранные"
 msgstr "Избранные"
 
-#: templates/footer.html:53 templates/header.html:102
-#: templates/main_header.html:97
-msgid "Активные"
-msgstr "Активные"
-
 #: templates/footer.html:54 templates/header.html:103
-#: templates/main_header.html:98
+#: templates/main_header.html:99
 msgid "Выйти"
 msgstr "Выйти"
 
 #: templates/footer.html:57 templates/header.html:113
-#: templates/main_header.html:105
+#: templates/main_header.html:106 user/templates/registration/login.html:37
+#: user/templates/registration/register.html:7
+#: user/templates/registration/register.html:80
 msgid "Регистрация"
 msgstr "Регистрация"
 
@@ -447,8 +423,19 @@ msgstr "Регистрация"
 msgid "Страницы"
 msgstr ""
 
+#: templates/footer.html:75
+#, fuzzy
+#| msgid "Cоздать Аукцион"
+msgid "Об аукционах"
+msgstr "Cоздать Аукцион"
+
+#: templates/footer.html:76 templates/header.html:20 templates/header.html:287
+#: templates/main_header.html:19 templates/main_header.html:277
+msgid "Контакты"
+msgstr "Контакты"
+
 #: templates/footer.html:77 templates/header.html:288
-#: templates/main_header.html:277
+#: templates/main_header.html:278
 msgid "O нас"
 msgstr ""
 
@@ -474,59 +461,59 @@ msgstr ""
 msgid "Интернет-платформа E-auction | Специально для вас с "
 msgstr ""
 
-#: templates/header.html:11 templates/main_header.html:11
+#: templates/header.html:12 templates/main_header.html:12
 msgid "Добро пожаловать в e-auction!"
 msgstr "Добро пожаловать в e-auction!"
 
-#: templates/header.html:18 templates/main_header.html:17
+#: templates/header.html:19 templates/main_header.html:18
 msgid "Карта"
 msgstr "Карта"
 
-#: templates/header.html:20 templates/main_header.html:19
+#: templates/header.html:21 templates/main_header.html:20
 msgid "FAQ"
 msgstr "ЧЗВ"
 
-#: templates/header.html:46 templates/main_header.html:45
+#: templates/header.html:47 templates/main_header.html:46
 msgid "Перевод"
 msgstr "Перевод"
 
-#: templates/header.html:70 templates/main_header.html:69
+#: templates/header.html:71 templates/main_header.html:70
 msgid "Поиск"
 msgstr "Поиск"
 
-#: templates/header.html:87 templates/main_header.html:86
+#: templates/header.html:88 templates/main_header.html:87
 msgid "Кабинет"
 msgstr "Кабинет"
 
-#: templates/header.html:98 templates/main_header.html:94
+#: templates/header.html:99 templates/main_header.html:95
 msgid "Cоздать Аукцион"
 msgstr "Cоздать Аукцион"
 
 #: templates/header.html:148 templates/header.html:207
-#: templates/main_header.html:140 templates/main_header.html:199
-#: user/templates/user/profile.html:200
+#: templates/main_header.html:141 templates/main_header.html:200
+#: user/templates/user/profile.html:203
 msgid "Мои ставки"
 msgstr ""
 
-#: templates/header.html:170 templates/main_header.html:162
+#: templates/header.html:170 templates/main_header.html:163
 #, fuzzy
 #| msgid "Активные"
 msgid "Активность"
 msgstr "Активные"
 
-#: templates/header.html:198 templates/main_header.html:190
+#: templates/header.html:198 templates/main_header.html:191
 msgid "Пусто"
 msgstr ""
 
-#: templates/header.html:238 templates/main_header.html:229
+#: templates/header.html:238 templates/main_header.html:230
 msgid "Категории"
 msgstr ""
 
-#: templates/header.html:255 templates/main_header.html:246
+#: templates/header.html:255 templates/main_header.html:247
 msgid "Все"
 msgstr ""
 
-#: templates/header.html:273 templates/main_header.html:264
+#: templates/header.html:273 templates/main_header.html:265
 msgid "Все категории"
 msgstr ""
 
@@ -534,137 +521,200 @@ msgstr ""
 msgid "Фото"
 msgstr ""
 
-#: templates/my.html:18 user/templates/user/profile.html:148
-#: user/templates/user/profile.html:210
+#: templates/my.html:18 user/templates/user/profile.html:151
+#: user/templates/user/profile.html:213
 msgid "Удалить"
 msgstr ""
 
-#: user/templates/user/favorite.html:16 user/templates/user/favorite.html:30
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Мои избранные аукционы"
-msgstr "Cоздать Аукцион"
-
-#: user/templates/user/profile.html:30
-#, fuzzy
-#| msgid "Добро пожаловать в e-auction!"
-msgid "Добро пожаловать"
-msgstr "Добро пожаловать в e-auction!"
-
-#: user/templates/user/profile.html:55
-#: user/templates/user/profile_settings.html:39
-msgid "Настройка аккаунта"
-msgstr ""
-
-#: user/templates/user/profile.html:58
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Создать акуцион"
-msgstr "Cоздать Аукцион"
-
-#: user/templates/user/profile.html:61 user/templates/user/profile.html:138
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Мои аукционы"
-msgstr "Cоздать Аукцион"
-
-#: user/templates/user/profile.html:67
-msgid "Контактные информации"
-msgstr ""
-
-#: user/templates/user/profile.html:70
-#: user/templates/user/profile_settings.html:54
-msgid "Имя"
-msgstr ""
-
-#: user/templates/user/profile.html:71
-#: user/templates/user/profile_settings.html:59
-msgid "Фамилия"
-msgstr ""
-
-#: user/templates/user/profile.html:72
-#: user/templates/user/profile_settings.html:70
-msgid "Номер телефона"
-msgstr ""
-
-#: user/templates/user/profile.html:73
-msgid "Электронный адресс"
-msgstr ""
-
-#: user/templates/user/profile.html:94
-#, fuzzy
-#| msgid "Избранные"
-msgid "Данные"
-msgstr "Избранные"
-
-#: user/templates/user/profile.html:97
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Созданные аукционы"
-msgstr "Cоздать Аукцион"
-
-#: user/templates/user/profile.html:98
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Участие в аукционах"
-msgstr "Cоздать Аукцион"
-
-#: user/templates/user/profile.html:100
-#, fuzzy
-#| msgid "Регистрация"
-msgid "Дата регистрации"
-msgstr "Регистрация"
-
-#: user/templates/user/profile.html:145
-msgid "Цена"
-msgstr ""
-
-#: user/templates/user/profile.html:147
-msgid "Редактировать"
-msgstr ""
-
-#: user/templates/user/profile.html:161 user/templates/user/profile.html:223
-msgid "Дата создания"
-msgstr ""
-
-#: user/templates/user/profile.html:162 user/templates/user/profile.html:224
-msgid "Дата окончания"
-msgstr ""
-
-#: user/templates/user/profile.html:207
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Моя ставка"
-msgstr "Cоздать Аукцион"
-
-#: user/templates/user/profile.html:208
-#, fuzzy
-#| msgid "Cоздать Аукцион"
-msgid "Статус аукциона"
-msgstr "Cоздать Аукцион"
-
-#: user/templates/user/profile.html:209
-#, fuzzy
-#| msgid "Активные"
-msgid "Актуальность"
-msgstr "Активные"
-
-#: user/templates/user/profile_settings.html:18
-msgid "Настройки"
-msgstr ""
-
-#: user/templates/user/profile_settings.html:49
+#: user/templates/registration/register.html:12
+#: user/templates/user/profile_settings.html:52
 #, fuzzy
 #| msgid "Добро пожаловать в e-auction!"
 msgid "Имя пользователя"
 msgstr "Добро пожаловать в e-auction!"
 
-#: user/templates/user/profile_settings.html:64
+#: user/templates/registration/register.html:29
+#: user/templates/user/profile_settings.html:67
 msgid "Адрес электронной почты"
 msgstr ""
 
-#: user/templates/user/profile_settings.html:82
+#: user/templates/registration/register.html:47
+msgid "Пароль"
+msgstr ""
+
+#: user/templates/registration/register.html:65
+msgid "Подтверждение пароля"
+msgstr ""
+
+#: user/templates/user/favorite.html:7 user/templates/user/favorite.html:19
+#: user/templates/user/favorite.html:33
+#, fuzzy
+#| msgid "Cоздать Аукцион"
+msgid "Мои избранные аукционы"
+msgstr "Cоздать Аукцион"
+
+#: user/templates/user/profile.html:33
+#, fuzzy
+#| msgid "Добро пожаловать в e-auction!"
+msgid "Добро пожаловать"
+msgstr "Добро пожаловать в e-auction!"
+
+#: user/templates/user/profile.html:58
+#: user/templates/user/profile_settings.html:42
+msgid "Настройка аккаунта"
+msgstr ""
+
+#: user/templates/user/profile.html:61
+#, fuzzy
+#| msgid "Cоздать Аукцион"
+msgid "Создать акуцион"
+msgstr "Cоздать Аукцион"
+
+#: user/templates/user/profile.html:64 user/templates/user/profile.html:141
+#, fuzzy
+#| msgid "Cоздать Аукцион"
+msgid "Мои аукционы"
+msgstr "Cоздать Аукцион"
+
+#: user/templates/user/profile.html:70
+msgid "Контактные информации"
+msgstr ""
+
+#: user/templates/user/profile.html:73
+#: user/templates/user/profile_settings.html:57
+msgid "Имя"
+msgstr ""
+
+#: user/templates/user/profile.html:74
+#: user/templates/user/profile_settings.html:62
+msgid "Фамилия"
+msgstr ""
+
+#: user/templates/user/profile.html:75
+#: user/templates/user/profile_settings.html:73
+msgid "Номер телефона"
+msgstr ""
+
+#: user/templates/user/profile.html:76
+msgid "Электронный адресс"
+msgstr ""
+
+#: user/templates/user/profile.html:97
+#, fuzzy
+#| msgid "Избранные"
+msgid "Данные"
+msgstr "Избранные"
+
+#: user/templates/user/profile.html:100
+#, fuzzy
+#| msgid "Cоздать Аукцион"
+msgid "Созданные аукционы"
+msgstr "Cоздать Аукцион"
+
+#: user/templates/user/profile.html:101
+#, fuzzy
+#| msgid "Cоздать Аукцион"
+msgid "Участие в аукционах"
+msgstr "Cоздать Аукцион"
+
+#: user/templates/user/profile.html:103
+#, fuzzy
+#| msgid "Регистрация"
+msgid "Дата регистрации"
+msgstr "Регистрация"
+
+#: user/templates/user/profile.html:148
+msgid "Цена"
+msgstr ""
+
+#: user/templates/user/profile.html:150
+msgid "Редактировать"
+msgstr ""
+
+#: user/templates/user/profile.html:164 user/templates/user/profile.html:226
+msgid "Дата создания"
+msgstr ""
+
+#: user/templates/user/profile.html:165 user/templates/user/profile.html:227
+msgid "Дата окончания"
+msgstr ""
+
+#: user/templates/user/profile.html:210
+#, fuzzy
+#| msgid "Cоздать Аукцион"
+msgid "Моя ставка"
+msgstr "Cоздать Аукцион"
+
+#: user/templates/user/profile.html:211
+#, fuzzy
+#| msgid "Cоздать Аукцион"
+msgid "Статус аукциона"
+msgstr "Cоздать Аукцион"
+
+#: user/templates/user/profile.html:212
+#, fuzzy
+#| msgid "Активные"
+msgid "Актуальность"
+msgstr "Активные"
+
+#: user/templates/user/profile_settings.html:7
+#: user/templates/user/profile_settings.html:21
+msgid "Настройки"
+msgstr ""
+
+#: user/templates/user/profile_settings.html:85
 msgid "Фотография"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/forms.py:8
+msgid "Search files"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:5
+msgid "Select an image to embed"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:27
+msgid "Browse for the image you want, then click 'Embed Image' to continue..."
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:29
+msgid ""
+"No images found. Upload images using the 'Image Button' dialog's 'Upload' "
+"tab."
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:50
+msgid "Images in: "
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:62
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:80
+msgid "Embed Image"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:146
+msgid "Play Slideshow"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:147
+msgid "Pause Slideshow"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:148
+msgid "&lsaquo; Previous Photo"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:149
+msgid "Next Photo &rsaquo;"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:150
+msgid "Next &rsaquo;"
+msgstr ""
+
+#: venv/lib/python3.7/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:151
+msgid "&lsaquo; Prev"
 msgstr ""
 
 #: venv/lib/python3.7/site-packages/django/contrib/messages/apps.py:7
@@ -1875,6 +1925,9 @@ msgstr ""
 #: venv/lib/python3.7/site-packages/modeltranslation/widgets.py:25
 msgid "None"
 msgstr ""
+
+#~ msgid "Активные"
+#~ msgstr "Активные"
 
 #, fuzzy
 #~| msgid "Активные"

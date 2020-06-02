@@ -2,7 +2,7 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load static i18n %}
-<center>
+
 <!-- HEADER -->
 <header>
     <!-- top Header -->
@@ -18,17 +18,17 @@
                     <li><a href="#">{% trans 'Карта' %}</a></li>
                     <li><a href="{% url 'page_contacts' %}">{% trans 'Контакты' %}</a></li>
                     <li><a href="#">{% trans 'FAQ' %}</a></li>
-{#                    <li class="dropdown default-dropdown">#}
-{#                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Язык <i#}
-{#                                class="fa fa-caret-down"></i></a>#}
-{#                        <ul class="custom-menu">#}
-{#                            <li><a href="#">Кыргызча (KY)</a></li>#}
-{#                            <li><a href="#">Русский (RU)</a></li>#}
-{#                            <li><a href="#">English (EN)</a></li>#}
-{##}
-{#                        </ul>#}
-{##}
-{#                    </li>#}
+                    {#                    <li class="dropdown default-dropdown">#}
+                    {#                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Язык <i#}
+                    {#                                class="fa fa-caret-down"></i></a>#}
+                    {#                        <ul class="custom-menu">#}
+                    {#                            <li><a href="#">Кыргызча (KY)</a></li>#}
+                    {#                            <li><a href="#">Русский (RU)</a></li>#}
+                    {#                            <li><a href="#">English (EN)</a></li>#}
+                    {##}
+                    {#                        </ul>#}
+                    {##}
+                    {#                    </li>#}
                     <li>
                         <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                             <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -67,7 +67,8 @@
                 <!-- Search -->
                 <div class="header-search">
                     <form action="{% url 'auctions' 1 0 %}" method="get">
-                        <input class="input search-input" name="search" type="text" placeholder="{% trans 'Поиск' %}">
+                        <input class="input search-input" name="search" type="text"
+                               placeholder="{% trans 'Поиск' %}">
 
                         <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
@@ -84,26 +85,40 @@
                             <div class="header-btns-icon">
                                 <i class="fa fa-user-o"></i>
                             </div>
-                            <strong class="text-uppercase">{% trans 'Кабинет' %} <i class="fa fa-caret-down"></i></strong>
+                            <strong class="text-uppercase">{% trans 'Кабинет' %} <i
+                                    class="fa fa-caret-down"></i></strong>
                         </div>
-                        <a class="text-uppercase">{{ user.username }}</a>
+                        {% if user.is_authenticated %}
+
+                            <a class="text-uppercase">{{ user.username }}</a>
+                        {% else %}
+                            <a onclick="loginAjax()" class="text-uppercase" data-toggle="modal"
+                               data-target=".bd-example-modal-lg"
+                               href="{% url 'login' %}">{% trans 'Войти' %} </a>
+                        {% endif %}
 
 
                         <ul class="custom-menu">
                             {% if user.is_authenticated %}
-                                <li><a href="{% url 'profile' %}"><i class="fa fa-user-o"></i>{% trans 'Мой кабинет' %}  </a></li>
-                                <li><a href="{% url 'auction_create' %}"><i class="fa fa-plus"></i>{% trans 'Cоздать Аукцион' %} </a>
+                                <li><a href="{% url 'profile' %}"><i
+                                        class="fa fa-user-o"></i>{% trans 'Мой кабинет' %}  </a></li>
+                                <li><a href="{% url 'auction_create' %}"><i
+                                        class="fa fa-plus"></i>{% trans 'Cоздать Аукцион' %} </a>
                                 </li>
-                                <li><a href="{% url 'favorite' %}"><i class="fa fa-heart-o"></i>{% trans 'Избранные' %}  </a></li>
+                                <li><a href="{% url 'favorite' %}"><i
+                                        class="fa fa-heart-o"></i>{% trans 'Избранные' %}  </a></li>
 
-                                <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i>{% trans 'Выйти' %} </a></li>
+                                <li><a href="{% url 'logout' %}"><i class="fa fa-unlock-alt"></i>{% trans 'Выйти' %}
+                                </a></li>
                                 {#                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>#}
                             {% else %}
 
                                 <li><a onclick="loginAjax()" href="{% url 'login' %}" data-toggle="modal"
-                                       data-target=".bd-example-modal-lg"><i class="fa fa-user"></i>{% trans 'Войти' %} </a></li>
+                                       data-target=".bd-example-modal-lg"><i
+                                        class="fa fa-user"></i>{% trans 'Войти' %} </a></li>
                                 <li><a onclick="registerAjax()" href="{% url 'register' %}" data-toggle="modal"
-                                       data-target=".bd-example-modal-lg"><i class="fa fa-user-plus"></i>{% trans 'Регистрация' %}</a>
+                                       data-target=".bd-example-modal-lg"><i
+                                        class="fa fa-user-plus"></i>{% trans 'Регистрация' %}</a>
                                 </li>
 
 
@@ -219,7 +234,7 @@
     <!-- container -->
 </header>
 <!-- /HEADER -->
-</center>
+
 <!-- NAVIGATION -->
 <div id="navigation">
     <!-- container -->

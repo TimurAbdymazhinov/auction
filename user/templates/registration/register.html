@@ -1,33 +1,85 @@
+{% load static %}
+{% load i18n %}
+{% load static i18n %}
 <form id="login_form" style="margin: 50px" action="{% url 'register' %}" method="POST">
     {% csrf_token %}
     <div class="section-title">
-        <h3 class="title">Регистрация</h3>
+        <h3 class="title">{% trans 'Регистрация' %}</h3>
     </div>
 
-    {% for f in form %}
-        <div class="form-group">
+    <div class="form-group">
 
-            <label for="exampleInputEmail1">{{ f.label }}</label>
+        <label for="exampleInputEmail1">{% trans 'Имя пользователя' %}</label>
 
-            {{ f }}
+        {{ form.username }}
 
 
-        </div>
-        <div class="form-group" style="color: red"  >
-        {% if f.errors %}
+    </div>
+    <div class="form-group" style="color: red">
+        {% if form.username.errors %}
 
-            <p >{{ f.errors }}</p>
+            <p>{{ form.username.errors }}</p>
 
 
         {% endif %}
-        </div>
-    {% endfor %}
+    </div>
+
+    <div class="form-group">
+
+        <label for="exampleInputEmail1">{% trans 'Адрес электронной почты' %}</label>
+
+        {{ form.email }}
+
+
+    </div>
+    <div class="form-group" style="color: red">
+        {% if form.email.errors %}
+
+            <p>{{ form.email.errors }}</p>
+
+
+        {% endif %}
     </div>
 
 
-    <a onclick="submitLoginAjax()" class="primary-btn">Регистрация</a>
+    <div class="form-group">
 
-    <a onclick="loginAjax()" class="primary-btn" style="float: right">Войти</a>
+        <label for="exampleInputEmail1">{% trans 'Пароль' %}</label>
+
+        {{ form.password1 }}
+
+
+    </div>
+    <div class="form-group" style="color: red">
+        {% if form.password1.errors %}
+
+            <p>{{ form.password1.errors }}</p>
+
+
+        {% endif %}
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="exampleInputEmail1">{% trans 'Подтверждение пароля' %}</label>
+
+        {{ form.password2 }}
+
+
+    </div>
+    <div class="form-group" style="color: red">
+        {% if form.password2.errors %}
+
+            <p>{{ form.password2.errors }}</p>
+
+
+        {% endif %}
+    </div>
+
+    <a onclick="submitLoginAjax()" class="primary-btn">{% trans 'Регистрация' %}</a>
+
+    <a onclick="loginAjax()" class="primary-btn" style="float: right">{% trans 'Войти' %}</a>
 
 
 </form>

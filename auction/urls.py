@@ -20,6 +20,7 @@ from django.urls import path, include
 
 from auction import settings
 
+admin.site.site_header = 'Администрирование E-Auction.kg'
 admin.autodiscover()
 
 urlpatterns = [
