@@ -25,7 +25,9 @@
                             <img src="{{ b.image|thumbnail_url:'banner' }}" alt="">
                             <div class="banner-caption">
                                 <h1 class="white-color">{{ b.name }}</h1>
-                                <button class="primary-btn">{% trans 'Подробнее' %}</button>
+                                {% if b.auction %}
+                                <a href="{% url 'auction_detail' b.auction.id %}" class="primary-btn">{% trans 'Подробнее' %}</a>
+                                {% endif %}
                             </div>
                         </div>
                         <!-- /banner -->
@@ -163,6 +165,8 @@
         </div>
     </div>
     <!-- /section -->
+
+
 
 
     <!-- section -->
